@@ -16,8 +16,6 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let service = Service()
-        service.loadWeatherData(city: "State%20o%20Haryāna")
         
     }
 

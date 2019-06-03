@@ -13,4 +13,8 @@ pod 'AlamofireObjectMapper', '~> 5.2'
 
 pod 'RealmSwift'
 
+pod 'Firebase/Core'
+
+pod 'Firebase/Firestore'
+
 end
