@@ -11,15 +11,79 @@ import Alamofire
 
 class Service {
     
-    // базовый URL сервиса
-    let baseUrl = "https://api.openweathermap.org"
-    // ключ для доступа к сервису
-    let apiKey = "4142e9613cb27a38a3607937f747095c"
-    
-    // метод для загрузки данных, в качестве аргументов получает город
-    func loadWeatherData(city: String) {
-        Alamofire.request("https://api.openweathermap.org/data/2.5/forecast?q=\(city)&mode=json&units=metric&appid=4142e9613cb27a38a3607937f747095c").responseJSON { repsonse in
-            print(repsonse.value ?? "default value")
+    func loadWeatherData(cityID: String, completion: @escaping (OneDayWeather) -> Void) {
+        Alamofire.request("https://api.openweathermap.org/data/2.5/weather?id=\(cityID)&mode=json&units=metric&appid=4142e9613cb27a38a3607937f747095c").responseObject { (response: DataResponse<OneDayWeather>) in
+            guard let weatherResponse = response.result.value else { return }
+            completion(weatherResponse)
         }
     }
+    
+    public func getTimeFromUNIXTime(date: Double) -> String {
+        let date = Date(timeIntervalSince1970: date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "HH:mm:ss"
+        return dateFormatter.string(from: date)
+    }
 }
+
+
+
+
+
+
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>"),
+//                  City(cityID: <#T##Int#>, cityName: "<#T##String#>", cityNameRUS: "<#T##String#>", country: "<#T##String#>")]
+
