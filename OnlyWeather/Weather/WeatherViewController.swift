@@ -8,37 +8,57 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController {
-
+class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var weatherTableView: UITableView!
     var city : City?
-    @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var weatherView: WeatherView!
     let service = Service()
+    var weatherList = [Weather]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        service.loadWeatherData(cityID: self.city!.cityID) { [weak self] weatherResponse in
-            self?.cityNameLabel.text = self?.city?.cityName
-            self?.weatherView!.tempLabel.text = "\(weatherResponse.temp) °С"
-            self?.weatherView!.humidityLabel.text = "\(weatherResponse.humidity) %"
-            self?.weatherView!.maxTempLabel.text = "max. \(weatherResponse.max_temp) °С"
-            self?.weatherView!.minTempLabel.text = "min. \(weatherResponse.min_temp) °С"
-            self?.weatherView!.pressureLabel.text = "\(weatherResponse.pressure) hPa"
-            self?.weatherView!.sunRiseLabel.text = self?.service.getTimeFromUNIXTime(date: weatherResponse.sunrise)
-            self?.weatherView!.sunSetLabel.text = self?.service.getTimeFromUNIXTime(date: weatherResponse.sunset)
-            self?.weatherView!.windSpeedLabel.text = "\(weatherResponse.windSpeed) m/s"
-            switch weatherResponse.windDeg {
-            case 0...90:
-                self?.weatherView!.windDirectLabel.text = "NW"
-            case 91...180:
-                self?.weatherView!.windDirectLabel.text = "SW"
-            case 181...270:
-                self?.weatherView!.windDirectLabel.text = "SE"
-            case 271...360:
-                self?.weatherView!.windDirectLabel.text = "NE"
-            default: break
-            }
+        service.getTodayWeather(cityID: self.city!.cityID) { [weak self] weathers in
+            self?.weatherList = weathers
+            self?.weatherTableView.reloadData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weatherList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherCell
+        let weather = weatherList[indexPath.row]
+        cell.cityNameAndDateLabel.text = city!.cityNameRUS + " " + weather.date
+        cell.humidityLabel.text = "\(weather.humidity) %"
+        cell.pressureLabel.text = "\(weather.pressure) hPa"
+        cell.tempLabel.text = "\(weather.temp) °С"
+        cell.windSpeedLabel.text = "\(weather.windSpeed) m/s"
+        cell.skyImageView.image = #imageLiteral(resourceName: "021-rainbow")
+        switch weather.windDeg {
+        case 0...15:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "015-north")
+        case 15...75:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "014-north-east")
+        case 76...105:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "013-east")
+        case 106...165:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "012-south-east")
+        case 166...195:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "011-south")
+        case 196...255:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "010-south-west")
+        case 256...285:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "009-west")
+        case 286...345:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "008-north-west")
+        case 345...360:
+            cell.windDirectionImageView.image = #imageLiteral(resourceName: "015-north")
+        default:
+            break
+        }
+        return cell
     }
 }

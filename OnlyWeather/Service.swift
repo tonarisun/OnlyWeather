@@ -11,10 +11,11 @@ import Alamofire
 
 class Service {
     
-    func loadWeatherData(cityID: String, completion: @escaping (OneDayWeather) -> Void) {
-        Alamofire.request("https://api.openweathermap.org/data/2.5/weather?id=\(cityID)&mode=json&units=metric&appid=4142e9613cb27a38a3607937f747095c").responseObject { (response: DataResponse<OneDayWeather>) in
+    func getTodayWeather(cityID: String, completion: @escaping ([Weather]) -> Void) {
+        Alamofire.request("https://api.openweathermap.org/data/2.5/forecast?id=\(cityID)&mode=json&units=metric&appid=4142e9613cb27a38a3607937f747095c").responseObject { (response: DataResponse<WeatherResponse>) in
             guard let weatherResponse = response.result.value else { return }
-            completion(weatherResponse)
+            let weathers = weatherResponse.response
+            completion(weathers)
         }
     }
     
@@ -27,8 +28,17 @@ class Service {
         return dateFormatter.string(from: date)
     }
 }
-
-
+extension NSDate {
+    func hour() -> Int {
+        //Get Hour
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents(in: .current, from: self as Date)
+        let hour = components.hour
+        
+        //Return Hour
+        return hour!
+    }
+}
 
 
 
