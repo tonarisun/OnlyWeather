@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 class SearchCityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -32,7 +33,12 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
                     let cityNameRUS = document.data()["cityNameRUS"] as! String
                     let cityID = document.data()["cityID"] as! String
                     let country = document.data()["country"] as! String
-                    let city = City(cityID: cityID, cityName: cityName, cityNameRUS: cityNameRUS, country: country, isAdded: false)
+                    let city = City()
+                    city.cityID = cityID
+                    city.cityName = cityName
+                    city.country = country
+                    city.cityNameRUS = cityNameRUS
+                    city.isAdded = true
                     cities.append(city)
                 }
             }
@@ -40,9 +46,9 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
             self.filteredCities = self.cities
             self.allCitiesTableView.reloadData()
         }
+        
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         self.allCitiesTableView.addGestureRecognizer(hideKeyboardGesture)
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,6 +59,18 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCityCell", for: indexPath) as! SearchCityCell
         let city = filteredCities[indexPath.row]
         cell.cityNameLabel.text = city.cityNameRUS
+        cell.configure(city: city)
+        cell.addCityTapped = { city in
+            do {
+                let realm = try Realm()
+                realm.beginWrite()
+                realm.add(city, update: true)
+                try realm.commitWrite()
+            }
+            catch {
+                print(error)
+            }
+        }
         return cell
     }
     

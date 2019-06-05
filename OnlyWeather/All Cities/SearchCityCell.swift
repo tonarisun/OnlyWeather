@@ -12,6 +12,15 @@ class SearchCityCell: UITableViewCell {
 
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var addCityButton: UIButton!
+    var city: City?
+    
+    //    Функция конфигурации ячейки
+    func configure(city: City) {
+        self.city = city
+        cityNameLabel.text = city.cityName
+    }
+    
+    var addCityTapped : ((City) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +29,7 @@ class SearchCityCell: UITableViewCell {
     }
     
     @IBAction func addCity(_ sender: Any) {
+        addCityTapped?(city!)
         animatedButton()
     }
     

@@ -10,36 +10,21 @@ import Foundation
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
+import RealmSwift
 
-class City: Equatable {
+class City: Object {
     
-    let cityID : String
-    let cityName : String
-    let cityNameRUS : String
-    let country : String
-    var isAdded : Bool
-    
-    init(cityID: String, cityName: String, cityNameRUS: String, country: String, isAdded: Bool) {
-        self.cityID = cityID
-        self.cityName = cityName
-        self.cityNameRUS = cityNameRUS
-        self.country = country
-        self.isAdded = isAdded
-    }
+    @objc dynamic var cityID = ""
+    @objc dynamic var cityName = ""
+    @objc dynamic var cityNameRUS = ""
+    @objc dynamic var country = ""
+    @objc dynamic var isAdded = false
     
     static func == (lhs: City, rhs: City) -> Bool {
        return lhs.cityID == rhs.cityID
     }
-
-//    
-//    required init?(map: Map) {
-//    }
-//    
-//    func mapping(map: Map) {
-//        cityID <- map["id"]
-//        cityName <- map["name"]
-//        country <- map["country"]
-//        lattitude <- map["coord.lat"]
-//        longitude <- map["coord.lon"]
-//    }
+    
+    override static func primaryKey() -> String? {
+        return "cityID"
+    }
 }
