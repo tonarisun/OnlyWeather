@@ -21,6 +21,7 @@ class Weather: Mappable {
     var sky = ""
     var skyDiscription = ""
     var date = ""
+    var shortDate = ""
     
     required init?(map: Map) {}
     
