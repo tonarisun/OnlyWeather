@@ -22,6 +22,8 @@ class Weather: Mappable {
     var skyDiscription = ""
     var date = ""
     var shortDate = ""
+    var day = ""
+    var time = ""
     
     required init?(map: Map) {}
     
@@ -46,5 +48,4 @@ class WeatherResponse: Mappable {
     func mapping(map: Map) {
         response <- map["list"]
     }
-
 }

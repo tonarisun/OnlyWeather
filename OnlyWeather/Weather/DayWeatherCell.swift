@@ -20,6 +20,7 @@ class DayWeatherCell: UITableViewCell {
     @IBOutlet weak var windDirectionImageView: UIImageView!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var skyImageView: UIImageView!
+    @IBOutlet weak var skyDiscriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -24,10 +24,6 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
         realmBaseInit()
         loadCitiesFromRLM()
         addRealmObserve()
-        
-        let date = NSDate()
-        let currentHour = date.hour()
-        print(currentHour)
 
     }
 

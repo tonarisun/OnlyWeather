@@ -16,19 +16,19 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     var city : City?
     let service = Service()
     var weatherList = [Weather]()
+    var weatherByDay = [Weather]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cityNameLabel.text = city?.cityName
-        service.getTodayWeather(cityID: self.city!.cityID) { [weak self] weathers in
+        service.getWeather(cityID: self.city!.cityID) { [weak self] weathers in
             self?.weatherList = weathers
+            self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.dayWeatherTableView.reloadData()
             self?.hourWeatherCollectionView.reloadData()
-            weathers.first?.shortDate = (self?.dateToShort(string: weathers.first!.date))!
-            print(weathers.first?.shortDate ?? "default value")
         }
     }
-    
+//     WEATHER BY HOUR COLLECTIOM VIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weatherList.count
     }
@@ -36,34 +36,34 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourWeatherCell", for: indexPath) as! HourWeatherCell
         let weather = weatherList[indexPath.row]
-        cell.dateLabel.text = dateToShort(string: weather.date) 
+        cell.dateLabel.text = service.dateToShort(string: weather.date)
         cell.tempLabel.text = "\(weather.temp) °С"
         cell.skyLabel.text = weather.skyDiscription
-        if weather.sky == "Clouds" {
-            cell.skyImageView.image = #imageLiteral(resourceName: "clouds")
-        } else {
-            if weather.sky == "Rain" {
-               cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops")
-            } else {
-                cell.skyImageView.image = #imageLiteral(resourceName: "clear-sky")
-            }
-        }
+       setSkyImage(weather: weather, cell: cell)
         return cell
     }
     
+//    WEATHER BY THE DAY TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherList.count
+        return weatherByDay.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
-        let weather = weatherList[indexPath.row]
-        cell.dateLabel.text = dateToShort(string: weather.date) 
+        let weather = weatherByDay[indexPath.row]
+        if indexPath.row % 2 == 0 {
+            cell.contentView.backgroundColor = #colorLiteral(red: 0.273593694, green: 0.4941071868, blue: 0.6030237675, alpha: 1)
+            setSkyImageNight(weather: weather, imageView: cell.skyImageView)
+        } else {
+            cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)
+            setSkyImageDay(weather: weather, imageView: cell.skyImageView)
+        }
+        cell.dateLabel.text = weather.day
         cell.humidityLabel.text = "\(weather.humidity) %"
         cell.pressureLabel.text = "\(weather.pressure) hPa"
         cell.tempLabel.text = "\(weather.temp) °С"
         cell.windSpeedLabel.text = "\(weather.windSpeed) m/s"
-        cell.skyImageView.image = #imageLiteral(resourceName: "002-windy-1")
+        cell.skyDiscriptionLabel.text = weather.skyDiscription
         setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
         return cell
     }
@@ -71,37 +71,91 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setWindDirectionImage(degree: Double, imageView: UIImageView) {
         switch degree {
         case 0...15:
-            imageView.image = #imageLiteral(resourceName: "015-north")
+            imageView.image = #imageLiteral(resourceName: "north")
         case 15.1...75:
-            imageView.image = #imageLiteral(resourceName: "014-north-east")
+            imageView.image = #imageLiteral(resourceName: "north-east")
         case 75.1...105:
-            imageView.image = #imageLiteral(resourceName: "013-east")
+            imageView.image = #imageLiteral(resourceName: "east")
         case 105.1...165:
-            imageView.image = #imageLiteral(resourceName: "012-south-east")
+            imageView.image = #imageLiteral(resourceName: "south-east")
         case 165.1...195:
-            imageView.image = #imageLiteral(resourceName: "011-south")
+            imageView.image = #imageLiteral(resourceName: "south")
         case 195.1...255:
-            imageView.image = #imageLiteral(resourceName: "010-south-west")
+            imageView.image = #imageLiteral(resourceName: "south-west")
         case 255.1...285:
-            imageView.image = #imageLiteral(resourceName: "009-west")
+            imageView.image = #imageLiteral(resourceName: "west")
         case 285.1...345:
-            imageView.image = #imageLiteral(resourceName: "008-north-west")
+            imageView.image = #imageLiteral(resourceName: "north-west")
         case 345.1...361:
-            imageView.image = #imageLiteral(resourceName: "015-north")
+            imageView.image = #imageLiteral(resourceName: "north")
         default:
             break
         }
     }
     
-    func dateToShort(string: String) -> String {
-        var charArray = Array(string)
-        for _ in 0...4 {
-            charArray.removeFirst()
+    func setSkyImageDay(weather: Weather, imageView: UIImageView) {
+        switch weather.sky {
+        case "Clouds":
+            imageView.image = #imageLiteral(resourceName: "046-cloudy")
+        case "Clear":
+            imageView.image = #imageLiteral(resourceName: "010-sun")
+        case "Rain":
+            imageView.image = #imageLiteral(resourceName: "029-storm-1")
+        case "Snow":
+            imageView.image = #imageLiteral(resourceName: "029-storm-1")
+        default:
+            imageView.image = #imageLiteral(resourceName: "046-cloudy")
         }
-        for _ in 0...2 {
-            charArray.removeLast()
+    }
+    
+    func setSkyImageNight(weather: Weather, imageView: UIImageView) {
+        switch weather.sky {
+        case "Clouds":
+            imageView.image = #imageLiteral(resourceName: "045-cloudy-1")
+        case "Clear":
+            imageView.image = #imageLiteral(resourceName: "048-night")
+        case "Rain":
+            imageView.image = #imageLiteral(resourceName: "028-storm-2")
+        case "Snow":
+            imageView.image = #imageLiteral(resourceName: "018-snowy")
+        default:
+            imageView.image = #imageLiteral(resourceName: "045-cloudy-1")
         }
-        let newString = String(charArray)
-        return newString
+    }
+    
+    func setSkyImage(weather: Weather, cell: HourWeatherCell){
+        if weather.time == "00" || weather.time == "03" || weather.time == "21" {
+            cell.dateLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+            cell.tempLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.skyLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+            switch weather.sky {
+            case "Clouds":
+                cell.skyImageView.image = #imageLiteral(resourceName: "clouds night")
+            case "Clear":
+                cell.skyImageView.image = #imageLiteral(resourceName: "clear-sky-dark")
+            case "Rain":
+                cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops-night")
+            case "Snow":
+                cell.skyImageView.image = #imageLiteral(resourceName: "snowing night")
+            default:
+                cell.skyImageView.image = #imageLiteral(resourceName: "clouds night")
+            }
+        } else {
+            cell.dateLabel.textColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+            cell.tempLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cell.skyLabel.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+            switch weather.sky {
+            case "Clouds":
+                cell.skyImageView.image = #imageLiteral(resourceName: "clouds")
+            case "Clear":
+                cell.skyImageView.image = #imageLiteral(resourceName: "clear-sky")
+            case "Rain":
+                cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops")
+            case "Snow":
+                cell.skyImageView.image = #imageLiteral(resourceName: "snowing day")
+            default:
+                cell.skyImageView.image = #imageLiteral(resourceName: "clouds")
+            }
+        }
     }
 }
