@@ -19,33 +19,30 @@ class Service {
         }
     }
     
-    func dateToShort(string: String) -> String {
-        var charArray = Array(string)
-        for _ in 0...4 {
-            charArray.removeFirst()
+    func getTodayWeather(cityID: String, completion: @escaping (TodayWeather) -> Void) {
+        Alamofire.request("https://api.openweathermap.org/data/2.5/weather?id=\(cityID)&mode=json&units=metric&appid=4142e9613cb27a38a3607937f747095c").responseObject { (response: DataResponse<TodayWeather>) in
+            guard let todayWeather = response.result.value else { return }
+            completion(todayWeather)
         }
-        for _ in 0...2 {
-            charArray.removeLast()
-        }
-        let newString = String(charArray)
-        return newString
     }
     
-    func getDayAndTame(weatherItem: Weather, string: String) {
+    func getShortDateDayAndTime(weatherItem: Weather, string: String) {
         var charArray = Array(string)
-        let dayArr = [charArray[5], charArray[6], charArray[7], charArray[8], charArray[9]]
+        let shortDateArr = [charArray[8], charArray[9], ".", charArray[5], charArray[6], " ", charArray[11], charArray[12], charArray[13], charArray[14], charArray[15]]
+        let dayArr = [charArray[8], charArray[9], ".", charArray[5], charArray[6]]
         let timeArr = [charArray[11], charArray[12]]
+        weatherItem.shortDate = String(shortDateArr)
         weatherItem.day = String(dayArr)
         weatherItem.time = String(timeArr)
     }
-    
+   
     func sortWeatherByDay(weatherList: [Weather]) -> [Weather] {
         var weatherList = weatherList
         var today = [Weather]()
         var weatherByDay = [Weather]()
         var i = 1
         for weather in weatherList {
-            getDayAndTame(weatherItem: weather, string: weather.date)
+            getShortDateDayAndTime(weatherItem: weather, string: weather.date)
             if weather.day == weatherList[0].day {
                 today.append(weather)
             }
@@ -57,7 +54,6 @@ class Service {
             weatherByDay.append(weatherList[i])
             i += 4
         }
-        print(today)
         return weatherByDay
     }
     

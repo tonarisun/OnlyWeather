@@ -20,17 +20,14 @@ class DayWeatherCell: UITableViewCell {
     @IBOutlet weak var windDirectionImageView: UIImageView!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var skyImageView: UIImageView!
-    @IBOutlet weak var skyDiscriptionLabel: UILabel!
+    @IBOutlet weak var skyDescriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

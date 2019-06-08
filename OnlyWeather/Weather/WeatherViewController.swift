@@ -15,12 +15,19 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var dayWeatherTableView: UITableView!
     var city : City?
     let service = Service()
+    var todayWeather : TodayWeather?
     var weatherList = [Weather]()
     var weatherByDay = [Weather]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         cityNameLabel.text = city?.cityName
+        service.getTodayWeather(cityID: city!.cityID) { [weak self] todayWeather in
+            self?.todayWeather = todayWeather
+            self?.dayWeatherTableView.reloadData()
+        }
+        
         service.getWeather(cityID: self.city!.cityID) { [weak self] weathers in
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
@@ -28,7 +35,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             self?.hourWeatherCollectionView.reloadData()
         }
     }
-//     WEATHER BY HOUR COLLECTIOM VIEW
+//     WEATHER BY THE HOUR COLLECTIOM VIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weatherList.count
     }
@@ -36,9 +43,10 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourWeatherCell", for: indexPath) as! HourWeatherCell
         let weather = weatherList[indexPath.row]
-        cell.dateLabel.text = service.dateToShort(string: weather.date)
-        cell.tempLabel.text = "\(weather.temp) °С"
-        cell.skyLabel.text = weather.skyDiscription
+        cell.dateLabel.text = weather.shortDate
+        let temp = Int(weather.temp)
+        cell.tempLabel.text = "\(temp) °C"
+        cell.skyLabel.text = weather.skyDescription
        setSkyImage(weather: weather, cell: cell)
         return cell
     }
@@ -49,23 +57,40 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TodayWeatherCell", for: indexPath) as! TodayWeatherCell
+            cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)
+            guard let weather = todayWeather else { return cell }
+            cell.tempLabel.text = "max: \(weather.tempMax) °"
+            cell.tempMinLabel.text = "min:\(weather.tempMin) °"
+            cell.pressureLabel.text = "\(weather.pressure) hPa"
+            cell.humidityLabel.text = "\(weather.humidity) %"
+            cell.windSpeedLabel.text = "\(weather.windSpeed) m/s"
+            cell.skyDescriptionLabel.text = weather.skyDescription
+            setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
+            cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (weather.sunrise + weather.timezone))
+            cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (weather.sunset + weather.timezone))
+            setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
+            return cell
+        } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
         let weather = weatherByDay[indexPath.row]
-        if indexPath.row % 2 == 0 {
+        if indexPath.row % 2 != 0 {
             cell.contentView.backgroundColor = #colorLiteral(red: 0.273593694, green: 0.4941071868, blue: 0.6030237675, alpha: 1)
-            setSkyImageNight(weather: weather, imageView: cell.skyImageView)
+            setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
         } else {
             cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)
-            setSkyImageDay(weather: weather, imageView: cell.skyImageView)
+            setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
         }
         cell.dateLabel.text = weather.day
         cell.humidityLabel.text = "\(weather.humidity) %"
         cell.pressureLabel.text = "\(weather.pressure) hPa"
         cell.tempLabel.text = "\(weather.temp) °С"
         cell.windSpeedLabel.text = "\(weather.windSpeed) m/s"
-        cell.skyDiscriptionLabel.text = weather.skyDiscription
+        cell.skyDescriptionLabel.text = weather.skyDescription
         setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
         return cell
+        }
     }
     
     func setWindDirectionImage(degree: Double, imageView: UIImageView) {
@@ -93,8 +118,8 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func setSkyImageDay(weather: Weather, imageView: UIImageView) {
-        switch weather.sky {
+    func setSkyImageDay(skyDescription: String, imageView: UIImageView) {
+        switch skyDescription {
         case "Clouds":
             imageView.image = #imageLiteral(resourceName: "046-cloudy")
         case "Clear":
@@ -108,8 +133,8 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func setSkyImageNight(weather: Weather, imageView: UIImageView) {
-        switch weather.sky {
+    func setSkyImageNight(skyDescription: String, imageView: UIImageView) {
+        switch skyDescription {
         case "Clouds":
             imageView.image = #imageLiteral(resourceName: "045-cloudy-1")
         case "Clear":
@@ -141,9 +166,9 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.skyImageView.image = #imageLiteral(resourceName: "clouds night")
             }
         } else {
-            cell.dateLabel.textColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+            cell.dateLabel.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
             cell.tempLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            cell.skyLabel.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+            cell.skyLabel.textColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
             switch weather.sky {
             case "Clouds":
                 cell.skyImageView.image = #imageLiteral(resourceName: "clouds")
