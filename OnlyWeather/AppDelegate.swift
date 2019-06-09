@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         let db = Firestore.firestore()
         print(db)
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            try realm.commitWrite()
+            print(realm.configuration.fileURL ?? "No fileURL")
+        }
+        catch {
+            print(error)
+        }
         return true
     }
 

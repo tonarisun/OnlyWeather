@@ -38,7 +38,6 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
                     city.cityName = cityName
                     city.country = country
                     city.cityNameRUS = cityNameRUS
-                    city.isAdded = true
                     cities.append(city)
                 }
             }

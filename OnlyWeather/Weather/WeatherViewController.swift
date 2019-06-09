@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -14,27 +15,52 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var hourWeatherCollectionView: UICollectionView!
     @IBOutlet weak var dayWeatherTableView: UITableView!
     var city : City?
+    var currentCity : City?
+    var cityToShow : City?
     let service = Service()
     var todayWeather : TodayWeather?
     var weatherList = [Weather]()
     var weatherByDay = [Weather]()
+    let userDefaults​ = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityNameLabel.text = city?.cityName
-        service.getTodayWeather(cityID: city!.cityID) { [weak self] todayWeather in
+        addCityAlert()
+
+        if city == nil {
+            cityToShow = currentCity
+        } else {
+            cityToShow = city
+        }
+        
+        if cityToShow == nil {
+            return
+        }
+  
+        cityNameLabel.text = cityToShow?.cityNameRUS
+        
+        service.getTodayWeather(cityID: cityToShow!.cityID) { [weak self] todayWeather in
+            self?.currentCity = self?.city
             self?.todayWeather = todayWeather
             self?.dayWeatherTableView.reloadData()
         }
         
-        service.getWeather(cityID: self.city!.cityID) { [weak self] weathers in
+        service.getWeather(cityID: cityToShow!.cityID) { [weak self] weathers in
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.dayWeatherTableView.reloadData()
             self?.hourWeatherCollectionView.reloadData()
         }
     }
+    
+    func addCityAlert(){
+        let alert = UIAlertController(title: "Как погода?", message: "Нажми на  +  , чтобы перейти к списку своих городов", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 //     WEATHER BY THE HOUR COLLECTIOM VIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weatherList.count
@@ -74,9 +100,9 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
-        let weather = weatherByDay[indexPath.row]
+        let weather = weatherByDay[indexPath.row - 1]
         if indexPath.row % 2 != 0 {
-            cell.contentView.backgroundColor = #colorLiteral(red: 0.273593694, green: 0.4941071868, blue: 0.6030237675, alpha: 1)
+            cell.contentView.backgroundColor = #colorLiteral(red: 0.2029865086, green: 0.3625833988, blue: 0.4474081993, alpha: 1)
             setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
         } else {
             cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)

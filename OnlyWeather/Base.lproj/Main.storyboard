@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d6J-0S-uzu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fbz-iU-3X0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,40 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="dX4-FX-rre">
-            <objects>
-                <navigationController id="d6J-0S-uzu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GDe-Y3-18h">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="textShadowColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="IrR-St-qvG" kind="relationship" relationship="rootViewController" id="sjF-30-g1I"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SSr-mP-W02" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-567" y="304"/>
-        </scene>
-        <!--Cities-->
+        <!--Cities List View Controller-->
         <scene sceneID="lRI-V4-GQQ">
             <objects>
-                <viewController id="IrR-St-qvG" customClass="CitiesListViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="pageSheet" id="IrR-St-qvG" customClass="CitiesListViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1NV-Nw-2Tp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-W7-f7I">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -59,7 +35,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <font key="NSFont" size="18" name="AmericanTypewriter"/>
+                                                                <font key="NSFont" size="18" name="Avenir-Roman"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -75,7 +51,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cityNameLabel" destination="tUf-sF-fdw" id="kfs-kj-shT"/>
-                                            <segue destination="fbz-iU-3X0" kind="show" identifier="showWeatherSegue" id="542-th-XsW"/>
+                                            <segue destination="fbz-iU-3X0" kind="presentation" identifier="showWeatherSegue" id="542-th-XsW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -84,42 +60,54 @@
                                     <outlet property="delegate" destination="IrR-St-qvG" id="Eph-vM-Zfm"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-WE-bjD">
+                                <rect key="frame" x="218" y="25" width="142" height="25"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="поиск города &gt;&gt;">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="17" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="ej0-Tw-Qjv" kind="showDetail" id="ZRZ-Tm-wj5"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="zz9-W7-f7I" firstAttribute="top" secondItem="aRE-HD-BuA" secondAttribute="top" id="8pL-s3-3V2"/>
+                            <constraint firstItem="zz9-W7-f7I" firstAttribute="top" secondItem="aRE-HD-BuA" secondAttribute="top" constant="35" id="8pL-s3-3V2"/>
                             <constraint firstItem="zz9-W7-f7I" firstAttribute="leading" secondItem="aRE-HD-BuA" secondAttribute="leading" id="WMn-P8-8Ad"/>
+                            <constraint firstItem="aRE-HD-BuA" firstAttribute="trailing" secondItem="1pc-WE-bjD" secondAttribute="trailing" constant="15" id="YN5-Ov-O9h"/>
                             <constraint firstItem="aRE-HD-BuA" firstAttribute="trailing" secondItem="zz9-W7-f7I" secondAttribute="trailing" id="Zog-c8-wbV"/>
+                            <constraint firstItem="zz9-W7-f7I" firstAttribute="top" secondItem="1pc-WE-bjD" secondAttribute="bottom" constant="5" id="gIV-kg-r9a"/>
+                            <constraint firstItem="1pc-WE-bjD" firstAttribute="top" secondItem="aRE-HD-BuA" secondAttribute="top" constant="5" id="qfw-kO-kb4"/>
                             <constraint firstItem="aRE-HD-BuA" firstAttribute="bottom" secondItem="zz9-W7-f7I" secondAttribute="bottom" id="zWJ-Zf-iw9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aRE-HD-BuA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Cities" id="WP7-bA-V3Y">
-                        <barButtonItem key="rightBarButtonItem" title="Add City" id="FNW-5Y-Es7">
-                            <color key="tintColor" red="0.19563793616469588" green="0.29457511861707836" blue="0.35200360977105083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <segue destination="ej0-Tw-Qjv" kind="show" id="pqt-S4-aMa"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="citiesListTableView" destination="zz9-W7-f7I" id="e7i-0r-NUI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxJ-EM-s2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="303.59820089955025"/>
+            <point key="canvasLocation" x="-570" y="-395"/>
         </scene>
-        <!--Weather View Controller-->
+        <!--only weather-->
         <scene sceneID="nD3-qL-CmJ">
             <objects>
-                <viewController id="fbz-iU-3X0" customClass="WeatherViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="only weather" modalTransitionStyle="flipHorizontal" id="fbz-iU-3X0" customClass="WeatherViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O3J-ug-QvP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nto-aW-vHh">
-                                <rect key="frame" x="0.0" y="112.5" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="103.5" width="375" height="120"/>
                                 <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Bdm-ft-9UE"/>
@@ -209,7 +197,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJD-o7-gcn">
-                                <rect key="frame" x="0.0" y="256" width="375" height="411"/>
+                                <rect key="frame" x="0.0" y="247" width="375" height="420"/>
                                 <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -222,15 +210,17 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiY-ZR-aOH">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="QGn-1M-8lV"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="   ">
+                                                        <fragment content="08.09">
                                                             <attributes>
-                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <font key="NSFont" size="14" name="Avenir-Medium"/>
+                                                                <color key="NSColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <font key="NSFont" size="14" name="Avenir-Heavy"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                <integer key="NSUnderline" value="9"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -268,7 +258,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lW3-8X-1Ic">
-                                                                    <rect key="frame" x="45" y="18" width="53" height="19.5"/>
+                                                                    <rect key="frame" x="40" y="18" width="83" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="23.14  C">
                                                                             <attributes>
@@ -286,19 +276,19 @@
                                                                 <constraint firstItem="nsl-Rl-BdO" firstAttribute="centerY" secondItem="0WM-aL-xLR" secondAttribute="centerY" id="7BQ-2G-hX5"/>
                                                                 <constraint firstItem="nsl-Rl-BdO" firstAttribute="leading" secondItem="0WM-aL-xLR" secondAttribute="leading" id="8Qq-1K-aRb"/>
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="0WM-aL-xLR" secondAttribute="centerY" id="91p-9D-Mjt"/>
+                                                                <constraint firstAttribute="trailing" secondItem="lW3-8X-1Ic" secondAttribute="trailing" constant="2" id="Mef-Xu-sPl"/>
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="nsl-Rl-BdO" secondAttribute="centerY" id="eYM-QI-vd7"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lW3-8X-1Ic" secondAttribute="trailing" constant="20" symbolic="YES" id="kjI-Zf-af3"/>
-                                                                <constraint firstItem="lW3-8X-1Ic" firstAttribute="leading" secondItem="nsl-Rl-BdO" secondAttribute="trailing" constant="10" id="nI8-c2-TRZ"/>
+                                                                <constraint firstItem="lW3-8X-1Ic" firstAttribute="leading" secondItem="nsl-Rl-BdO" secondAttribute="trailing" constant="5" id="nI8-c2-TRZ"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBZ-Rf-HAr" userLabel="Wind">
                                                             <rect key="frame" x="250" y="0.0" width="125" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qBU-4P-NX0">
-                                                                    <rect key="frame" x="89" y="18.5" width="18" height="18"/>
+                                                                    <rect key="frame" x="90" y="20" width="15" height="15"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="18" id="KKS-o5-9sp"/>
-                                                                        <constraint firstAttribute="width" constant="18" id="ayq-pZ-C0r"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="KKS-o5-9sp"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="ayq-pZ-C0r"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="004-wind" translatesAutoresizingMaskIntoConstraints="NO" id="fzs-Cm-fc4">
@@ -328,10 +318,11 @@
                                                                 <constraint firstItem="zN7-Fg-Vmy" firstAttribute="leading" secondItem="fzs-Cm-fc4" secondAttribute="trailing" constant="5" id="AsC-jP-V7n"/>
                                                                 <constraint firstItem="qBU-4P-NX0" firstAttribute="centerY" secondItem="fzs-Cm-fc4" secondAttribute="centerY" id="BIG-2k-0cw"/>
                                                                 <constraint firstItem="zN7-Fg-Vmy" firstAttribute="centerY" secondItem="BBZ-Rf-HAr" secondAttribute="centerY" id="IZd-QK-8cw"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qBU-4P-NX0" secondAttribute="trailing" constant="2" id="LM3-Dk-w8R"/>
                                                                 <constraint firstItem="zN7-Fg-Vmy" firstAttribute="centerY" secondItem="fzs-Cm-fc4" secondAttribute="centerY" id="LPm-6B-ato"/>
                                                                 <constraint firstItem="qBU-4P-NX0" firstAttribute="centerY" secondItem="BBZ-Rf-HAr" secondAttribute="centerY" id="NJY-up-4v3"/>
                                                                 <constraint firstItem="fzs-Cm-fc4" firstAttribute="centerY" secondItem="BBZ-Rf-HAr" secondAttribute="centerY" id="S6r-lw-dkK"/>
-                                                                <constraint firstItem="qBU-4P-NX0" firstAttribute="leading" secondItem="zN7-Fg-Vmy" secondAttribute="trailing" constant="2" id="TAR-7h-5Y7"/>
+                                                                <constraint firstItem="qBU-4P-NX0" firstAttribute="leading" secondItem="zN7-Fg-Vmy" secondAttribute="trailing" constant="3" id="TAR-7h-5Y7"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -381,7 +372,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8n-5b-q1Z">
-                                                                    <rect key="frame" x="40" y="17.5" width="58.5" height="19.5"/>
+                                                                    <rect key="frame" x="40" y="17.5" width="80" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="1000 hPa">
                                                                             <attributes>
@@ -396,11 +387,11 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="w8n-5b-q1Z" secondAttribute="trailing" constant="5" id="33K-GU-a0N"/>
                                                                 <constraint firstItem="w8n-5b-q1Z" firstAttribute="centerY" secondItem="GSB-4D-Spo" secondAttribute="centerY" id="HAx-62-N0S"/>
                                                                 <constraint firstItem="w8n-5b-q1Z" firstAttribute="leading" secondItem="Bv8-dP-CxM" secondAttribute="trailing" constant="5" id="HPo-z1-9yq"/>
                                                                 <constraint firstItem="Bv8-dP-CxM" firstAttribute="centerY" secondItem="GSB-4D-Spo" secondAttribute="centerY" id="Nqa-bh-QQJ"/>
                                                                 <constraint firstItem="Bv8-dP-CxM" firstAttribute="leading" secondItem="GSB-4D-Spo" secondAttribute="leading" id="cBc-v9-bvh"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w8n-5b-q1Z" secondAttribute="trailing" constant="20" symbolic="YES" id="koY-IK-M0z"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBs-ys-1Wc" userLabel="Humidity">
@@ -414,7 +405,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-tF-4aH">
-                                                                    <rect key="frame" x="40" y="17.5" width="55" height="19.5"/>
+                                                                    <rect key="frame" x="40" y="17.5" width="83" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="humidity">
                                                                             <attributes>
@@ -429,10 +420,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GLC-tF-4aH" secondAttribute="trailing" constant="20" symbolic="YES" id="T54-AL-NJQ"/>
                                                                 <constraint firstItem="GLC-tF-4aH" firstAttribute="leading" secondItem="FmV-Bg-iYa" secondAttribute="trailing" constant="5" id="Tyx-yb-Zox"/>
                                                                 <constraint firstItem="FmV-Bg-iYa" firstAttribute="centerY" secondItem="FBs-ys-1Wc" secondAttribute="centerY" id="aAj-4R-742"/>
                                                                 <constraint firstItem="FmV-Bg-iYa" firstAttribute="leading" secondItem="FBs-ys-1Wc" secondAttribute="leading" id="mEt-tF-o7m"/>
+                                                                <constraint firstAttribute="trailing" secondItem="GLC-tF-4aH" secondAttribute="trailing" constant="2" id="mf1-u3-ptf"/>
                                                                 <constraint firstItem="GLC-tF-4aH" firstAttribute="centerY" secondItem="FBs-ys-1Wc" secondAttribute="centerY" id="peq-1J-UF7"/>
                                                             </constraints>
                                                         </view>
@@ -483,6 +474,8 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj8-Ia-HrX">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" red="0.2230388224" green="0.33619263770000002" blue="0.40785443780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="sxj-QT-9cI"/>
                                                     </constraints>
@@ -490,8 +483,9 @@
                                                         <fragment content="today">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <font key="NSFont" size="16" name="Avenir-Medium"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                <font key="NSFont" size="16" name="Avenir-Heavy"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="clipping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                                                <integer key="NSUnderline" value="9"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -518,7 +512,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-3u-er1" userLabel="Temp max">
-                                                            <rect key="frame" x="125" y="0.0" width="125" height="55"/>
+                                                            <rect key="frame" x="125" y="0.0" width="140" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="049-thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="2cY-do-XCE">
                                                                     <rect key="frame" x="0.0" y="10" width="35" height="35"/>
@@ -528,13 +522,13 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jn-aQ-Qwf">
-                                                                    <rect key="frame" x="40" y="18" width="80" height="19.5"/>
+                                                                    <rect key="frame" x="37" y="18" width="101" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="max: 25.55 c">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -544,17 +538,17 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="2cY-do-XCE" firstAttribute="leading" secondItem="8ie-3u-er1" secondAttribute="leading" id="7V4-L2-TXS"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4Jn-aQ-Qwf" secondAttribute="trailing" constant="5" id="8Dc-2i-9Ka"/>
                                                                 <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="centerY" secondItem="8ie-3u-er1" secondAttribute="centerY" id="VRw-QF-NIZ"/>
-                                                                <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="leading" secondItem="2cY-do-XCE" secondAttribute="trailing" constant="5" id="vr6-vr-m9o"/>
+                                                                <constraint firstAttribute="trailing" secondItem="4Jn-aQ-Qwf" secondAttribute="trailing" constant="2" id="ndt-An-3dN"/>
+                                                                <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="leading" secondItem="2cY-do-XCE" secondAttribute="trailing" constant="2" id="vr6-vr-m9o"/>
                                                                 <constraint firstItem="2cY-do-XCE" firstAttribute="centerY" secondItem="8ie-3u-er1" secondAttribute="centerY" id="vvE-7d-qyi"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXH-gl-ft3" userLabel="Temp min">
-                                                            <rect key="frame" x="250" y="0.0" width="125" height="55"/>
+                                                            <rect key="frame" x="265" y="0.0" width="110" height="55"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-YD-iMW">
-                                                                    <rect key="frame" x="22.5" y="18" width="80" height="19.5"/>
+                                                                    <rect key="frame" x="5" y="18" width="100" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="min: 16.00 C">
                                                                             <attributes>
@@ -570,22 +564,21 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="TaE-YD-iMW" firstAttribute="centerX" secondItem="UXH-gl-ft3" secondAttribute="centerX" id="DBd-4S-n8d"/>
+                                                                <constraint firstAttribute="trailing" secondItem="TaE-YD-iMW" secondAttribute="trailing" constant="5" id="agg-45-ZWB"/>
                                                                 <constraint firstItem="TaE-YD-iMW" firstAttribute="centerY" secondItem="UXH-gl-ft3" secondAttribute="centerY" id="opA-Wt-ww3"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="8ie-3u-er1" firstAttribute="centerX" secondItem="aKU-dM-HJO" secondAttribute="centerX" id="1lq-9V-Uge"/>
                                                         <constraint firstAttribute="trailing" secondItem="UXH-gl-ft3" secondAttribute="trailing" id="Dld-Yw-ahc"/>
                                                         <constraint firstAttribute="bottom" secondItem="VRf-oy-mbf" secondAttribute="bottom" id="Dur-GP-4bf"/>
                                                         <constraint firstItem="VRf-oy-mbf" firstAttribute="top" secondItem="aKU-dM-HJO" secondAttribute="top" id="GVG-nF-fj8"/>
                                                         <constraint firstItem="VRf-oy-mbf" firstAttribute="leading" secondItem="aKU-dM-HJO" secondAttribute="leading" id="JIs-m9-5se"/>
                                                         <constraint firstAttribute="bottom" secondItem="UXH-gl-ft3" secondAttribute="bottom" id="KMO-oM-J0T"/>
+                                                        <constraint firstItem="UXH-gl-ft3" firstAttribute="width" secondItem="8ie-3u-er1" secondAttribute="width" constant="-30" id="SQ2-p5-54s"/>
                                                         <constraint firstAttribute="height" constant="55" id="jkg-kq-b8u"/>
-                                                        <constraint firstItem="UXH-gl-ft3" firstAttribute="width" secondItem="VRf-oy-mbf" secondAttribute="width" id="rKr-dP-d1m"/>
                                                         <constraint firstItem="UXH-gl-ft3" firstAttribute="top" secondItem="aKU-dM-HJO" secondAttribute="top" id="svG-AD-jZa"/>
-                                                        <constraint firstItem="8ie-3u-er1" firstAttribute="width" secondItem="VRf-oy-mbf" secondAttribute="width" id="xGW-R8-IgX"/>
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riR-BQ-KEo" userLabel="Descr Sunrise Sunset">
@@ -627,13 +620,13 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqe-up-jfh">
-                                                                    <rect key="frame" x="40" y="18" width="44.5" height="19.5"/>
+                                                                    <rect key="frame" x="40" y="18" width="83" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="sunrise">
                                                                             <attributes>
-                                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -644,9 +637,9 @@
                                                             <constraints>
                                                                 <constraint firstItem="Sqe-up-jfh" firstAttribute="centerY" secondItem="VJW-vn-miS" secondAttribute="centerY" id="48t-40-YaV"/>
                                                                 <constraint firstItem="kIa-nH-OEo" firstAttribute="leading" secondItem="VJW-vn-miS" secondAttribute="leading" id="MDH-Mg-xnP"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sqe-up-jfh" secondAttribute="trailing" constant="20" symbolic="YES" id="c6B-hu-rIK"/>
                                                                 <constraint firstItem="kIa-nH-OEo" firstAttribute="centerY" secondItem="VJW-vn-miS" secondAttribute="centerY" id="g5n-tQ-F0w"/>
                                                                 <constraint firstItem="Sqe-up-jfh" firstAttribute="leading" secondItem="kIa-nH-OEo" secondAttribute="trailing" constant="5" id="j34-KS-klx"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Sqe-up-jfh" secondAttribute="trailing" constant="2" id="zVh-Pb-yep"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vd-IE-v6u" userLabel="Sunset">
@@ -660,13 +653,13 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W52-I3-IxU">
-                                                                    <rect key="frame" x="40" y="18" width="41" height="19.5"/>
+                                                                    <rect key="frame" x="40" y="18" width="80" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="sunset">
                                                                             <attributes>
-                                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -678,7 +671,7 @@
                                                                 <constraint firstItem="WiV-gB-lGp" firstAttribute="centerY" secondItem="1vd-IE-v6u" secondAttribute="centerY" id="0Rz-P2-2Ws"/>
                                                                 <constraint firstItem="W52-I3-IxU" firstAttribute="centerY" secondItem="1vd-IE-v6u" secondAttribute="centerY" id="1se-Wl-SFH"/>
                                                                 <constraint firstItem="WiV-gB-lGp" firstAttribute="leading" secondItem="1vd-IE-v6u" secondAttribute="leading" id="Mie-vL-qFj"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W52-I3-IxU" secondAttribute="trailing" constant="20" symbolic="YES" id="gqh-HT-Zc9"/>
+                                                                <constraint firstAttribute="trailing" secondItem="W52-I3-IxU" secondAttribute="trailing" constant="5" id="kTB-lt-tku"/>
                                                                 <constraint firstItem="W52-I3-IxU" firstAttribute="leading" secondItem="WiV-gB-lGp" secondAttribute="trailing" constant="5" id="prC-qA-TpO"/>
                                                             </constraints>
                                                         </view>
@@ -704,7 +697,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0A-bM-SXT">
-                                                                    <rect key="frame" x="45" y="18" width="58.5" height="19.5"/>
+                                                                    <rect key="frame" x="45" y="18" width="78" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="1000 hPa">
                                                                             <attributes>
@@ -720,20 +713,20 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="y0A-bM-SXT" firstAttribute="leading" secondItem="c00-Db-Hpx" secondAttribute="trailing" constant="5" id="1Nc-hj-hkV"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y0A-bM-SXT" secondAttribute="trailing" constant="20" symbolic="YES" id="Bs4-J1-VUM"/>
                                                                 <constraint firstItem="c00-Db-Hpx" firstAttribute="centerY" secondItem="UMR-Ko-aIx" secondAttribute="centerY" id="Xx9-GU-YNK"/>
                                                                 <constraint firstItem="y0A-bM-SXT" firstAttribute="centerY" secondItem="UMR-Ko-aIx" secondAttribute="centerY" id="hLm-9J-0T5"/>
                                                                 <constraint firstItem="c00-Db-Hpx" firstAttribute="leading" secondItem="UMR-Ko-aIx" secondAttribute="leading" constant="10" id="pAw-wy-xsC"/>
+                                                                <constraint firstAttribute="trailing" secondItem="y0A-bM-SXT" secondAttribute="trailing" constant="2" id="qCA-zq-xIW"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVI-y1-eqx" userLabel="Wind">
                                                             <rect key="frame" x="125" y="0.0" width="125" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sbn-PK-kg7">
-                                                                    <rect key="frame" x="80.5" y="18.5" width="18" height="18"/>
+                                                                    <rect key="frame" x="78.5" y="20" width="15" height="15"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="18" id="Oxh-X6-EHJ"/>
-                                                                        <constraint firstAttribute="height" constant="18" id="b41-LA-yXc"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="Oxh-X6-EHJ"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="b41-LA-yXc"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="004-wind" translatesAutoresizingMaskIntoConstraints="NO" id="BQl-Sp-hKb">
@@ -760,7 +753,8 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="sbn-PK-kg7" firstAttribute="centerY" secondItem="uVI-y1-eqx" secondAttribute="centerY" id="Fdc-Zi-xcq"/>
-                                                                <constraint firstItem="sbn-PK-kg7" firstAttribute="leading" secondItem="IJy-dR-nph" secondAttribute="trailing" constant="5" id="KcW-d0-000"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sbn-PK-kg7" secondAttribute="trailing" constant="2" id="H8R-S3-SPM"/>
+                                                                <constraint firstItem="sbn-PK-kg7" firstAttribute="leading" secondItem="IJy-dR-nph" secondAttribute="trailing" constant="3" id="KcW-d0-000"/>
                                                                 <constraint firstItem="IJy-dR-nph" firstAttribute="centerY" secondItem="uVI-y1-eqx" secondAttribute="centerY" id="TfW-nw-Bxf"/>
                                                                 <constraint firstItem="IJy-dR-nph" firstAttribute="leading" secondItem="BQl-Sp-hKb" secondAttribute="trailing" constant="2" id="d8M-Dw-y3n"/>
                                                                 <constraint firstItem="BQl-Sp-hKb" firstAttribute="centerY" secondItem="uVI-y1-eqx" secondAttribute="centerY" id="dFn-Uy-g1D"/>
@@ -778,7 +772,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAM-4u-yqs">
-                                                                    <rect key="frame" x="35" y="18" width="39.5" height="19.5"/>
+                                                                    <rect key="frame" x="35" y="18" width="85" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="100 %">
                                                                             <attributes>
@@ -793,10 +787,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="SAM-4u-yqs" secondAttribute="trailing" constant="5" id="2EK-EM-XtB"/>
                                                                 <constraint firstItem="SAM-4u-yqs" firstAttribute="leading" secondItem="D0a-Hi-S2a" secondAttribute="trailing" constant="5" id="FrM-50-YCx"/>
                                                                 <constraint firstItem="SAM-4u-yqs" firstAttribute="centerY" secondItem="haD-RH-7De" secondAttribute="centerY" id="Oe3-Qy-oxD"/>
                                                                 <constraint firstItem="D0a-Hi-S2a" firstAttribute="centerY" secondItem="haD-RH-7De" secondAttribute="centerY" id="PNb-pM-fdW"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SAM-4u-yqs" secondAttribute="trailing" constant="20" symbolic="YES" id="iJ1-89-iH8"/>
                                                                 <constraint firstItem="D0a-Hi-S2a" firstAttribute="leading" secondItem="haD-RH-7De" secondAttribute="leading" id="kJh-xb-adD"/>
                                                             </constraints>
                                                         </view>
@@ -818,6 +812,7 @@
                                                 <constraint firstItem="qj8-Ia-HrX" firstAttribute="leading" secondItem="306-UC-peM" secondAttribute="leading" id="JE2-VH-aog"/>
                                                 <constraint firstItem="aKU-dM-HJO" firstAttribute="leading" secondItem="306-UC-peM" secondAttribute="leading" id="LdR-vU-T4N"/>
                                                 <constraint firstItem="aKU-dM-HJO" firstAttribute="top" secondItem="qj8-Ia-HrX" secondAttribute="bottom" id="O87-cG-SRK"/>
+                                                <constraint firstItem="pZd-oV-LOj" firstAttribute="width" secondItem="VRf-oy-mbf" secondAttribute="width" id="QP7-lp-K1V"/>
                                                 <constraint firstAttribute="trailing" secondItem="kad-bm-kjL" secondAttribute="trailing" id="QVD-Ap-h5Q"/>
                                                 <constraint firstAttribute="trailing" secondItem="qj8-Ia-HrX" secondAttribute="trailing" id="RBf-fR-wym"/>
                                                 <constraint firstItem="kad-bm-kjL" firstAttribute="leading" secondItem="306-UC-peM" secondAttribute="leading" id="nf0-34-cCI"/>
@@ -846,14 +841,15 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZm-gF-YKe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="25"/>
+                                <color key="backgroundColor" red="0.32645807999999998" green="0.48895911110000001" blue="0.59139526590000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="5IQ-mV-xTp"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content=" ">
+                                    <fragment content="выбери город">
                                         <attributes>
-                                            <color key="NSColor" red="0.99614828824996948" green="0.99204188585281372" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="18" name="Avenir-Heavy"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -862,7 +858,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgp-dz-zjL">
-                                <rect key="frame" x="0.0" y="89" width="375" height="23.5"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="23.5"/>
                                 <color key="backgroundColor" red="0.22556065312310403" green="0.33783797436393381" blue="0.40861449177969533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <attributedString key="attributedText">
                                     <fragment content="weather by the hour">
@@ -876,7 +872,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7b-gB-udk">
-                                <rect key="frame" x="0.0" y="232.5" width="375" height="23.5"/>
+                                <rect key="frame" x="0.0" y="223.5" width="375" height="23.5"/>
                                 <color key="backgroundColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <attributedString key="attributedText">
                                     <fragment content="weather by day">
@@ -889,29 +885,84 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-ZT-f0j">
+                                <rect key="frame" x="241" y="25" width="124" height="25"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="мои">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" города &gt;&gt;">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="IrR-St-qvG" kind="show" identifier="goToCitiesList" id="mqU-3U-xh8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-1N-6Jm">
+                                <rect key="frame" x="10" y="25" width="138" height="25"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="&lt;&lt; поиск">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="16" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" города">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="17" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="ej0-Tw-Qjv" kind="show" id="JIo-CK-iSY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.37580043344968161" green="0.56584862542506309" blue="0.6761628737304417" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Cgp-dz-zjL" firstAttribute="leading" secondItem="vD6-cG-LJF" secondAttribute="leading" id="4Dj-QN-e1x"/>
                             <constraint firstItem="Nto-aW-vHh" firstAttribute="top" secondItem="Cgp-dz-zjL" secondAttribute="bottom" id="6cB-aY-Cff"/>
                             <constraint firstItem="EJD-o7-gcn" firstAttribute="top" secondItem="D7b-gB-udk" secondAttribute="bottom" id="8fz-g4-MI1"/>
                             <constraint firstAttribute="trailing" secondItem="EJD-o7-gcn" secondAttribute="trailing" id="BGD-7E-MUw"/>
+                            <constraint firstItem="4cX-ZT-f0j" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" constant="5" id="Bv7-Bb-azF"/>
                             <constraint firstAttribute="bottom" secondItem="EJD-o7-gcn" secondAttribute="bottom" id="Die-bG-miN"/>
                             <constraint firstItem="D7b-gB-udk" firstAttribute="top" secondItem="Nto-aW-vHh" secondAttribute="bottom" id="EPV-2M-AOz"/>
                             <constraint firstItem="Nto-aW-vHh" firstAttribute="trailing" secondItem="vD6-cG-LJF" secondAttribute="trailing" id="FyV-bn-WXz"/>
                             <constraint firstItem="Nto-aW-vHh" firstAttribute="leading" secondItem="vD6-cG-LJF" secondAttribute="leading" id="HdM-1s-nDA"/>
                             <constraint firstItem="EJD-o7-gcn" firstAttribute="leading" secondItem="O3J-ug-QvP" secondAttribute="leading" id="I2m-QH-iLt"/>
+                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="DWr-1N-6Jm" secondAttribute="bottom" constant="5" id="Uzn-oQ-tGu"/>
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="HZm-gF-YKe" secondAttribute="trailing" id="aDF-bf-nr4"/>
                             <constraint firstItem="HZm-gF-YKe" firstAttribute="leading" secondItem="vD6-cG-LJF" secondAttribute="leading" id="gC1-6g-Enj"/>
+                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="4cX-ZT-f0j" secondAttribute="bottom" constant="5" id="iSa-YO-bKu"/>
+                            <constraint firstItem="DWr-1N-6Jm" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" constant="5" id="ixm-at-Qwd"/>
+                            <constraint firstItem="DWr-1N-6Jm" firstAttribute="leading" secondItem="O3J-ug-QvP" secondAttribute="leading" constant="10" id="jtW-xy-lFi"/>
+                            <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="4cX-ZT-f0j" secondAttribute="trailing" constant="10" id="m25-rc-oF7"/>
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="D7b-gB-udk" secondAttribute="trailing" id="oai-U2-uOH"/>
                             <constraint firstItem="EJD-o7-gcn" firstAttribute="top" secondItem="D7b-gB-udk" secondAttribute="bottom" id="pUJ-hS-LPO"/>
-                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" id="r7F-v5-3gj"/>
+                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" constant="35" id="r7F-v5-3gj"/>
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="Cgp-dz-zjL" secondAttribute="trailing" id="wEF-gr-KBf"/>
                             <constraint firstItem="D7b-gB-udk" firstAttribute="leading" secondItem="vD6-cG-LJF" secondAttribute="leading" id="x9s-ip-Pbw"/>
                             <constraint firstItem="Cgp-dz-zjL" firstAttribute="top" secondItem="HZm-gF-YKe" secondAttribute="bottom" id="yNY-Cz-a8P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vD6-cG-LJF"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="NFY-0H-ce6"/>
                     <connections>
                         <outlet property="cityNameLabel" destination="HZm-gF-YKe" id="Blz-kI-nxJ"/>
                         <outlet property="dayWeatherTableView" destination="EJD-o7-gcn" id="YdW-y0-qTQ"/>
@@ -920,18 +971,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyK-KT-3NS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="837.60000000000002" y="-365.66716641679164"/>
+            <point key="canvasLocation" x="-1271.2" y="-395.35232383808096"/>
         </scene>
         <!--Search City View Controller-->
         <scene sceneID="Jem-fA-U6U">
             <objects>
-                <viewController id="ej0-Tw-Qjv" customClass="SearchCityViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="ej0-Tw-Qjv" customClass="SearchCityViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ipk-1K-IBE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eML-MO-N06">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="6td-Hv-mXL">
@@ -953,18 +1004,29 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <font key="NSFont" size="18" name="AmericanTypewriter"/>
+                                                                <font key="NSFont" size="18" name="Avenir-Roman"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-4Y-67F">
-                                                    <rect key="frame" x="326.5" y="5" width="33.5" height="33.5"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-4Y-67F">
+                                                    <rect key="frame" x="300" y="5" width="60" height="33.5"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="QmV-Q5-ELp"/>
                                                         <constraint firstAttribute="height" constant="33.5" id="mkD-hY-isi"/>
-                                                        <constraint firstAttribute="width" secondItem="Nmx-4Y-67F" secondAttribute="height" multiplier="1:1" id="w4v-Un-0vK"/>
                                                     </constraints>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="add">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="18" name="Avenir-Heavy"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
                                                     <connections>
                                                         <action selector="addCity:" destination="QAx-pR-vT6" eventType="touchUpInside" id="AY1-Mb-o41"/>
                                                     </connections>
@@ -991,12 +1053,33 @@
                                     <outlet property="delegate" destination="ej0-Tw-Qjv" id="JbJ-Mw-xtc"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-Ta-7rA">
+                                <rect key="frame" x="15" y="25" width="126" height="25"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="&lt;&lt; мои города">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="17" name="Avenir-Heavy"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="IrR-St-qvG" kind="showDetail" id="0km-d8-J0f"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="eML-MO-N06" firstAttribute="top" secondItem="Pp9-K9-CB8" secondAttribute="top" id="Cac-sy-Mct"/>
+                            <constraint firstItem="eML-MO-N06" firstAttribute="top" secondItem="Pp9-K9-CB8" secondAttribute="top" constant="35" id="Cac-sy-Mct"/>
                             <constraint firstItem="eML-MO-N06" firstAttribute="leading" secondItem="Pp9-K9-CB8" secondAttribute="leading" id="VLU-P5-akn"/>
+                            <constraint firstItem="lPI-Ta-7rA" firstAttribute="leading" secondItem="Pp9-K9-CB8" secondAttribute="leading" constant="15" id="dPG-W4-Jw5"/>
                             <constraint firstItem="Pp9-K9-CB8" firstAttribute="trailing" secondItem="eML-MO-N06" secondAttribute="trailing" id="fmv-1C-Lvf"/>
+                            <constraint firstItem="lPI-Ta-7rA" firstAttribute="top" secondItem="Pp9-K9-CB8" secondAttribute="top" constant="5" id="lnN-RI-5S1"/>
+                            <constraint firstItem="eML-MO-N06" firstAttribute="top" secondItem="lPI-Ta-7rA" secondAttribute="bottom" constant="5" id="qhZ-g1-xLb"/>
                             <constraint firstItem="Pp9-K9-CB8" firstAttribute="bottom" secondItem="eML-MO-N06" secondAttribute="bottom" id="tjp-oL-INp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pp9-K9-CB8"/>
@@ -1008,7 +1091,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faa-cU-qLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="837.60000000000002" y="303.59820089955025"/>
+            <point key="canvasLocation" x="128.80000000000001" y="-395.35232383808096"/>
         </scene>
     </scenes>
     <resources>
@@ -1020,4 +1103,8 @@
         <image name="049-thermometer" width="256" height="256"/>
         <image name="050-barometer" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JIo-CK-iSY"/>
+        <segue reference="0km-d8-J0f"/>
+    </inferredMetricsTieBreakers>
 </document>

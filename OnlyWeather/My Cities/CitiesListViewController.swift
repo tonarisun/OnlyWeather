@@ -21,10 +21,8 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        realmBaseInit()
         loadCitiesFromRLM()
         addRealmObserve()
-
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,28 +38,16 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == showWeatherSegueID,
-        let indexPath = citiesListTableView.indexPathForSelectedRow else { return }
-        let city = cities?[indexPath.row]
+        let indexPath = citiesListTableView.indexPathForSelectedRow,
+        let city = cities?[indexPath.row] else { return }
         let weatherVC = segue.destination as! WeatherViewController
         weatherVC.city = city
-    }
-    
-    func realmBaseInit() {
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            try realm.commitWrite()
-            print(realm.configuration.fileURL ?? "No fileURL")
-        }
-        catch {
-            print(error)
-        }
     }
     
     func loadCitiesFromRLM() {
         do {
             let realm = try Realm()
-            self.cities = realm.objects(City.self).sorted(byKeyPath: "cityNameRUS")
+            self.cities = realm.objects(City.self)
         } catch {
             print(error)
         }

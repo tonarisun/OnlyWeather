@@ -66,6 +66,7 @@ class Service {
         return dateFormatter.string(from: date)
     }
 }
+
 extension NSDate {
     func hour() -> Int {
         //Get Hour

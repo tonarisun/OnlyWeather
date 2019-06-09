@@ -11,7 +11,7 @@ import UIKit
 class CityCell: UITableViewCell {
 
     @IBOutlet weak var cityNameLabel: UILabel!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +22,5 @@ class CityCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

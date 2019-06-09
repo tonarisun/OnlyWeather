@@ -17,7 +17,7 @@ class SearchCityCell: UITableViewCell {
     //    Функция конфигурации ячейки
     func configure(city: City) {
         self.city = city
-        cityNameLabel.text = city.cityName
+        cityNameLabel.text = city.cityNameRUS
     }
     
     var addCityTapped : ((City) -> Void)?
@@ -25,7 +25,6 @@ class SearchCityCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        addCityButton.setImage(#imageLiteral(resourceName: "plus"), for: .normal)
     }
     
     @IBAction func addCity(_ sender: Any) {
@@ -47,6 +46,5 @@ class SearchCityCell: UITableViewCell {
 
     override func prepareForReuse() {
         cityNameLabel.text = nil
-        addCityButton.backgroundImage(for: .normal)
     }
 }
