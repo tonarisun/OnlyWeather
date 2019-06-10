@@ -17,7 +17,7 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
     var cities = [City]()
     var filteredCities = [City]()
     let db = Firestore.firestore()
-    let segueID = "showWeatherSegue1"
+    let segueID = "showWeatherSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()

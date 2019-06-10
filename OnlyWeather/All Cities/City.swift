@@ -7,9 +7,6 @@
 //
 
 import Foundation
-import Alamofire
-import ObjectMapper
-import AlamofireObjectMapper
 import RealmSwift
 
 class City: Object {
@@ -40,5 +37,4 @@ class CurrentCity: Object {
     static func == (lhs: CurrentCity, rhs: City) -> Bool {
         return lhs.cityID == rhs.cityID
     }
-    
 }

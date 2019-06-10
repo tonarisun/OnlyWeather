@@ -1065,7 +1065,7 @@
                                         <connections>
                                             <outlet property="addCityButton" destination="Nmx-4Y-67F" id="IRg-dP-7sc"/>
                                             <outlet property="cityNameLabel" destination="8OY-f3-GId" id="Qm3-Km-HHZ"/>
-                                            <segue destination="fbz-iU-3X0" kind="presentation" identifier="showWeatherSegue1" id="pli-eY-zQq"/>
+                                            <segue destination="fbz-iU-3X0" kind="presentation" identifier="showWeatherSegue" id="pli-eY-zQq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
