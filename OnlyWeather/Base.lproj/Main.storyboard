@@ -234,10 +234,10 @@
                                                     <rect key="frame" x="0.0" y="25" width="375" height="55"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5s3-uW-vNO" userLabel="Sky Image">
-                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="116.5" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xl5-Au-30a">
-                                                                    <rect key="frame" x="35" y="0.0" width="55" height="55"/>
+                                                                    <rect key="frame" x="33" y="0.0" width="55" height="55"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="xl5-Au-30a" secondAttribute="height" multiplier="1:1" id="VvV-CQ-6Vl"/>
                                                                     </constraints>
@@ -246,28 +246,28 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="xl5-Au-30a" firstAttribute="centerY" secondItem="5s3-uW-vNO" secondAttribute="centerY" id="Gqf-SM-bDS"/>
-                                                                <constraint firstItem="xl5-Au-30a" firstAttribute="centerX" secondItem="5s3-uW-vNO" secondAttribute="centerX" id="MjA-pa-8gc"/>
+                                                                <constraint firstItem="xl5-Au-30a" firstAttribute="centerX" secondItem="5s3-uW-vNO" secondAttribute="centerX" constant="2" id="MjA-pa-8gc"/>
                                                                 <constraint firstAttribute="bottom" secondItem="xl5-Au-30a" secondAttribute="bottom" id="WAa-V7-ha3"/>
                                                                 <constraint firstItem="xl5-Au-30a" firstAttribute="top" secondItem="5s3-uW-vNO" secondAttribute="top" id="ad3-65-H0N"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WM-aL-xLR" userLabel="Temperature">
-                                                            <rect key="frame" x="125" y="0.0" width="125" height="55"/>
+                                                            <rect key="frame" x="116.5" y="0.0" width="127" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="006-thermometer-3" translatesAutoresizingMaskIntoConstraints="NO" id="nsl-Rl-BdO">
-                                                                    <rect key="frame" x="0.0" y="10" width="35" height="35"/>
+                                                                    <rect key="frame" x="5" y="10" width="35" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="fqc-xy-zgo"/>
                                                                         <constraint firstAttribute="width" constant="35" id="zTa-bp-fFN"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lW3-8X-1Ic">
-                                                                    <rect key="frame" x="40" y="18" width="83" height="19.5"/>
+                                                                    <rect key="frame" x="45" y="18" width="80" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="23.14  C">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                                <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
+                                                                                <font key="NSFont" size="14" name="Avenir-HeavyOblique"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -278,7 +278,7 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="nsl-Rl-BdO" firstAttribute="centerY" secondItem="0WM-aL-xLR" secondAttribute="centerY" id="7BQ-2G-hX5"/>
-                                                                <constraint firstItem="nsl-Rl-BdO" firstAttribute="leading" secondItem="0WM-aL-xLR" secondAttribute="leading" id="8Qq-1K-aRb"/>
+                                                                <constraint firstItem="nsl-Rl-BdO" firstAttribute="leading" secondItem="0WM-aL-xLR" secondAttribute="leading" constant="5" id="8Qq-1K-aRb"/>
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="0WM-aL-xLR" secondAttribute="centerY" id="91p-9D-Mjt"/>
                                                                 <constraint firstAttribute="trailing" secondItem="lW3-8X-1Ic" secondAttribute="trailing" constant="2" id="Mef-Xu-sPl"/>
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="nsl-Rl-BdO" secondAttribute="centerY" id="eYM-QI-vd7"/>
@@ -286,7 +286,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBZ-Rf-HAr" userLabel="Wind">
-                                                            <rect key="frame" x="250" y="0.0" width="125" height="55"/>
+                                                            <rect key="frame" x="243.5" y="0.0" width="131.5" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qBU-4P-NX0">
                                                                     <rect key="frame" x="90" y="20" width="15" height="15"/>
@@ -332,9 +332,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="BBZ-Rf-HAr" firstAttribute="width" secondItem="0WM-aL-xLR" secondAttribute="width" constant="5" id="GtK-e6-BJY"/>
                                                         <constraint firstAttribute="height" constant="55" id="Tat-5z-HhG"/>
-                                                        <constraint firstItem="0WM-aL-xLR" firstAttribute="width" secondItem="5s3-uW-vNO" secondAttribute="width" id="gvM-Eb-EHp"/>
-                                                        <constraint firstItem="BBZ-Rf-HAr" firstAttribute="width" secondItem="5s3-uW-vNO" secondAttribute="width" id="xue-mZ-4HT"/>
+                                                        <constraint firstItem="0WM-aL-xLR" firstAttribute="width" secondItem="5s3-uW-vNO" secondAttribute="width" constant="10" id="gvM-Eb-EHp"/>
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUS-b8-CSr" userLabel="Descr Hum Press">
@@ -344,7 +344,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="125" height="54.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuC-KK-adC">
-                                                                    <rect key="frame" x="10" y="0.0" width="115" height="54.5"/>
+                                                                    <rect key="frame" x="10" y="0.0" width="105" height="54.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="sky description">
                                                                             <attributes>
@@ -360,7 +360,7 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="uuC-KK-adC" firstAttribute="leading" secondItem="GZf-gW-rh8" secondAttribute="leading" constant="10" id="Bvz-5O-eUc"/>
-                                                                <constraint firstAttribute="trailing" secondItem="uuC-KK-adC" secondAttribute="trailing" id="LKV-zC-WAf"/>
+                                                                <constraint firstAttribute="trailing" secondItem="uuC-KK-adC" secondAttribute="trailing" constant="10" id="LKV-zC-WAf"/>
                                                                 <constraint firstAttribute="bottom" secondItem="uuC-KK-adC" secondAttribute="bottom" id="XYm-rF-h1i"/>
                                                                 <constraint firstItem="uuC-KK-adC" firstAttribute="top" secondItem="GZf-gW-rh8" secondAttribute="top" id="cEx-yv-f0O"/>
                                                             </constraints>
@@ -484,7 +484,7 @@
                                                         <constraint firstAttribute="height" constant="25" id="sxj-QT-9cI"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="сегодня">
+                                                        <fragment content="сейчас">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <font key="NSFont" size="16" name="Avenir-Heavy"/>
@@ -516,21 +516,21 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-3u-er1" userLabel="Temp max">
-                                                            <rect key="frame" x="125" y="0.0" width="140" height="55"/>
+                                                            <rect key="frame" x="125" y="0.0" width="150" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="049-thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="2cY-do-XCE">
-                                                                    <rect key="frame" x="0.0" y="10" width="35" height="35"/>
+                                                                    <rect key="frame" x="5" y="10" width="35" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="35" id="Je6-aK-rrl"/>
                                                                         <constraint firstAttribute="height" constant="35" id="X45-As-U02"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jn-aQ-Qwf">
-                                                                    <rect key="frame" x="37" y="18" width="101" height="19.5"/>
+                                                                    <rect key="frame" x="42" y="18" width="106" height="19.5"/>
                                                                     <attributedString key="attributedText">
-                                                                        <fragment content="max: 25.55 c">
+                                                                        <fragment content="25.55 c">
                                                                             <attributes>
-                                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -541,7 +541,7 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="2cY-do-XCE" firstAttribute="leading" secondItem="8ie-3u-er1" secondAttribute="leading" id="7V4-L2-TXS"/>
+                                                                <constraint firstItem="2cY-do-XCE" firstAttribute="leading" secondItem="8ie-3u-er1" secondAttribute="leading" constant="5" id="7V4-L2-TXS"/>
                                                                 <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="centerY" secondItem="8ie-3u-er1" secondAttribute="centerY" id="VRw-QF-NIZ"/>
                                                                 <constraint firstAttribute="trailing" secondItem="4Jn-aQ-Qwf" secondAttribute="trailing" constant="2" id="ndt-An-3dN"/>
                                                                 <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="leading" secondItem="2cY-do-XCE" secondAttribute="trailing" constant="2" id="vr6-vr-m9o"/>
@@ -549,12 +549,12 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXH-gl-ft3" userLabel="Temp min">
-                                                            <rect key="frame" x="265" y="0.0" width="110" height="55"/>
+                                                            <rect key="frame" x="275" y="0.0" width="100" height="55"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-YD-iMW">
-                                                                    <rect key="frame" x="5" y="18" width="100" height="19.5"/>
+                                                                    <rect key="frame" x="5" y="18" width="90" height="19.5"/>
                                                                     <attributedString key="attributedText">
-                                                                        <fragment content="min: 16.00 C">
+                                                                        <fragment content=" ">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
@@ -580,7 +580,7 @@
                                                         <constraint firstItem="VRf-oy-mbf" firstAttribute="top" secondItem="aKU-dM-HJO" secondAttribute="top" id="GVG-nF-fj8"/>
                                                         <constraint firstItem="VRf-oy-mbf" firstAttribute="leading" secondItem="aKU-dM-HJO" secondAttribute="leading" id="JIs-m9-5se"/>
                                                         <constraint firstAttribute="bottom" secondItem="UXH-gl-ft3" secondAttribute="bottom" id="KMO-oM-J0T"/>
-                                                        <constraint firstItem="UXH-gl-ft3" firstAttribute="width" secondItem="8ie-3u-er1" secondAttribute="width" constant="-30" id="SQ2-p5-54s"/>
+                                                        <constraint firstItem="UXH-gl-ft3" firstAttribute="width" secondItem="8ie-3u-er1" secondAttribute="width" constant="-50" id="SQ2-p5-54s"/>
                                                         <constraint firstAttribute="height" constant="55" id="jkg-kq-b8u"/>
                                                         <constraint firstItem="UXH-gl-ft3" firstAttribute="top" secondItem="aKU-dM-HJO" secondAttribute="top" id="svG-AD-jZa"/>
                                                     </constraints>
