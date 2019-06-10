@@ -17,6 +17,7 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
     var cities = [City]()
     var filteredCities = [City]()
     let db = Firestore.firestore()
+    let segueID = "showWeatherSegue1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,8 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
             self.allCitiesTableView.reloadData()
         }
         
-        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        let hideKeyboardGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        hideKeyboardGesture.direction = .down
         self.allCitiesTableView.addGestureRecognizer(hideKeyboardGesture)
     }
     
@@ -71,6 +73,30 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == segueID,
+        let indexPath = allCitiesTableView.indexPathForSelectedRow else { return }
+        let city = filteredCities[indexPath.row]
+        let currentCity = CurrentCity()
+        currentCity.cityID = city.cityID
+        currentCity.cityName = city.cityName
+        currentCity.cityNameRUS = city.cityNameRUS
+        currentCity.country = city.country
+        currentCity.isAdded = city.isAdded
+        do {
+            let realm = try Realm()
+            let oldCity = realm.objects(CurrentCity.self)
+            realm.beginWrite()
+            realm.add(city, update: true)
+            realm.delete(oldCity)
+            realm.add(currentCity)
+            try realm.commitWrite()
+        }
+        catch {
+            print(error)
+        }
     }
     
     private func setUpSearchBar(){

@@ -40,8 +40,23 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
         guard segue.identifier == showWeatherSegueID,
         let indexPath = citiesListTableView.indexPathForSelectedRow,
         let city = cities?[indexPath.row] else { return }
-        let weatherVC = segue.destination as! WeatherViewController
-        weatherVC.city = city
+        let currentCity = CurrentCity()
+        currentCity.cityID = city.cityID
+        currentCity.cityName = city.cityName
+        currentCity.cityNameRUS = city.cityNameRUS
+        currentCity.country = city.country
+        currentCity.isAdded = city.isAdded
+        do {
+            let realm = try Realm()
+            let oldCity = realm.objects(CurrentCity.self)
+            realm.beginWrite()
+            realm.delete(oldCity)
+            realm.add(currentCity)
+            try realm.commitWrite()
+        }
+        catch {
+            print(error)
+        }
     }
     
     func loadCitiesFromRLM() {
@@ -62,11 +77,11 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
             case .update(_, let deletions, let insertions, let modifications):
                 tableView.beginUpdates()
                 tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
-                                     with: .middle)
+                                     with: .right)
                 tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
-                                     with: .middle)
+                                     with: .right)
                 tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
-                                     with: .middle)
+                                     with: .right)
                 tableView.endUpdates()
             case .error(let error):
                 fatalError("\(error)")

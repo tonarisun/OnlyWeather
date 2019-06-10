@@ -28,3 +28,17 @@ class City: Object {
         return "cityID"
     }
 }
+
+class CurrentCity: Object {
+    
+    @objc dynamic var cityID = ""
+    @objc dynamic var cityName = ""
+    @objc dynamic var cityNameRUS = ""
+    @objc dynamic var country = ""
+    @objc dynamic var isAdded = false
+    
+    static func == (lhs: CurrentCity, rhs: City) -> Bool {
+        return lhs.cityID == rhs.cityID
+    }
+    
+}

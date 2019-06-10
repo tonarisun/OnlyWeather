@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9402BF88F12A2D9BABEBDE9D /* Pods_OnlyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD26AA22CD3408B8F07E57 /* Pods_OnlyWeather.framework */; };
+		D604CE0122AE168B0092B0A1 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D604CE0022AE168B0092B0A1 /* MyButton.swift */; };
 		D6B3379222A9093E00553CDA /* HourWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3379122A9093E00553CDA /* HourWeatherCell.swift */; };
 		D6B3379422A916C800553CDA /* DayWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3379322A916C800553CDA /* DayWeatherCell.swift */; };
 		D6B3379622AB680100553CDA /* TodayWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3379522AB680000553CDA /* TodayWeatherCell.swift */; };
@@ -30,6 +31,7 @@
 		6F4ECC8F26894024A6F7032B /* Pods-OnlyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlyWeather.debug.xcconfig"; path = "Target Support Files/Pods-OnlyWeather/Pods-OnlyWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		87AD26AA22CD3408B8F07E57 /* Pods_OnlyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80AF6FA3B9E3970A29C6F90 /* Pods-OnlyWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlyWeather.release.xcconfig"; path = "Target Support Files/Pods-OnlyWeather/Pods-OnlyWeather.release.xcconfig"; sourceTree = "<group>"; };
+		D604CE0022AE168B0092B0A1 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		D6B3379122A9093E00553CDA /* HourWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourWeatherCell.swift; sourceTree = "<group>"; };
 		D6B3379322A916C800553CDA /* DayWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeatherCell.swift; sourceTree = "<group>"; };
 		D6B3379522AB680000553CDA /* TodayWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherCell.swift; sourceTree = "<group>"; };
@@ -71,6 +73,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D604CDFF22AE16530092B0A1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D6EE10EC22A4D7B200E0B1A8 /* Service.swift */,
+				D604CE0022AE168B0092B0A1 /* MyButton.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		D6EE10C622A4C14600E0B1A8 = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +109,7 @@
 				D6EE10F622A522B700E0B1A8 /* My Cities */,
 				D6EE10F822A522F400E0B1A8 /* Weather */,
 				D6EE10F722A522DC00E0B1A8 /* All Cities */,
-				D6EE10EC22A4D7B200E0B1A8 /* Service.swift */,
+				D604CDFF22AE16530092B0A1 /* Service */,
 				D6EE10D922A4C14900E0B1A8 /* Assets.xcassets */,
 				D6EE10DE22A4C14900E0B1A8 /* Info.plist */,
 				D6EE10EE22A4FC5800E0B1A8 /* GoogleService-Info.plist */,
@@ -296,6 +307,7 @@
 				D6B3379422A916C800553CDA /* DayWeatherCell.swift in Sources */,
 				D6EE10F522A518AF00E0B1A8 /* Weather.swift in Sources */,
 				D6EE10D322A4C14600E0B1A8 /* AppDelegate.swift in Sources */,
+				D604CE0122AE168B0092B0A1 /* MyButton.swift in Sources */,
 				D6EE10E522A4C4D100E0B1A8 /* CityCell.swift in Sources */,
 				D6EE10F322A50C0F00E0B1A8 /* City.swift in Sources */,
 				D6B3379622AB680100553CDA /* TodayWeatherCell.swift in Sources */,

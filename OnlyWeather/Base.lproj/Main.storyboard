@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-W7-f7I">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-W7-f7I">
                                 <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -33,9 +33,10 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUf-sF-fdw">
                                                     <rect key="frame" x="20" y="10" width="198" height="23.5"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="Label">
+                                                        <fragment content="город">
                                                             <attributes>
-                                                                <font key="NSFont" size="18" name="Avenir-Roman"/>
+                                                                <font key="NSFont" size="18" name="AvenirNext-Medium"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -51,7 +52,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cityNameLabel" destination="tUf-sF-fdw" id="kfs-kj-shT"/>
-                                            <segue destination="fbz-iU-3X0" kind="presentation" identifier="showWeatherSegue" id="542-th-XsW"/>
+                                            <segue destination="fbz-iU-3X0" kind="presentation" identifier="showWeatherSegue" modalPresentationStyle="pageSheet" modalTransitionStyle="flipHorizontal" id="542-th-XsW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -60,13 +61,16 @@
                                     <outlet property="delegate" destination="IrR-St-qvG" id="Eph-vM-Zfm"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-WE-bjD">
-                                <rect key="frame" x="218" y="25" width="142" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-WE-bjD" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                                <rect key="frame" x="202" y="25" width="158" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="158" id="ISM-CK-AfH"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="поиск города &gt;&gt;">
                                             <attributes>
-                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="17" name="Avenir-Heavy"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -74,7 +78,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="ej0-Tw-Qjv" kind="showDetail" id="ZRZ-Tm-wj5"/>
+                                    <segue destination="ej0-Tw-Qjv" kind="presentation" modalTransitionStyle="crossDissolve" id="ZRZ-Tm-wj5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,18 +100,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxJ-EM-s2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-570" y="-395"/>
+            <point key="canvasLocation" x="-570.39999999999998" y="-395.35232383808096"/>
         </scene>
         <!--only weather-->
         <scene sceneID="nD3-qL-CmJ">
             <objects>
-                <viewController title="only weather" modalTransitionStyle="flipHorizontal" id="fbz-iU-3X0" customClass="WeatherViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="only weather" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" id="fbz-iU-3X0" customClass="WeatherViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O3J-ug-QvP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nto-aW-vHh">
-                                <rect key="frame" x="0.0" y="103.5" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="120"/>
                                 <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Bdm-ft-9UE"/>
@@ -197,7 +201,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJD-o7-gcn">
-                                <rect key="frame" x="0.0" y="247" width="375" height="420"/>
+                                <rect key="frame" x="0.0" y="230" width="375" height="437"/>
                                 <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -480,7 +484,7 @@
                                                         <constraint firstAttribute="height" constant="25" id="sxj-QT-9cI"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="today">
+                                                        <fragment content="сегодня">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <font key="NSFont" size="16" name="Avenir-Heavy"/>
@@ -841,10 +845,10 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZm-gF-YKe">
-                                <rect key="frame" x="0.0" y="55" width="375" height="25"/>
-                                <color key="backgroundColor" red="0.32645807999999998" green="0.48895911110000001" blue="0.59139526590000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="35"/>
+                                <color key="backgroundColor" red="0.37811234593391418" green="0.56703644990921021" blue="0.67452716827392578" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="5IQ-mV-xTp"/>
+                                    <constraint firstAttribute="height" constant="35" id="5IQ-mV-xTp"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="выбери город">
@@ -858,12 +862,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgp-dz-zjL">
-                                <rect key="frame" x="0.0" y="80" width="375" height="23.5"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="10"/>
                                 <color key="backgroundColor" red="0.22556065312310403" green="0.33783797436393381" blue="0.40861449177969533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="tvs-R8-lzo"/>
+                                </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="weather by the hour">
+                                    <fragment content=" ">
                                         <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="17" name="Avenir-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -872,12 +879,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7b-gB-udk">
-                                <rect key="frame" x="0.0" y="223.5" width="375" height="23.5"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="10"/>
                                 <color key="backgroundColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="pgs-TJ-7ig"/>
+                                </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="weather by day">
+                                    <fragment content=" ">
                                         <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="17" name="Avenir-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -885,18 +895,23 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-ZT-f0j">
-                                <rect key="frame" x="241" y="25" width="124" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-ZT-f0j" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                                <rect key="frame" x="221" y="25" width="144" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="9hG-nU-9vf"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="мои">
                                             <attributes>
+                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="16" name="Avenir-Heavy"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                         <fragment content=" города &gt;&gt;">
                                             <attributes>
+                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="17" name="Avenir-Heavy"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -907,20 +922,23 @@
                                     <segue destination="IrR-St-qvG" kind="show" identifier="goToCitiesList" id="mqU-3U-xh8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-1N-6Jm">
-                                <rect key="frame" x="10" y="25" width="138" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-1N-6Jm" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                                <rect key="frame" x="10" y="25" width="150" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bFD-F3-hTU"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="&lt;&lt; поиск">
                                             <attributes>
-                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="16" name="Avenir-Heavy"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                         <fragment content=" города">
                                             <attributes>
-                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="17" name="Avenir-Heavy"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -992,7 +1010,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCityCell" id="QAx-pR-vT6" customClass="SearchCityCell" customModule="OnlyWeather" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCityCell" id="QAx-pR-vT6" customClass="SearchCityCell" customModule="OnlyWeather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QAx-pR-vT6" id="WGq-S8-aLH">
@@ -1002,15 +1020,17 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OY-f3-GId">
                                                     <rect key="frame" x="20" y="10" width="209" height="23.5"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="Label">
+                                                        <fragment content="город">
                                                             <attributes>
-                                                                <font key="NSFont" size="18" name="Avenir-Roman"/>
+                                                                <font key="NSFont" size="18" name="AvenirNext-Medium"/>
+                                                                <font key="NSOriginalFont" size="18" name="Avenir-Roman"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-4Y-67F">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-4Y-67F" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
                                                     <rect key="frame" x="300" y="5" width="60" height="33.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="QmV-Q5-ELp"/>
@@ -1045,6 +1065,7 @@
                                         <connections>
                                             <outlet property="addCityButton" destination="Nmx-4Y-67F" id="IRg-dP-7sc"/>
                                             <outlet property="cityNameLabel" destination="8OY-f3-GId" id="Qm3-Km-HHZ"/>
+                                            <segue destination="fbz-iU-3X0" kind="presentation" identifier="showWeatherSegue1" id="pli-eY-zQq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1053,13 +1074,16 @@
                                     <outlet property="delegate" destination="ej0-Tw-Qjv" id="JbJ-Mw-xtc"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-Ta-7rA">
-                                <rect key="frame" x="15" y="25" width="126" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-Ta-7rA" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                                <rect key="frame" x="15" y="25" width="144" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="4J4-V3-PMO"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="&lt;&lt; мои города">
                                             <attributes>
-                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="17" name="Avenir-Heavy"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -1067,7 +1091,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="IrR-St-qvG" kind="showDetail" id="0km-d8-J0f"/>
+                                    <segue destination="IrR-St-qvG" kind="presentation" modalTransitionStyle="crossDissolve" id="eXd-hG-Ytl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1105,6 +1129,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JIo-CK-iSY"/>
-        <segue reference="0km-d8-J0f"/>
+        <segue reference="pli-eY-zQq"/>
+        <segue reference="mqU-3U-xh8"/>
     </inferredMetricsTieBreakers>
 </document>

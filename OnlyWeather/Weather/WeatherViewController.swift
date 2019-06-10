@@ -14,39 +14,40 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var hourWeatherCollectionView: UICollectionView!
     @IBOutlet weak var dayWeatherTableView: UITableView!
-    var city : City?
-    var currentCity : City?
-    var cityToShow : City?
+    var currentCity : CurrentCity?
     let service = Service()
     var todayWeather : TodayWeather?
     var weatherList = [Weather]()
     var weatherByDay = [Weather]()
-    let userDefaults​ = UserDefaults.standard
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        loadCityFromRLM()
+        
+        guard currentCity != nil else {
+            addCityAlert()
+            return
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addCityAlert()
-
-        if city == nil {
-            cityToShow = currentCity
-        } else {
-            cityToShow = city
-        }
+        loadCityFromRLM()
         
-        if cityToShow == nil {
+        guard let cityToShow = currentCity else {
             return
         }
   
-        cityNameLabel.text = cityToShow?.cityNameRUS
+        cityNameLabel.text = cityToShow.cityNameRUS
         
-        service.getTodayWeather(cityID: cityToShow!.cityID) { [weak self] todayWeather in
-            self?.currentCity = self?.city
+        service.getTodayWeather(cityID: cityToShow.cityID) { [weak self] todayWeather in
             self?.todayWeather = todayWeather
             self?.dayWeatherTableView.reloadData()
         }
         
-        service.getWeather(cityID: cityToShow!.cityID) { [weak self] weathers in
+        service.getWeather(cityID: cityToShow.cityID) { [weak self] weathers in
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.dayWeatherTableView.reloadData()
@@ -54,8 +55,17 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func loadCityFromRLM() {
+        do {
+            let realm = try Realm()
+            self.currentCity = realm.objects(CurrentCity.self).first
+        } catch {
+            print(error)
+        }
+    }
+    
     func addCityAlert(){
-        let alert = UIAlertController(title: "Как погода?", message: "Нажми на  +  , чтобы перейти к списку своих городов", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Привет!", message: "Для отображения погоды найди нужный город в поиске", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
