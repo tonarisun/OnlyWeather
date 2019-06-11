@@ -14,18 +14,12 @@ class SearchCityCell: UITableViewCell {
     @IBOutlet weak var addCityButton: UIButton!
     var city: City?
     
-    //    Функция конфигурации ячейки
     func configure(city: City) {
         self.city = city
         cityNameLabel.text = city.cityNameRUS
     }
     
     var addCityTapped : ((City) -> Void)?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
     
     @IBAction func addCity(_ sender: Any) {
         addCityTapped?(city!)
