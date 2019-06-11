@@ -18,12 +18,17 @@ class HourWeatherCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.contentView.layer.cornerRadius = 8
-        self.contentView.layer.borderColor = #colorLiteral(red: 0.1641685963, green: 0.2979443967, blue: 0.3582572341, alpha: 1)
-        self.contentView.layer.borderWidth = 1
+        self.clipsToBounds = false
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = 8
+        self.layer.shadowColor = #colorLiteral(red: 0.06706253439, green: 0.1177868322, blue: 0.1453602314, alpha: 1)
+        self.layer.shadowOffset = .zero
+        self.layer.shadowOpacity = 1
         
-        self.skyImageView.layer.cornerRadius = 8
-        
+        skyImageView.clipsToBounds = true
+        skyImageView.layer.cornerRadius = 8
+        skyImageView.layer.borderColor = #colorLiteral(red: 0.1030835286, green: 0.1839706004, blue: 0.2240745425, alpha: 1)
+        skyImageView.layer.borderWidth = 1
     }
     
 }

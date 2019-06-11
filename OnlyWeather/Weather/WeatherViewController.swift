@@ -118,7 +118,8 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)
             setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
         }
-        cell.dateLabel.text = weather.day
+            cell.dateLabel.attributedText = NSAttributedString(string: weather.day, attributes:
+                [.underlineStyle: NSUnderlineStyle.single.rawValue])
         cell.humidityLabel.text = "\(weather.humidity) %"
         cell.pressureLabel.text = "\(weather.pressure) hPa"
         cell.tempLabel.text = "\(weather.temp) °С"
@@ -191,15 +192,15 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.skyLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
             switch weather.sky {
             case "Clouds":
-                cell.skyImageView.image = #imageLiteral(resourceName: "clouds night")
+                cell.skyImageView.image = #imageLiteral(resourceName: "clouds-night")
             case "Clear":
-                cell.skyImageView.image = #imageLiteral(resourceName: "clear-sky-dark")
+                cell.skyImageView.image = #imageLiteral(resourceName: "clear sky night")
             case "Rain":
                 cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops-night")
             case "Snow":
                 cell.skyImageView.image = #imageLiteral(resourceName: "snowing night")
             default:
-                cell.skyImageView.image = #imageLiteral(resourceName: "clouds night")
+                cell.skyImageView.image = #imageLiteral(resourceName: "clouds-night")
             }
         } else {
             cell.dateLabel.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
@@ -211,7 +212,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             case "Clear":
                 cell.skyImageView.image = #imageLiteral(resourceName: "clear-sky")
             case "Rain":
-                cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops")
+                cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops-day")
             case "Snow":
                 cell.skyImageView.image = #imageLiteral(resourceName: "snowing day")
             default:

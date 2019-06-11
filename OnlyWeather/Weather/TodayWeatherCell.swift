@@ -12,7 +12,6 @@ class TodayWeatherCell: UITableViewCell {
     
     @IBOutlet weak var skyImageView: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var tempMinLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
