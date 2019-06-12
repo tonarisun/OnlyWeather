@@ -98,7 +98,6 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)
             guard let weather = todayWeather else { return cell }
             cell.tempLabel.text = "\(weather.temp) °"
-//            cell.tempMinLabel.text = "min:\(weather.tempMin) °"
             cell.pressureLabel.text = "\(weather.pressure) hPa"
             cell.humidityLabel.text = "\(weather.humidity) %"
             cell.windSpeedLabel.text = "\(weather.windSpeed) m/s"
@@ -129,7 +128,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
         }
     }
-    
+
     func setWindDirectionImage(degree: Double, imageView: UIImageView) {
         switch degree {
         case 0...15:
