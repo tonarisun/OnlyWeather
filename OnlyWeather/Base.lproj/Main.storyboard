@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-W7-f7I">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zz9-W7-f7I">
                                 <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -213,7 +213,7 @@
                                     <outlet property="delegate" destination="fbz-iU-3X0" id="rkB-Vx-d92"/>
                                 </connections>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJD-o7-gcn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJD-o7-gcn">
                                 <rect key="frame" x="0.0" y="230" width="375" height="437"/>
                                 <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -222,21 +222,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JiZ-uK-MBM" id="fxH-fT-erD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09.06" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiY-ZR-aOH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="25.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="QGn-1M-8lV"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-HeavyOblique" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-HeavyOblique" family="Avenir" pointSize="18"/>
                                                     <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJy-dQ-a87" userLabel="Image Temp Wind">
-                                                    <rect key="frame" x="0.0" y="25" width="375" height="55"/>
+                                                    <rect key="frame" x="0.0" y="25.5" width="375" height="55"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5s3-uW-vNO" userLabel="Sky Image">
                                                             <rect key="frame" x="0.0" y="0.0" width="110" height="55"/>
@@ -341,7 +338,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUS-b8-CSr" userLabel="Descr Hum Press">
-                                                    <rect key="frame" x="0.0" y="80" width="375" height="54.5"/>
+                                                    <rect key="frame" x="0.0" y="80.5" width="375" height="54.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZf-gW-rh8" userLabel="Sky description">
                                                             <rect key="frame" x="0.0" y="0.0" width="118.5" height="54.5"/>
@@ -476,21 +473,18 @@
                                         <rect key="frame" x="0.0" y="163" width="375" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N6O-9m-wro" id="306-UC-peM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj8-Ia-HrX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="25.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" red="0.2230388224" green="0.33619263770000002" blue="0.40785443780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="sxj-QT-9cI"/>
-                                                    </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="сейчас">
                                                             <attributes>
                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <font key="NSFont" size="16" name="AvenirNext-DemiBoldItalic"/>
+                                                                <font key="NSFont" size="19" name="AvenirNext-DemiBoldItalic"/>
                                                                 <font key="NSOriginalFont" size="16" name="AvenirNext-DemiBoldItalic"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="clipping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
                                                                 <integer key="NSUnderline" value="1"/>
@@ -500,7 +494,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKU-dM-HJO" userLabel="SkyImage Tempmin Tempmax">
-                                                    <rect key="frame" x="0.0" y="25" width="375" height="55"/>
+                                                    <rect key="frame" x="0.0" y="25.5" width="375" height="55"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRf-oy-mbf" userLabel="Sky">
                                                             <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
@@ -562,7 +556,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riR-BQ-KEo" userLabel="Descr Sunrise Sunset">
-                                                    <rect key="frame" x="0.0" y="80" width="375" height="55"/>
+                                                    <rect key="frame" x="0.0" y="80.5" width="375" height="55"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZd-oV-LOj" userLabel="Sky description">
                                                             <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
@@ -664,7 +658,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kad-bm-kjL" userLabel="Press Wind Humidity">
-                                                    <rect key="frame" x="0.0" y="135" width="375" height="55"/>
+                                                    <rect key="frame" x="0.0" y="135.5" width="375" height="55"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMR-Ko-aIx" userLabel="Humidity">
                                                             <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
@@ -925,6 +919,17 @@
                                     <segue destination="ej0-Tw-Qjv" kind="show" id="JIo-CK-iSY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt4-z8-gkB">
+                                <rect key="frame" x="177.5" y="27.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="2fT-oj-BT6"/>
+                                    <constraint firstAttribute="width" constant="20" id="SK0-4z-f5f"/>
+                                </constraints>
+                                <state key="normal" image="refresh"/>
+                                <connections>
+                                    <action selector="refreshData:" destination="fbz-iU-3X0" eventType="touchUpInside" id="3wT-Nx-ihY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.37580043344968161" green="0.56584862542506309" blue="0.6761628737304417" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -949,9 +954,11 @@
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="4cX-ZT-f0j" secondAttribute="trailing" constant="10" id="m25-rc-oF7"/>
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="D7b-gB-udk" secondAttribute="trailing" id="oai-U2-uOH"/>
                             <constraint firstItem="EJD-o7-gcn" firstAttribute="top" secondItem="D7b-gB-udk" secondAttribute="bottom" id="pUJ-hS-LPO"/>
+                            <constraint firstItem="4cX-ZT-f0j" firstAttribute="centerY" secondItem="mt4-z8-gkB" secondAttribute="centerY" id="r2o-9w-ewM"/>
                             <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" constant="35" id="r7F-v5-3gj"/>
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="Cgp-dz-zjL" secondAttribute="trailing" id="wEF-gr-KBf"/>
                             <constraint firstItem="D7b-gB-udk" firstAttribute="leading" secondItem="vD6-cG-LJF" secondAttribute="leading" id="x9s-ip-Pbw"/>
+                            <constraint firstItem="mt4-z8-gkB" firstAttribute="centerX" secondItem="O3J-ug-QvP" secondAttribute="centerX" id="xWN-5v-4zC"/>
                             <constraint firstItem="Cgp-dz-zjL" firstAttribute="top" secondItem="HZm-gF-YKe" secondAttribute="bottom" id="yNY-Cz-a8P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vD6-cG-LJF"/>
@@ -990,7 +997,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eML-MO-N06">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eML-MO-N06">
                                 <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1025,7 +1032,6 @@
                                                     <rect key="frame" x="300" y="5" width="60" height="33.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="QmV-Q5-ELp"/>
-                                                        <constraint firstAttribute="height" constant="33.5" id="mkD-hY-isi"/>
                                                     </constraints>
                                                     <state key="normal">
                                                         <attributedString key="attributedTitle">
@@ -1126,10 +1132,11 @@
         <image name="027-humidity" width="256" height="256"/>
         <image name="049-thermometer" width="256" height="256"/>
         <image name="050-barometer" width="256" height="256"/>
+        <image name="refresh" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JIo-CK-iSY"/>
+        <segue reference="vNu-6n-xrs"/>
         <segue reference="pli-eY-zQq"/>
-        <segue reference="9zf-LK-kOb"/>
+        <segue reference="eXd-hG-Ytl"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -129,6 +129,25 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
+    @IBAction func refreshData(_ sender: Any) {
+        if currentCity != nil {
+            service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
+                self?.todayWeather = todayWeather
+                self?.dayWeatherTableView.reloadData()
+            }
+            
+            service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
+                self?.weatherList = weathers
+                self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
+                self?.dayWeatherTableView.reloadData()
+                self?.hourWeatherCollectionView.reloadData()
+            }
+        } else {
+            return
+        }
+    }
+    
+    
     func setWindDirectionImage(degree: Double, imageView: UIImageView) {
         switch degree {
         case 0...15:
