@@ -10,6 +10,7 @@ import UIKit
 
 class TodayWeatherCell: UITableViewCell {
     
+    @IBOutlet weak var subView: UIView!
     @IBOutlet weak var skyImageView: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
@@ -23,5 +24,11 @@ class TodayWeatherCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        subView.layer.cornerRadius = 20
+        subView.layer.shadowOpacity = 1
+        subView.layer.shadowOffset = .zero
+        subView.layer.shadowColor = #colorLiteral(red: 0.03500115871, green: 0.06159752607, blue: 0.07407174259, alpha: 1)
+        
     }
 }

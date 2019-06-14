@@ -111,10 +111,10 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
         let weather = weatherByDay[indexPath.row - 1]
         if indexPath.row % 2 != 0 {
-            cell.contentView.backgroundColor = #colorLiteral(red: 0.2029865086, green: 0.3625833988, blue: 0.4474081993, alpha: 1)
+            cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
         } else {
-            cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)
+            cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
         }
             cell.dateLabel.attributedText = NSAttributedString(string: weather.day, attributes:
