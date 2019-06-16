@@ -16,7 +16,7 @@ class SearchCityCell: UITableViewCell {
     
     func configure(city: City) {
         self.city = city
-        cityNameLabel.text = city.cityNameRUS
+        cityNameLabel.text = city.cityName
     }
     
     var addCityTapped : ((City) -> Void)?

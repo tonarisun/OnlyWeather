@@ -32,7 +32,7 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! CityCell
         guard let city = cities?[indexPath.row] else { return cell }
-        cell.cityNameLabel.text = city.cityNameRUS
+        cell.cityNameLabel.text = city.cityName
         return cell
     }
     

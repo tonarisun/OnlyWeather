@@ -14,7 +14,7 @@ import AlamofireObjectMapper
 class Weather: Mappable {
     
     var temp = 0.0
-    var pressure = 0
+    var pressure = 0.0
     var humidity = 0
     var windSpeed = 0.0
     var windDeg = 0.0
@@ -55,7 +55,7 @@ class TodayWeather: Mappable {
     var temp = 0.0
     var tempMin = 0.0
     var tempMax = 0.0
-    var pressure = 0
+    var pressure = 0.0
     var humidity = 0
     var windSpeed = 0.0
     var windDeg = 0.0

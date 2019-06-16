@@ -20,6 +20,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     var weatherList = [Weather]()
     var weatherByHour = [Weather]()
     var weatherByDay = [Weather]()
+    var refreshControl = UIRefreshControl()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -35,20 +36,22 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addRefreshControl()
+        
         loadCityFromRLM()
         
-        guard let cityToShow = currentCity else {
+        guard currentCity != nil else {
             return
         }
   
-        cityNameLabel.text = cityToShow.cityNameRUS
+        cityNameLabel.text = currentCity!.cityName
         
-        service.getTodayWeather(cityID: cityToShow.cityID) { [weak self] todayWeather in
+        service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
             self?.todayWeather = todayWeather
             self?.dayWeatherTableView.reloadData()
         }
         
-        service.getWeather(cityID: cityToShow.cityID) { [weak self] weathers in
+        service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
@@ -67,10 +70,33 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func addCityAlert(){
-        let alert = UIAlertController(title: "Привет!", message: "Для отображения погоды найди нужный город в поиске", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Hello!", message: "Tap 'search' and choose a city", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addRefreshControl() {
+        refreshControl.tintColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
+        dayWeatherTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refreshWeatherData() {
+        guard currentCity != nil else { return }
+        
+        service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
+            self?.todayWeather = todayWeather
+        }
+        
+        service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
+            self?.weatherList = weathers
+            self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
+            self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
+        }
+        refreshControl.endRefreshing()
+        hourWeatherCollectionView.reloadData()
+        dayWeatherTableView.reloadData()
     }
     
 //     WEATHER BY THE HOUR COLLECTIOM VIEW
@@ -97,16 +123,19 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodayWeatherCell", for: indexPath) as! TodayWeatherCell
-            cell.contentView.backgroundColor = #colorLiteral(red: 0.3156805038, green: 0.5733602643, blue: 0.6861713529, alpha: 1)
             guard let weather = todayWeather else { return cell }
             cell.tempLabel.text = "\(weather.temp) °"
-            cell.pressureLabel.text = "\(weather.pressure) hPa"
+            let pressure = Int(weather.pressure / 1.333)
+            cell.pressureLabel.text = "\(pressure) mm"
             cell.humidityLabel.text = "\(weather.humidity) %"
-            cell.windSpeedLabel.text = "\(weather.windSpeed) m/s"
-            cell.skyDescriptionLabel.text = weather.skyDescription
+            let windSpeed = Int(weather.windSpeed)
+            cell.windSpeedLabel.text = "\(windSpeed) m/s"
             setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
-            cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (weather.sunrise + weather.timezone))
-            cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (weather.sunset + weather.timezone))
+            cell.skyDescriptionLabel.text = weather.skyDescription
+            let sunrise = weather.sunrise + weather.timezone
+            let sunset = weather.sunset + weather.timezone
+            cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (sunrise))
+            cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (sunset))
             setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
             return cell
         } else {
@@ -122,33 +151,17 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.dateLabel.attributedText = NSAttributedString(string: weather.day, attributes:
                 [.underlineStyle: NSUnderlineStyle.single.rawValue])
         cell.humidityLabel.text = "\(weather.humidity) %"
-        cell.pressureLabel.text = "\(weather.pressure) hPa"
+        let pressure = Int(weather.pressure / 1.333)
+        cell.pressureLabel.text = "\(pressure) mm"
         cell.tempLabel.text = "\(weather.temp) °С"
-        cell.windSpeedLabel.text = "\(weather.windSpeed) m/s"
-        cell.skyDescriptionLabel.text = weather.skyDescription
+        let windSpeed = Int(weather.windSpeed)
+        cell.windSpeedLabel.text = "\(windSpeed) m/s"
         setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
+        cell.skyDescriptionLabel.text = weather.skyDescription
         return cell
         }
     }
 
-    @IBAction func refreshData(_ sender: Any) {
-        if currentCity != nil {
-            service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
-                self?.todayWeather = todayWeather
-                self?.dayWeatherTableView.reloadData()
-            }
-            
-            service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
-                self?.weatherList = weathers
-                self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
-                self?.dayWeatherTableView.reloadData()
-                self?.hourWeatherCollectionView.reloadData()
-            }
-        } else {
-            return
-        }
-    }
-    
     
     func setWindDirectionImage(degree: Double, imageView: UIImageView) {
         switch degree {

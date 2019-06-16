@@ -59,7 +59,7 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCityCell", for: indexPath) as! SearchCityCell
         let city = filteredCities[indexPath.row]
-        cell.cityNameLabel.text = city.cityNameRUS
+        cell.cityNameLabel.text = city.cityName
         cell.configure(city: city)
         cell.addCityTapped = { city in
             do {
