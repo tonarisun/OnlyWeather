@@ -26,8 +26,8 @@ class Service {
         }
     }
     
-    func getShortDateDayAndTime(weatherItem: Weather, string: String) {
-        var charArray = Array(string)
+    func getShortDateDayAndTime(weatherItem: Weather, stringDate: String) {
+        var charArray = Array(stringDate)
         let shortDateArr = [charArray[8], charArray[9], ".", charArray[5], charArray[6], " ", charArray[11], charArray[12], charArray[13], charArray[14], charArray[15]]
         let dayArr = [charArray[8], charArray[9], ".", charArray[5], charArray[6]]
         let timeArr = [charArray[11], charArray[12]]
@@ -42,7 +42,7 @@ class Service {
         var weatherByDay = [Weather]()
         var i = 1
         for weather in weatherList {
-            getShortDateDayAndTime(weatherItem: weather, string: weather.date)
+            getShortDateDayAndTime(weatherItem: weather, stringDate: weather.date)
             if weather.day == weatherList[0].day {
                 today.append(weather)
             }
@@ -57,6 +57,18 @@ class Service {
         return weatherByDay
     }
     
+    func ifTimeLater(weatherList: [Weather]) -> [Weather] {
+        var weatherByHour = weatherList
+        let now = NSDate()
+        let currentHour = now.hour()
+        for weather in weatherList {
+            let weatherTime = Int(weather.time)
+            guard currentHour > weatherTime! else { return weatherByHour }
+            weatherByHour.removeFirst()
+        }
+        return weatherByHour
+    }
+    
     public func getTimeFromUNIXTime(date: Double) -> String {
         let date = Date(timeIntervalSince1970: date)
         let dateFormatter = DateFormatter()
@@ -68,7 +80,7 @@ class Service {
 }
 
 extension NSDate {
-    func hour() -> Int {
+    public func hour() -> Int {
         //Get Hour
         let calendar = NSCalendar.current
         let components = calendar.dateComponents(in: .current, from: self as Date)

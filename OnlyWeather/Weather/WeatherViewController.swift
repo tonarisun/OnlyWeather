@@ -18,6 +18,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     let service = Service()
     var todayWeather : TodayWeather?
     var weatherList = [Weather]()
+    var weatherByHour = [Weather]()
     var weatherByDay = [Weather]()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +51,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         service.getWeather(cityID: cityToShow.cityID) { [weak self] weathers in
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
+            self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
             self?.dayWeatherTableView.reloadData()
             self?.hourWeatherCollectionView.reloadData()
         }
@@ -73,12 +75,12 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     
 //     WEATHER BY THE HOUR COLLECTIOM VIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weatherList.count
+        return weatherByHour.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourWeatherCell", for: indexPath) as! HourWeatherCell
-        let weather = weatherList[indexPath.row]
+        let weather = weatherByHour[indexPath.row]
         cell.dateLabel.text = weather.shortDate
         let temp = Int(weather.temp)
         cell.tempLabel.text = "\(temp) °C"
