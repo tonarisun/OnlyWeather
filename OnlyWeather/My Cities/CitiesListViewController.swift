@@ -17,6 +17,7 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
     var cities : Results<City>?
     let showWeatherSegueID = "showWeatherSegue"
     var token: NotificationToken?
+    let userLanguage = NSLocale.preferredLanguages.first!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,11 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! CityCell
         guard let city = cities?[indexPath.row] else { return cell }
-        cell.cityNameLabel.text = city.cityName
+        if userLanguage.hasPrefix("ru") {
+            cell.cityNameLabel.text = city.cityNameRUS
+        } else {
+            cell.cityNameLabel.text = city.cityName
+        }
         return cell
     }
     

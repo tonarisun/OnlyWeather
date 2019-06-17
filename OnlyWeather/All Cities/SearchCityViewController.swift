@@ -18,6 +18,7 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
     var filteredCities = [City]()
     let db = Firestore.firestore()
     let segueID = "showWeatherSegue"
+    let userLanguage = NSLocale.preferredLanguages.first!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,18 +60,23 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCityCell", for: indexPath) as! SearchCityCell
         let city = filteredCities[indexPath.row]
-        cell.cityNameLabel.text = city.cityName
+        if userLanguage.hasPrefix("ru") {
+            cell.cityNameLabel.text = city.cityNameRUS
+        } else {
+            cell.cityNameLabel.text = city.cityName
+        }
         cell.configure(city: city)
         cell.addCityTapped = { city in
             do {
                 let realm = try Realm()
                 realm.beginWrite()
-                realm.add(city, update: true)
+                realm.add(city, update: .all)
                 try realm.commitWrite()
             }
             catch {
                 print(error)
             }
+            self.addCityAlert(city: city)
         }
         return cell
     }
@@ -89,7 +95,7 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
             let realm = try Realm()
             let oldCity = realm.objects(CurrentCity.self)
             realm.beginWrite()
-            realm.add(city, update: true)
+            realm.add(city, update: .all)
             realm.delete(oldCity)
             realm.add(currentCity)
             try realm.commitWrite()
@@ -114,7 +120,40 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
         })
         allCitiesTableView.reloadData()
     }
+    
+    func addCityAlertRUS(city: String) {
+        let alert = UIAlertController(title: nil, message: "\(city) добавлен в 'мои города'", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 
+    func addCityAlert(city: City) {
+        if userLanguage.hasPrefix("ru") {
+            addCityAlertRUS(city: city.cityNameRUS)
+        } else {
+            if userLanguage.hasPrefix("de") {
+                addCityAlertDE(city: city.cityName)
+            } else {
+                addCityAlertENG(city: city.cityName)
+            }
+        }
+    }
+    
+    func addCityAlertENG(city: String) {
+        let alert = UIAlertController(title: nil, message: "\(city) added to 'my cities'", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addCityAlertDE(city: String) {
+        let alert = UIAlertController(title: nil, message: "\(city) zur 'meine Städte' hinzugefügt", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func hideKeyboard() {
         allCitiesTableView?.endEditing(true)
     }
