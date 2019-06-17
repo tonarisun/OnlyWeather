@@ -84,6 +84,10 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="search"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ej0-Tw-Qjv" kind="presentation" modalTransitionStyle="crossDissolve" id="ZRZ-Tm-wj5"/>
                                 </connections>
@@ -883,6 +887,10 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="my cities"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="IrR-St-qvG" kind="show" identifier="goToCitiesList" id="mqU-3U-xh8"/>
                                 </connections>
@@ -903,6 +911,10 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="search"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ej0-Tw-Qjv" kind="show" id="JIo-CK-iSY"/>
                                 </connections>
@@ -1055,6 +1067,10 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="my cities"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="IrR-St-qvG" kind="presentation" modalTransitionStyle="crossDissolve" id="eXd-hG-Ytl"/>
                                 </connections>
@@ -1102,8 +1118,8 @@
         <image name="050-barometer" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vNu-6n-xrs"/>
-        <segue reference="9jG-zG-kyb"/>
-        <segue reference="mqU-3U-xh8"/>
+        <segue reference="ZRZ-Tm-wj5"/>
+        <segue reference="FRh-sK-0Ra"/>
+        <segue reference="eXd-hG-Ytl"/>
     </inferredMetricsTieBreakers>
 </document>

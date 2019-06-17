@@ -1,0 +1,64 @@
+/* 
+  Localizable.strings
+  OnlyWeather
+
+  Created by Olga Lidman on 17/06/2019.
+  Copyright © 2019 Home. All rights reserved.
+*/
+
+"thunderstorm with rain" = "Gewitter mit Regen";
+"thunderstorm with heavy rain" = "Gewitter mit starkem Regen";
+"thunderstorm with light rain" = "Gewitter mit leichtem Regen";
+"thunderstorm" = "Gewitter";
+"light thunderstorm" = "leichtes Gewitter";
+"heavy thunderstorm" = "starkes Gewitter";
+"ragged thunderstorm" = "zerklüftetes Gewitter";
+"thunderstorm with light drizzle" = "Gewitter mit leichtem Nieselregen";
+"thunderstorm with drizzle" = "Gewitter mit Nieselregen";
+"thunderstorm with heavy drizzle" = "Gewitter mit starkem Nieselregen";
+"drizzle" = "Nieselregen";
+"light intensity drizzle" = "Lichtintensität Nieselregen";
+"heavy intensity drizzle" = "starker Nieselregen";
+"light intensity drizzle rain" = "Lichtintensität Nieselregen";
+"drizzle rain" = "Nieselregen";
+"heavy intensity drizzle rain" = "starker intensiver Nieselregen";
+"shower rain and drizzle" = "Regen und Nieselregen";
+"heavy shower rain and drizzle" = "starker Regen und Nieselregen";
+"shower drizzle" = "Duschniesel";
+"light rain" = "leichter Regen";
+"moderate rain" = "mäßiger Regen";
+"heavy intensity rain" = "starker Regen";
+"very heavy rain" = "sehr starker Regen";
+"extreme rain" = "extremer Regen";
+"freezing rain" = "gefrierender Regen";
+"light intensity shower rain" = "Lichtintensität Duschregen";
+"shower rain" = "Duschregen";
+"heavy intensity shower rain" = "heftiger Duschregen";
+"ragged shower rain" = "zerklüfteter Duschregen";
+"light snow" = "leichter Schnee";
+"Snow" = "Schnee";
+"Heavy snow" = "starker Schnee";
+"Sleet" = "Graupel";
+"Light shower sleet" = "Leichter Duschregen";
+"Shower sleet" = "Duschregen";
+"Light rain and snow" = "Leichter Regen und Schnee";
+"Rain and snow" = "Regen und Schnee";
+"Light shower snow" = "Leichte Dusche Schnee";
+"Shower snow" = "Schnee duschen";
+"Heavy shower snow" = "Starker Regenschnee";
+"mist" = "Nebel";
+"Smoke" = "Rauch";
+"Haze" = "Dunst";
+"sand/ dust whirls" = "Sand-/ Staubwirbeln";
+"fog" = "Nebel";
+"sand" = "Sand";
+"dust" = "Staub";
+"volcanic ash" = "vulkanische Asche";
+"squalls" = "Sturmböen";
+"tornado" = "Tornado";
+"few clouds" = "wenige Wolken";
+"scattered clouds" = "verstreute Wolken";
+"broken clouds" = "durchbrochene Wolken";
+"overcast clouds" = "bedeckte Wolken";
+"my cities" = "meine Städte";
+"search" = "suchen";

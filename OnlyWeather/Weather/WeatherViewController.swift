@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Localize
 
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -156,7 +157,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let windSpeed = Int(weather.windSpeed)
             cell.windSpeedLabel.text = "\(windSpeed) m/s"
             setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
-            cell.skyDescriptionLabel.text = weather.skyDescription
+            cell.skyDescriptionLabel.text = "\(weather.skyDescription)".localize()
             let sunrise = weather.sunrise + weather.timezone
             let sunset = weather.sunset + weather.timezone
             cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (sunrise))
@@ -223,10 +224,33 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             imageView.image = #imageLiteral(resourceName: "029-storm-1")
         case "Snow":
             imageView.image = #imageLiteral(resourceName: "029-storm-1")
+        case "Thunderstorm":
+            imageView.image = #imageLiteral(resourceName: "011-storm-5")
+        case "Drizzle":
+            imageView.image = #imageLiteral(resourceName: "029-storm-1")
+        case "Mist":
+            imageView.image = #imageLiteral(resourceName: "039-foggy-1")
+        case "Smoke":
+            imageView.image = #imageLiteral(resourceName: "039-foggy-1")
+        case "Haze":
+            imageView.image = #imageLiteral(resourceName: "039-foggy-1")
+        case "Dust":
+            imageView.image = #imageLiteral(resourceName: "039-foggy-1")
+        case "Fog":
+            imageView.image = #imageLiteral(resourceName: "039-foggy-1")
+        case "Sand":
+            imageView.image = #imageLiteral(resourceName: "039-foggy-1")
+        case "Tornado":
+            imageView.image = #imageLiteral(resourceName: "026-hurricane")
+        case "Ash":
+            imageView.image = #imageLiteral(resourceName: "039-foggy-1")
+        case "Squall":
+            imageView.image = #imageLiteral(resourceName: "005-wind-sign")
         default:
             imageView.image = #imageLiteral(resourceName: "046-cloudy")
         }
     }
+    
     
     func setSkyImageNight(skyDescription: String, imageView: UIImageView) {
         switch skyDescription {
@@ -238,6 +262,28 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             imageView.image = #imageLiteral(resourceName: "028-storm-2")
         case "Snow":
             imageView.image = #imageLiteral(resourceName: "018-snowy")
+        case "Thunderstorm":
+            imageView.image = #imageLiteral(resourceName: "013-storm-3")
+        case "Drizzle":
+            imageView.image = #imageLiteral(resourceName: "028-storm-2")
+        case "Mist":
+            imageView.image = #imageLiteral(resourceName: "038-foggy-2")
+        case "Smoke":
+            imageView.image = #imageLiteral(resourceName: "038-foggy-2")
+        case "Haze":
+            imageView.image = #imageLiteral(resourceName: "038-foggy-2")
+        case "Dust":
+            imageView.image = #imageLiteral(resourceName: "038-foggy-2")
+        case "Fog":
+            imageView.image = #imageLiteral(resourceName: "038-foggy-2")
+        case "Sand":
+            imageView.image = #imageLiteral(resourceName: "038-foggy-2")
+        case "Tornado":
+            imageView.image = #imageLiteral(resourceName: "026-hurricane")
+        case "Ash":
+            imageView.image = #imageLiteral(resourceName: "038-foggy-2")
+        case "Squall":
+            imageView.image = #imageLiteral(resourceName: "005-wind-sign")
         default:
             imageView.image = #imageLiteral(resourceName: "045-cloudy-1")
         }

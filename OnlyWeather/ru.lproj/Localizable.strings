@@ -1,0 +1,63 @@
+/* 
+  Localizable.strings
+  OnlyWeather
+
+  Created by Olga Lidman on 17/06/2019.
+  Copyright © 2019 Home. All rights reserved.
+*/
+"thunderstorm with rain" = "гроза с дождём";
+"thunderstorm with heavy rain" = "гроза с проливным дождем";
+"thunderstorm with light rain" = "гроза с небольшим дождем";
+"thunderstorm" = "гроза";
+"light thunderstorm" = "небольшая гроза";
+"heavy thunderstorm" = "сильная гроза";
+"ragged thunderstorm" = "раскатистый гром";
+"thunderstorm with light drizzle" = "гроза и изморось";
+"thunderstorm with drizzle" = "гроза и изморось";
+"thunderstorm with heavy drizzle" = "гроза и изморось";
+"drizzle" = "изморось";
+"light intensity drizzle" = "лёгкая изморось";
+"heavy intensity drizzle" = "сильная изморось";
+"light intensity drizzle rain" = "моросящий дождь";
+"drizzle rain" = "моросящий дождь";
+"heavy intensity drizzle rain" = "сильный моросящий дождь";
+"shower rain and drizzle" = "сильный дождь и изморось";
+"heavy shower rain and drizzle" = "сильный ливень";
+"shower drizzle" = "моросящий дождь";
+"light rain" = "легкий дождь";
+"moderate rain" = "умеренный дождь";
+"heavy intensity rain" = "сильный дождь";
+"very heavy rain" = "очень сильный дождь";
+"extreme rain" = "ливень";
+"freezing rain" = "ледяной дождь";
+"light intensity shower rain" = "дождь средней интенсивности";
+"shower rain" = "дождь";
+"heavy intensity shower rain" = "проливной дождь";
+"ragged shower rain" = "проливной дождь";
+"light snow" = "лёгкий снегопад";
+"Snow" = "снегопад";
+"Heavy snow" = "сильный снегопад";
+"Sleet" = "мокрый снег";
+"Light shower sleet" = "небольшой мокрый снег";
+"Shower sleet" = "мокрый снег";
+"Light rain and snow" = "небольшой дождь со снегом";
+"Rain and snow" = "дождь со снегом";
+"Light shower snow" = "небольшой снегопад";
+"Shower snow" = "сильный снегопад";
+"Heavy shower snow" = "очень сильный снегопад";
+"mist" = "туман";
+"Smoke" = "дымка";
+"Haze" = "дымка";
+"sand/ dust whirls" = "песчаные / пылевые вихри";
+"fog" = "туман";
+"sand" = "песок";
+"dust" = "дымка";
+"volcanic ash" = "вулканический пепел";
+"squalls" = "шквальный ветер";
+"tornado" = "торнадо";
+"few clouds" = "небольшая облачность";
+"scattered clouds" = "обалчно";
+"broken clouds" = "сильная облачность";
+"overcast clouds" = "сплошная облачность";
+"my cities" = "мои города";
+"search" = "поиск";
