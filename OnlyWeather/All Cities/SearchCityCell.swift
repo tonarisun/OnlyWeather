@@ -13,10 +13,15 @@ class SearchCityCell: UITableViewCell {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var addCityButton: UIButton!
     var city: City?
+    let locale = NSLocale.preferredLanguages.first!
     
     func configure(city: City) {
         self.city = city
-        cityNameLabel.text = city.cityName
+        if locale.hasPrefix("ru") {
+            cityNameLabel.text = city.cityNameRUS
+        } else {
+            cityNameLabel.text = city.cityName
+        }
     }
     
     var addCityTapped : ((City) -> Void)?
