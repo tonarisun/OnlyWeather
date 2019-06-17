@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import Localize
 
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -119,6 +118,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
+            print(self?.weatherByHour.count)
         }
         refreshControl.endRefreshing()
         hourWeatherCollectionView.reloadData()
@@ -162,7 +162,13 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let sunset = weather.sunset + weather.timezone
             cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (sunrise))
             cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (sunset))
-            setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
+            let date = NSDate()
+            let now = date.hour()
+            if now >= 21 || now <= 6 {
+                setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
+            } else {
+                setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
+            }
             return cell
         } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
@@ -293,7 +299,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         if weather.time == "00" || weather.time == "03" || weather.time == "21" {
             cell.dateLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
             cell.tempLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            cell.skyLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+            cell.skyLabel.textColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
             switch weather.sky {
             case "Clouds":
                 cell.skyImageView.image = #imageLiteral(resourceName: "clouds-night")

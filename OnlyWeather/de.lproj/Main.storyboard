@@ -126,7 +126,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nto-aW-vHh">
-                                <rect key="frame" x="0.0" y="90" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="81" width="375" height="120"/>
                                 <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Bdm-ft-9UE"/>
@@ -179,7 +179,8 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="leichte regen und Schnee">
                                                             <attributes>
-                                                                <font key="NSFont" size="13" name="Avenir-Book"/>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="13" name="Avenir-Medium"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -220,7 +221,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EJD-o7-gcn">
-                                <rect key="frame" x="0.0" y="215" width="375" height="452"/>
+                                <rect key="frame" x="0.0" y="206" width="375" height="461"/>
                                 <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.22303882241249084" green="0.33619263768196106" blue="0.40785443782806396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -281,8 +282,8 @@
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="23.14  C">
                                                                             <attributes>
-                                                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="14" name="Avenir-HeavyOblique"/>
+                                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -873,11 +874,11 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZm-gF-YKe">
-                                <rect key="frame" x="0.0" y="55" width="375" height="35"/>
+                                <rect key="frame" x="0.0" y="49" width="375" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="5IQ-mV-xTp"/>
+                                    <constraint firstAttribute="height" constant="32" id="5IQ-mV-xTp"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="wählen Sie die Stadt">
@@ -891,7 +892,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-ZT-f0j" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
-                                <rect key="frame" x="232" y="25" width="140" height="25"/>
+                                <rect key="frame" x="232" y="25" width="140" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="9hG-nU-9vf"/>
                                 </constraints>
@@ -918,7 +919,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-1N-6Jm" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
-                                <rect key="frame" x="3" y="25" width="100" height="25"/>
+                                <rect key="frame" x="3" y="25" width="100" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="bFD-F3-hTU"/>
                                 </constraints>
@@ -950,14 +951,14 @@
                             <constraint firstItem="Nto-aW-vHh" firstAttribute="leading" secondItem="vD6-cG-LJF" secondAttribute="leading" id="HdM-1s-nDA"/>
                             <constraint firstItem="EJD-o7-gcn" firstAttribute="leading" secondItem="O3J-ug-QvP" secondAttribute="leading" id="I2m-QH-iLt"/>
                             <constraint firstItem="Nto-aW-vHh" firstAttribute="top" secondItem="HZm-gF-YKe" secondAttribute="bottom" id="RgC-FV-Ztq"/>
-                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="DWr-1N-6Jm" secondAttribute="bottom" constant="5" id="Uzn-oQ-tGu"/>
+                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="DWr-1N-6Jm" secondAttribute="bottom" id="Uzn-oQ-tGu"/>
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="HZm-gF-YKe" secondAttribute="trailing" id="aDF-bf-nr4"/>
                             <constraint firstItem="HZm-gF-YKe" firstAttribute="leading" secondItem="vD6-cG-LJF" secondAttribute="leading" id="gC1-6g-Enj"/>
-                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="4cX-ZT-f0j" secondAttribute="bottom" constant="5" id="iSa-YO-bKu"/>
+                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="4cX-ZT-f0j" secondAttribute="bottom" id="iSa-YO-bKu"/>
                             <constraint firstItem="DWr-1N-6Jm" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" constant="5" id="ixm-at-Qwd"/>
                             <constraint firstItem="DWr-1N-6Jm" firstAttribute="leading" secondItem="O3J-ug-QvP" secondAttribute="leading" constant="3" id="jtW-xy-lFi"/>
                             <constraint firstItem="vD6-cG-LJF" firstAttribute="trailing" secondItem="4cX-ZT-f0j" secondAttribute="trailing" constant="3" id="m25-rc-oF7"/>
-                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" constant="35" id="r7F-v5-3gj"/>
+                            <constraint firstItem="HZm-gF-YKe" firstAttribute="top" secondItem="vD6-cG-LJF" secondAttribute="top" constant="29" id="r7F-v5-3gj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vD6-cG-LJF"/>
                         <connections>

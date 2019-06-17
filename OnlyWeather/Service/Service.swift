@@ -63,7 +63,8 @@ class Service {
         let currentHour = now.hour()
         for weather in weatherList {
             let weatherTime = Int(weather.time)
-            guard currentHour > weatherTime! else { return weatherByHour }
+            guard currentHour > weatherTime!,
+            weatherTime != 0 else { return weatherByHour }
             weatherByHour.removeFirst()
         }
         return weatherByHour
