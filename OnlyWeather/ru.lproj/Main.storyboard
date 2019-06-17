@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -164,7 +163,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74K-3g-eIm">
-                                                    <rect key="frame" x="30" y="41" width="50.5" height="28"/>
+                                                    <rect key="frame" x="30" y="38" width="50.5" height="28"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
@@ -176,12 +175,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZH-zO-W8f">
-                                                    <rect key="frame" x="4" y="85.5" width="102" height="19.5"/>
+                                                    <rect key="frame" x="4" y="71" width="102" height="37"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="Label">
+                                                        <fragment content="сплошная облачность">
                                                             <attributes>
-                                                                <font key="NSFont" size="14" name="Avenir-Roman"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                <font key="NSFont" size="13" name="AvenirNext-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -193,16 +192,17 @@
                                         <constraints>
                                             <constraint firstItem="74K-3g-eIm" firstAttribute="centerX" secondItem="9Ye-Nm-Lus" secondAttribute="centerX" id="3M5-kE-YAJ"/>
                                             <constraint firstAttribute="trailing" secondItem="7ZH-zO-W8f" secondAttribute="trailing" constant="4" id="8Rv-xh-yWT"/>
-                                            <constraint firstItem="74K-3g-eIm" firstAttribute="centerY" secondItem="9Ye-Nm-Lus" secondAttribute="centerY" id="Eq9-G0-Kqc"/>
+                                            <constraint firstItem="74K-3g-eIm" firstAttribute="centerY" secondItem="9Ye-Nm-Lus" secondAttribute="centerY" constant="-3" id="Eq9-G0-Kqc"/>
                                             <constraint firstItem="9dE-XD-tHb" firstAttribute="top" secondItem="9Ye-Nm-Lus" secondAttribute="top" constant="5" id="FRj-A8-yPd"/>
                                             <constraint firstItem="6C6-rj-Mhz" firstAttribute="leading" secondItem="9Ye-Nm-Lus" secondAttribute="leading" constant="2" id="OGI-RK-TpL"/>
                                             <constraint firstItem="6C6-rj-Mhz" firstAttribute="centerX" secondItem="9Ye-Nm-Lus" secondAttribute="centerX" id="Q7z-g2-CwM"/>
+                                            <constraint firstItem="7ZH-zO-W8f" firstAttribute="top" secondItem="74K-3g-eIm" secondAttribute="bottom" constant="5" id="aFd-fa-SNt"/>
                                             <constraint firstAttribute="trailing" secondItem="6C6-rj-Mhz" secondAttribute="trailing" constant="2" id="bUx-8L-bPy"/>
                                             <constraint firstItem="7ZH-zO-W8f" firstAttribute="leading" secondItem="9Ye-Nm-Lus" secondAttribute="leading" constant="4" id="ceT-cD-D0G"/>
                                             <constraint firstItem="6C6-rj-Mhz" firstAttribute="top" secondItem="9Ye-Nm-Lus" secondAttribute="top" id="dE3-5Z-28g"/>
                                             <constraint firstItem="6C6-rj-Mhz" firstAttribute="centerY" secondItem="9Ye-Nm-Lus" secondAttribute="centerY" id="jnb-Dm-uFG"/>
                                             <constraint firstAttribute="trailing" secondItem="9dE-XD-tHb" secondAttribute="trailing" constant="2" id="juz-EJ-yDI"/>
-                                            <constraint firstAttribute="bottom" secondItem="7ZH-zO-W8f" secondAttribute="bottom" constant="5" id="u14-BR-CG6"/>
+                                            <constraint firstAttribute="bottom" secondItem="7ZH-zO-W8f" secondAttribute="bottom" constant="2" id="u14-BR-CG6"/>
                                             <constraint firstItem="9dE-XD-tHb" firstAttribute="leading" secondItem="9Ye-Nm-Lus" secondAttribute="leading" constant="2" id="uJv-8e-3Db"/>
                                             <constraint firstAttribute="bottom" secondItem="6C6-rj-Mhz" secondAttribute="bottom" id="xQe-EV-kh8"/>
                                         </constraints>
@@ -275,7 +275,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lW3-8X-1Ic">
-                                                                    <rect key="frame" x="45" y="18" width="79" height="19.5"/>
+                                                                    <rect key="frame" x="40" y="18" width="84" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="23.14  C">
                                                                             <attributes>
@@ -295,7 +295,7 @@
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="0WM-aL-xLR" secondAttribute="centerY" id="91p-9D-Mjt"/>
                                                                 <constraint firstAttribute="trailing" secondItem="lW3-8X-1Ic" secondAttribute="trailing" constant="2" id="Mef-Xu-sPl"/>
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="nsl-Rl-BdO" secondAttribute="centerY" id="eYM-QI-vd7"/>
-                                                                <constraint firstItem="lW3-8X-1Ic" firstAttribute="leading" secondItem="nsl-Rl-BdO" secondAttribute="trailing" constant="5" id="nI8-c2-TRZ"/>
+                                                                <constraint firstItem="lW3-8X-1Ic" firstAttribute="leading" secondItem="nsl-Rl-BdO" secondAttribute="trailing" id="nI8-c2-TRZ"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBZ-Rf-HAr" userLabel="Wind">
@@ -354,13 +354,13 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZf-gW-rh8" userLabel="Sky description">
                                                             <rect key="frame" x="0.0" y="0.0" width="106" height="54.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuC-KK-adC">
-                                                                    <rect key="frame" x="10" y="0.0" width="86" height="54.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuC-KK-adC">
+                                                                    <rect key="frame" x="5" y="0.0" width="101" height="54.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="sky description">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
+                                                                                <font key="NSFont" size="13" name="AvenirNext-MediumItalic"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.69999999999999996" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -370,8 +370,8 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="uuC-KK-adC" firstAttribute="leading" secondItem="GZf-gW-rh8" secondAttribute="leading" constant="10" id="Bvz-5O-eUc"/>
-                                                                <constraint firstAttribute="trailing" secondItem="uuC-KK-adC" secondAttribute="trailing" constant="10" id="LKV-zC-WAf"/>
+                                                                <constraint firstItem="uuC-KK-adC" firstAttribute="leading" secondItem="GZf-gW-rh8" secondAttribute="leading" constant="5" id="Bvz-5O-eUc"/>
+                                                                <constraint firstAttribute="trailing" secondItem="uuC-KK-adC" secondAttribute="trailing" id="LKV-zC-WAf"/>
                                                                 <constraint firstAttribute="bottom" secondItem="uuC-KK-adC" secondAttribute="bottom" id="XYm-rF-h1i"/>
                                                                 <constraint firstItem="uuC-KK-adC" firstAttribute="top" secondItem="GZf-gW-rh8" secondAttribute="top" id="cEx-yv-f0O"/>
                                                             </constraints>
@@ -533,7 +533,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-3u-er1" userLabel="Temp max">
-                                                            <rect key="frame" x="125" y="0.0" width="135" height="55"/>
+                                                            <rect key="frame" x="125" y="0.0" width="125" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="049-thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="2cY-do-XCE">
                                                                     <rect key="frame" x="5" y="10" width="35" height="35"/>
@@ -543,12 +543,12 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jn-aQ-Qwf">
-                                                                    <rect key="frame" x="48" y="14" width="85" height="27.5"/>
+                                                                    <rect key="frame" x="42" y="15" width="81" height="25"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="25.55 c">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="20" name="Avenir-MediumOblique"/>
+                                                                                <font key="NSFont" size="18" name="Avenir-MediumOblique"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -561,12 +561,12 @@
                                                                 <constraint firstItem="2cY-do-XCE" firstAttribute="leading" secondItem="8ie-3u-er1" secondAttribute="leading" constant="5" id="7V4-L2-TXS"/>
                                                                 <constraint firstAttribute="trailing" secondItem="4Jn-aQ-Qwf" secondAttribute="trailing" constant="2" id="ndt-An-3dN"/>
                                                                 <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="centerY" secondItem="8ie-3u-er1" secondAttribute="centerY" id="sOT-aL-NqK"/>
-                                                                <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="leading" secondItem="2cY-do-XCE" secondAttribute="trailing" constant="8" id="vr6-vr-m9o"/>
+                                                                <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="leading" secondItem="2cY-do-XCE" secondAttribute="trailing" constant="2" id="vr6-vr-m9o"/>
                                                                 <constraint firstItem="2cY-do-XCE" firstAttribute="centerY" secondItem="8ie-3u-er1" secondAttribute="centerY" id="vvE-7d-qyi"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-aX-sWV">
-                                                            <rect key="frame" x="260" y="0.0" width="115" height="55"/>
+                                                            <rect key="frame" x="250" y="0.0" width="125" height="55"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uSj-91-qoe">
                                                                     <rect key="frame" x="80.5" y="20" width="15" height="15"/>
@@ -628,8 +628,8 @@
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="sky description">
                                                                             <attributes>
-                                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
+                                                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <font key="NSFont" size="14" name="AvenirNext-MediumItalic"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -823,6 +823,7 @@
                                                 <constraint firstItem="tkb-GE-kC4" firstAttribute="leading" secondItem="kIa-nH-OEo" secondAttribute="leading" constant="3" id="SQh-n4-Jma"/>
                                                 <constraint firstAttribute="trailing" secondItem="Fni-Uw-ddv" secondAttribute="trailing" constant="7" id="bAw-wV-Lpo"/>
                                                 <constraint firstItem="e7n-vq-25T" firstAttribute="leading" secondItem="306-UC-peM" secondAttribute="leading" id="hYf-Ca-E4t"/>
+                                                <constraint firstItem="WiV-gB-lGp" firstAttribute="leading" secondItem="sHu-1e-PwJ" secondAttribute="leading" id="rAs-1l-7c3"/>
                                                 <constraint firstAttribute="trailing" secondItem="riR-BQ-KEo" secondAttribute="trailing" id="u0f-QO-lfI"/>
                                                 <constraint firstAttribute="bottom" secondItem="qj8-Ia-HrX" secondAttribute="bottom" constant="164.5" id="ueN-Xl-8nk"/>
                                                 <constraint firstAttribute="trailing" secondItem="e7n-vq-25T" secondAttribute="trailing" id="zT8-m2-iFv"/>

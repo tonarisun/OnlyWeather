@@ -17,6 +17,4 @@ pod 'Firebase/Core'
 
 pod 'Firebase/Firestore'
 
-pod 'Localize' , '~> 2.3.0'
-
 end

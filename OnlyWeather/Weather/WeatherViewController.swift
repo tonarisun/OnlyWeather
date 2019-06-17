@@ -136,7 +136,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.dateLabel.text = weather.shortDate
         let temp = Int(weather.temp)
         cell.tempLabel.text = "\(temp) °C"
-        cell.skyLabel.text = weather.skyDescription
+        cell.skyLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
        setSkyImage(weather: weather, cell: cell)
         return cell
     }
@@ -157,7 +157,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let windSpeed = Int(weather.windSpeed)
             cell.windSpeedLabel.text = "\(windSpeed) m/s"
             setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
-            cell.skyDescriptionLabel.text = "\(weather.skyDescription)".localize()
+            cell.skyDescriptionLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
             let sunrise = weather.sunrise + weather.timezone
             let sunset = weather.sunset + weather.timezone
             cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (sunrise))
@@ -183,7 +183,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         let windSpeed = Int(weather.windSpeed)
         cell.windSpeedLabel.text = "\(windSpeed) m/s"
         setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
-        cell.skyDescriptionLabel.text = weather.skyDescription
+            cell.skyDescriptionLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
         return cell
         }
     }

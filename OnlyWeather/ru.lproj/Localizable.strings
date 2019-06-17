@@ -5,6 +5,7 @@
   Created by Olga Lidman on 17/06/2019.
   Copyright © 2019 Home. All rights reserved.
 */
+
 "thunderstorm with rain" = "гроза с дождём";
 "thunderstorm with heavy rain" = "гроза с проливным дождем";
 "thunderstorm with light rain" = "гроза с небольшим дождем";
@@ -55,6 +56,7 @@
 "volcanic ash" = "вулканический пепел";
 "squalls" = "шквальный ветер";
 "tornado" = "торнадо";
+"clear sky" = "ясно";
 "few clouds" = "небольшая облачность";
 "scattered clouds" = "обалчно";
 "broken clouds" = "сильная облачность";
