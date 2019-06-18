@@ -284,7 +284,7 @@
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -325,7 +325,7 @@
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -396,7 +396,7 @@
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="0.99998217821121216" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -429,7 +429,7 @@
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -546,7 +546,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jn-aQ-Qwf">
-                                                                    <rect key="frame" x="41" y="13" width="82" height="29"/>
+                                                                    <rect key="frame" x="45" y="13" width="78" height="29"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="25.55 c">
                                                                             <attributes>
@@ -564,7 +564,7 @@
                                                                 <constraint firstItem="2cY-do-XCE" firstAttribute="leading" secondItem="8ie-3u-er1" secondAttribute="leading" constant="5" id="7V4-L2-TXS"/>
                                                                 <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="centerY" secondItem="2cY-do-XCE" secondAttribute="centerY" id="RS8-EF-XzM"/>
                                                                 <constraint firstAttribute="trailing" secondItem="4Jn-aQ-Qwf" secondAttribute="trailing" constant="2" id="ndt-An-3dN"/>
-                                                                <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="leading" secondItem="2cY-do-XCE" secondAttribute="trailing" constant="1" id="vr6-vr-m9o"/>
+                                                                <constraint firstItem="4Jn-aQ-Qwf" firstAttribute="leading" secondItem="2cY-do-XCE" secondAttribute="trailing" constant="5" id="vr6-vr-m9o"/>
                                                                 <constraint firstItem="2cY-do-XCE" firstAttribute="centerY" secondItem="8ie-3u-er1" secondAttribute="centerY" id="vvE-7d-qyi"/>
                                                             </constraints>
                                                         </view>
@@ -592,7 +592,7 @@
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -617,11 +617,12 @@
                                                         <constraint firstAttribute="bottom" secondItem="VRf-oy-mbf" secondAttribute="bottom" id="Dur-GP-4bf"/>
                                                         <constraint firstItem="VRf-oy-mbf" firstAttribute="top" secondItem="aKU-dM-HJO" secondAttribute="top" id="GVG-nF-fj8"/>
                                                         <constraint firstItem="VRf-oy-mbf" firstAttribute="leading" secondItem="aKU-dM-HJO" secondAttribute="leading" id="JIs-m9-5se"/>
+                                                        <constraint firstItem="BAd-5F-ZiK" firstAttribute="width" secondItem="8ie-3u-er1" secondAttribute="width" id="Osu-BR-YhE"/>
                                                         <constraint firstItem="8ie-3u-er1" firstAttribute="centerX" secondItem="aKU-dM-HJO" secondAttribute="centerX" id="RDu-d8-n4L"/>
                                                         <constraint firstAttribute="height" constant="55" id="jkg-kq-b8u"/>
                                                     </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riR-BQ-KEo" userLabel="Descr Sunrise Sunset">
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riR-BQ-KEo" userLabel="Sunrise Sunset">
                                                     <rect key="frame" x="125" y="80.5" width="250" height="55"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJW-vn-miS" userLabel="Sunrise">
@@ -668,7 +669,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W52-I3-IxU">
-                                                                    <rect key="frame" x="40" y="18" width="80" height="19.5"/>
+                                                                    <rect key="frame" x="40" y="18" width="77" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="sunset">
                                                                             <attributes>
@@ -686,7 +687,7 @@
                                                                 <constraint firstItem="WiV-gB-lGp" firstAttribute="centerY" secondItem="1vd-IE-v6u" secondAttribute="centerY" id="0Rz-P2-2Ws"/>
                                                                 <constraint firstItem="W52-I3-IxU" firstAttribute="centerY" secondItem="1vd-IE-v6u" secondAttribute="centerY" id="1se-Wl-SFH"/>
                                                                 <constraint firstItem="WiV-gB-lGp" firstAttribute="leading" secondItem="1vd-IE-v6u" secondAttribute="leading" id="Mie-vL-qFj"/>
-                                                                <constraint firstAttribute="trailing" secondItem="W52-I3-IxU" secondAttribute="trailing" constant="5" id="kTB-lt-tku"/>
+                                                                <constraint firstAttribute="trailing" secondItem="W52-I3-IxU" secondAttribute="trailing" constant="8" id="kTB-lt-tku"/>
                                                                 <constraint firstItem="W52-I3-IxU" firstAttribute="leading" secondItem="WiV-gB-lGp" secondAttribute="trailing" constant="5" id="prC-qA-TpO"/>
                                                             </constraints>
                                                         </view>
@@ -730,7 +731,7 @@
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -762,7 +763,7 @@
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -802,6 +803,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="h6y-Fi-c8o" secondAttribute="bottom" id="NCQ-eH-Day"/>
                                                 <constraint firstItem="aKU-dM-HJO" firstAttribute="top" secondItem="qj8-Ia-HrX" secondAttribute="bottom" id="O87-cG-SRK"/>
                                                 <constraint firstAttribute="trailing" secondItem="qj8-Ia-HrX" secondAttribute="trailing" id="RBf-fR-wym"/>
+                                                <constraint firstItem="h6y-Fi-c8o" firstAttribute="leading" secondItem="riR-BQ-KEo" secondAttribute="leading" id="Xqb-oe-cbZ"/>
                                                 <constraint firstItem="WiV-gB-lGp" firstAttribute="leading" secondItem="ckq-hl-tHd" secondAttribute="leading" id="XsH-We-g9C"/>
                                                 <constraint firstItem="riR-BQ-KEo" firstAttribute="leading" secondItem="Phy-Cg-lpQ" secondAttribute="trailing" constant="10" id="YrL-aN-CXT"/>
                                                 <constraint firstItem="Phy-Cg-lpQ" firstAttribute="top" secondItem="aKU-dM-HJO" secondAttribute="bottom" constant="10" id="ZDu-nm-mID"/>
@@ -1104,8 +1106,8 @@
         <image name="050-barometer" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vNu-6n-xrs"/>
-        <segue reference="FRh-sK-0Ra"/>
+        <segue reference="ZRZ-Tm-wj5"/>
+        <segue reference="542-th-XsW"/>
         <segue reference="mqU-3U-xh8"/>
     </inferredMetricsTieBreakers>
 </document>
