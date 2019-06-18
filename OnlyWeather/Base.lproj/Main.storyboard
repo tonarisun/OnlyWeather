@@ -278,13 +278,13 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lW3-8X-1Ic">
-                                                                    <rect key="frame" x="45" y="18" width="79" height="19.5"/>
+                                                                    <rect key="frame" x="48" y="18" width="53" height="19.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="23.14  C">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <font key="NSFont" size="14" name="Avenir-MediumOblique"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -296,9 +296,9 @@
                                                                 <constraint firstItem="nsl-Rl-BdO" firstAttribute="centerY" secondItem="0WM-aL-xLR" secondAttribute="centerY" id="7BQ-2G-hX5"/>
                                                                 <constraint firstItem="nsl-Rl-BdO" firstAttribute="leading" secondItem="0WM-aL-xLR" secondAttribute="leading" constant="5" id="8Qq-1K-aRb"/>
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="0WM-aL-xLR" secondAttribute="centerY" id="91p-9D-Mjt"/>
-                                                                <constraint firstAttribute="trailing" secondItem="lW3-8X-1Ic" secondAttribute="trailing" constant="2" id="Mef-Xu-sPl"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lW3-8X-1Ic" secondAttribute="trailing" constant="2" id="Mef-Xu-sPl"/>
                                                                 <constraint firstItem="lW3-8X-1Ic" firstAttribute="centerY" secondItem="nsl-Rl-BdO" secondAttribute="centerY" id="eYM-QI-vd7"/>
-                                                                <constraint firstItem="lW3-8X-1Ic" firstAttribute="leading" secondItem="nsl-Rl-BdO" secondAttribute="trailing" constant="5" id="nI8-c2-TRZ"/>
+                                                                <constraint firstItem="lW3-8X-1Ic" firstAttribute="leading" secondItem="nsl-Rl-BdO" secondAttribute="trailing" constant="8" id="nI8-c2-TRZ"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBZ-Rf-HAr" userLabel="Wind">
@@ -1106,6 +1106,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="vNu-6n-xrs"/>
         <segue reference="FRh-sK-0Ra"/>
-        <segue reference="eXd-hG-Ytl"/>
+        <segue reference="mqU-3U-xh8"/>
     </inferredMetricsTieBreakers>
 </document>
