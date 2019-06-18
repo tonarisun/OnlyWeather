@@ -994,7 +994,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-4Y-67F" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-4Y-67F">
                                                     <rect key="frame" x="300" y="5" width="60" height="33.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="QmV-Q5-ELp"/>
@@ -1106,6 +1106,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="vNu-6n-xrs"/>
         <segue reference="FRh-sK-0Ra"/>
-        <segue reference="9zf-LK-kOb"/>
+        <segue reference="eXd-hG-Ytl"/>
     </inferredMetricsTieBreakers>
 </document>
