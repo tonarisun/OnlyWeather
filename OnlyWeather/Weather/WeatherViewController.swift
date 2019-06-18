@@ -118,7 +118,6 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
-            print(self?.weatherByHour.count)
         }
         refreshControl.endRefreshing()
         hourWeatherCollectionView.reloadData()
@@ -150,7 +149,8 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodayWeatherCell", for: indexPath) as! TodayWeatherCell
             guard let weather = todayWeather else { return cell }
-            cell.tempLabel.text = "\(weather.temp) °"
+            let temp = NSString(format:"%.1f", weather.temp)
+            cell.tempLabel.text = "\(temp) °"
             let pressure = Int(weather.pressure / 1.333)
             cell.pressureLabel.text = "\(pressure) mm"
             cell.humidityLabel.text = "\(weather.humidity) %"
@@ -185,7 +185,8 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.humidityLabel.text = "\(weather.humidity) %"
         let pressure = Int(weather.pressure / 1.333)
         cell.pressureLabel.text = "\(pressure) mm"
-        cell.tempLabel.text = "\(weather.temp) °С"
+        let temp = NSString(format:"%.1f", weather.temp)
+        cell.tempLabel.text = "\(temp) °С"
         let windSpeed = Int(weather.windSpeed)
         cell.windSpeedLabel.text = "\(windSpeed) m/s"
         setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
@@ -225,11 +226,11 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         case "Clouds":
             imageView.image = #imageLiteral(resourceName: "046-cloudy")
         case "Clear":
-            imageView.image = #imageLiteral(resourceName: "010-sun")
+            imageView.image = #imageLiteral(resourceName: "009-sun-1")
         case "Rain":
             imageView.image = #imageLiteral(resourceName: "029-storm-1")
         case "Snow":
-            imageView.image = #imageLiteral(resourceName: "029-storm-1")
+            imageView.image = #imageLiteral(resourceName: "020-snow")
         case "Thunderstorm":
             imageView.image = #imageLiteral(resourceName: "011-storm-5")
         case "Drizzle":
@@ -298,7 +299,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func setSkyImage(weather: Weather, cell: HourWeatherCell){
         if weather.time == "00" || weather.time == "03" || weather.time == "21" {
             cell.dateLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
-            cell.tempLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.tempLabel.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
             cell.skyLabel.textColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
             switch weather.sky {
             case "Clouds":
@@ -314,7 +315,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         } else {
             cell.dateLabel.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-            cell.tempLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cell.tempLabel.textColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
             cell.skyLabel.textColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
             switch weather.sky {
             case "Clouds":
