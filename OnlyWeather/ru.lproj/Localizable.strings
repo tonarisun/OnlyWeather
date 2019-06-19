@@ -7,8 +7,8 @@
 */
 
 "thunderstorm with rain" = "гроза с дождём";
-"thunderstorm with heavy rain" = "гроза с проливным дождем";
-"thunderstorm with light rain" = "гроза с небольшим дождем";
+"thunderstorm with heavy rain" = "гроза с проливным дождём";
+"thunderstorm with light rain" = "гроза и небольшой дождь";
 "thunderstorm" = "гроза";
 "light thunderstorm" = "небольшая гроза";
 "heavy thunderstorm" = "сильная гроза";
@@ -22,7 +22,7 @@
 "light intensity drizzle rain" = "моросящий дождь";
 "drizzle rain" = "моросящий дождь";
 "heavy intensity drizzle rain" = "сильный моросящий дождь";
-"shower rain and drizzle" = "сильный дождь и изморось";
+"shower rain and drizzle" = "сильный дождь";
 "heavy shower rain and drizzle" = "сильный ливень";
 "shower drizzle" = "моросящий дождь";
 "light rain" = "небольшой дождь";
@@ -58,8 +58,11 @@
 "tornado" = "торнадо";
 "clear sky" = "ясно";
 "few clouds" = "небольшая облачность";
-"scattered clouds" = "обалчно";
+"scattered clouds" = "облачно";
 "broken clouds" = "сильная облачность";
 "overcast clouds" = "сплошная облачность";
 "my cities" = "мои города";
 "search" = "поиск";
+"Hello!" = "Привет!";
+"alert message" = "Нажми на 'поиск' и выбери нужный город. Можно добавить сразу несколько городов в список или выбрать один";
+"added to 'my cities'" = "добавлен в 'мои города'";

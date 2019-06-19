@@ -76,7 +76,7 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
             catch {
                 print(error)
             }
-            self.addCityAlert(city: city)
+            self.addCityAlertLang(city: city)
         }
         return cell
     }
@@ -121,37 +121,20 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
         allCitiesTableView.reloadData()
     }
     
-    func addCityAlertRUS(city: String) {
-        let alert = UIAlertController(title: nil, message: "\(city) добавлен в 'мои города'", preferredStyle: .alert)
+    func addCityAlert(city: String) {
+        let message = NSLocalizedString("added to 'my cities'", comment: "")
+        let alert = UIAlertController(title: nil, message: "\(city) \(message)", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
 
-    func addCityAlert(city: City) {
+    func addCityAlertLang(city: City) {
         if userLanguage.hasPrefix("ru") {
-            addCityAlertRUS(city: city.cityNameRUS)
+            addCityAlert(city: city.cityNameRUS)
         } else {
-            if userLanguage.hasPrefix("de") {
-                addCityAlertDE(city: city.cityName)
-            } else {
-                addCityAlertENG(city: city.cityName)
-            }
+            addCityAlert(city: city.cityName)
         }
-    }
-    
-    func addCityAlertENG(city: String) {
-        let alert = UIAlertController(title: nil, message: "\(city) added to 'my cities'", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func addCityAlertDE(city: String) {
-        let alert = UIAlertController(title: nil, message: "\(city) zur 'meine Städte' hinzugefügt", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func hideKeyboard() {

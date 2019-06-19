@@ -60,7 +60,7 @@
                                     <outlet property="delegate" destination="IrR-St-qvG" id="Eph-vM-Zfm"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-WE-bjD" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-WE-bjD">
                                 <rect key="frame" x="260" y="25" width="100" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ISM-CK-AfH"/>
@@ -83,10 +83,6 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="search"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ej0-Tw-Qjv" kind="presentation" modalTransitionStyle="crossDissolve" id="ZRZ-Tm-wj5"/>
                                 </connections>
@@ -852,7 +848,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-ZT-f0j" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-ZT-f0j">
                                 <rect key="frame" x="257" y="25" width="115" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="9hG-nU-9vf"/>
@@ -875,15 +871,11 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="my cities"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="IrR-St-qvG" kind="show" identifier="goToCitiesList" id="mqU-3U-xh8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-1N-6Jm" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-1N-6Jm">
                                 <rect key="frame" x="3" y="25" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="bFD-F3-hTU"/>
@@ -899,10 +891,6 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="search"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ej0-Tw-Qjv" kind="show" id="JIo-CK-iSY"/>
                                 </connections>
@@ -1039,7 +1027,7 @@
                                     <outlet property="delegate" destination="ej0-Tw-Qjv" id="JbJ-Mw-xtc"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-Ta-7rA" customClass="MyButton" customModule="OnlyWeather" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-Ta-7rA">
                                 <rect key="frame" x="15" y="25" width="115" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="4J4-V3-PMO"/>
@@ -1055,10 +1043,6 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoLocalize" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizeKey" value="my cities"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="IrR-St-qvG" kind="presentation" modalTransitionStyle="crossDissolve" id="eXd-hG-Ytl"/>
                                 </connections>
@@ -1107,7 +1091,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZRZ-Tm-wj5"/>
-        <segue reference="542-th-XsW"/>
-        <segue reference="mqU-3U-xh8"/>
+        <segue reference="pli-eY-zQq"/>
+        <segue reference="eXd-hG-Ytl"/>
     </inferredMetricsTieBreakers>
 </document>

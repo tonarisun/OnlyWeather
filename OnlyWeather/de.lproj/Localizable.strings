@@ -17,11 +17,11 @@
 "thunderstorm with drizzle" = "Gewitter mit Nieselregen";
 "thunderstorm with heavy drizzle" = "Gewitter mit starkem Nieselregen";
 "drizzle" = "Nieselregen";
-"light intensity drizzle" = "Lichtintensität Nieselregen";
+"light intensity drizzle" = "leichter Nieselregen";
 "heavy intensity drizzle" = "starker Nieselregen";
-"light intensity drizzle rain" = "Lichtintensität Nieselregen";
+"light intensity drizzle rain" = "leichter Nieselregen";
 "drizzle rain" = "Nieselregen";
-"heavy intensity drizzle rain" = "starker intensiver Nieselregen";
+"heavy intensity drizzle rain" = "starker Nieselregen";
 "shower rain and drizzle" = "Regen und Nieselregen";
 "heavy shower rain and drizzle" = "starker Regen und Nieselregen";
 "shower drizzle" = "Duschniesel";
@@ -31,7 +31,7 @@
 "very heavy rain" = "sehr starker Regen";
 "extreme rain" = "extremer Regen";
 "freezing rain" = "gefrierender Regen";
-"light intensity shower rain" = "Lichtintensität Duschregen";
+"light intensity shower rain" = "leichter Duschregen";
 "shower rain" = "Duschregen";
 "heavy intensity shower rain" = "heftiger Duschregen";
 "ragged shower rain" = "zerklüfteter Duschregen";
@@ -43,9 +43,9 @@
 "Shower sleet" = "Duschregen";
 "Light rain and snow" = "leichter Regen und Schnee";
 "Rain and snow" = "Regen und Schnee";
-"Light shower snow" = "Leichte Dusche Schnee";
-"Shower snow" = "Schnee duschen";
-"Heavy shower snow" = "Starker Regenschnee";
+"Light shower snow" = "leichter Schnee";
+"Shower snow" = "Schnee";
+"Heavy shower snow" = "starker Regenschnee";
 "mist" = "Nebel";
 "Smoke" = "Rauch";
 "Haze" = "Dunst";
@@ -57,11 +57,12 @@
 "squalls" = "Sturmböen";
 "tornado" = "Tornado";
 "clear sky" = "klare Sicht";
-"few clouds" = "wenige Wolken";
+"few clouds" = "vereinzelt Wolken";
 "scattered clouds" = "verstreute Wolken";
 "broken clouds" = "durchbrochene Wolken";
 "overcast clouds" = "bedeckte Wolken";
 "my cities" = "meine Städte";
 "search" = "suchen";
-
-
+"Hello!" = "Hallo!";
+"alert message" = "Klicken Sie auf 'suchen' und wählen Sie die gewünschte Stadt aus. Sie können mehrere Städte hinzufügen oder eine auswählen";
+"added to 'my cities'" = "zur 'meine Städte' hinzugefügt";

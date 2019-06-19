@@ -27,21 +27,15 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidAppear(true)
         
         guard currentCity != nil else {
-            if userLanguage.hasPrefix("ru") {
-               addCityAlertRUS()
-            } else {
-                if userLanguage.hasPrefix("de") {
-                    AddCityAlertDE()
-                } else {
-                   AddCityAlertENG()
-                }
-            }
+            helloAlert()
             return
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dayWeatherTableView.isHidden = true
         
         loadCityFromRLM()
         
@@ -66,6 +60,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
+            self?.dayWeatherTableView.isHidden = false
             self?.dayWeatherTableView.reloadData()
             self?.hourWeatherCollectionView.reloadData()
         }
@@ -80,22 +75,10 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func addCityAlertRUS() {
-        let alert = UIAlertController(title: "Привет!", message: "Нажми на 'поиск' и выбери нужный город. Можно добавить сразу несколько городов в список или выбрать один", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func AddCityAlertENG() {
-        let alert = UIAlertController(title: "Hello!", message: "Tap 'search' and find your city. You can add several cities or choose one of them", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-
-    func AddCityAlertDE() {
-        let alert = UIAlertController(title: "Hallo!", message: "Klicken Sie auf 'suchen' und wählen Sie die gewünschte Stadt aus. Sie können mehrere Städte hinzufügen oder eine auswählen.", preferredStyle: .alert)
+    func helloAlert() {
+        let hello = NSLocalizedString("Hello!", comment: "")
+        let message = NSLocalizedString("alert message", comment: "")
+        let alert = UIAlertController(title: hello, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
@@ -142,7 +125,8 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     
 //    WEATHER BY THE DAY TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherByDay.count
+        let number = weatherByDay.count + 1
+        return number
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
