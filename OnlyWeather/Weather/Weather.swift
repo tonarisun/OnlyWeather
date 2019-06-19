@@ -24,6 +24,7 @@ class Weather: Mappable {
     var shortDate = ""
     var day = ""
     var time = ""
+    var weekDay = ""
     
     required init?(map: Map) {}
     

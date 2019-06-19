@@ -22,6 +22,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     var weatherByDay = [Weather]()
     var refreshControl = UIRefreshControl()
     let userLanguage = NSLocale.preferredLanguages.first!
+    let date = NSDate()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -60,6 +61,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
+            self?.service.getDaysOfWeek(weatherArr: self!.weatherByDay)
             self?.dayWeatherTableView.isHidden = false
             self?.dayWeatherTableView.reloadData()
             self?.hourWeatherCollectionView.reloadData()
@@ -90,24 +92,24 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         dayWeatherTableView.addSubview(refreshControl)
     }
     
+    //    REFRESH WEATHER DATA
     @objc func refreshWeatherData() {
         guard currentCity != nil else { return }
-        
         service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
             self?.todayWeather = todayWeather
         }
-        
         service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
             self?.weatherList = weathers
             self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
             self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
+            self?.service.getDaysOfWeek(weatherArr: self!.weatherByDay)
         }
         refreshControl.endRefreshing()
         hourWeatherCollectionView.reloadData()
         dayWeatherTableView.reloadData()
     }
     
-//     WEATHER BY THE HOUR COLLECTIOM VIEW
+    //     WEATHER BY THE HOUR COLLECTIOM VIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weatherByHour.count
     }
@@ -119,11 +121,11 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         let temp = Int(weather.temp)
         cell.tempLabel.text = "\(temp) °C"
         cell.skyLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
-       setSkyImage(weather: weather, cell: cell)
+        setSkyImage(weather: weather, cell: cell)
         return cell
     }
     
-//    WEATHER BY THE DAY TABLE VIEW
+    //    WEATHER BY THE DAY TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let number = weatherByDay.count + 1
         return number
@@ -146,7 +148,6 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let sunset = weather.sunset + weather.timezone
             cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (sunrise))
             cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (sunset))
-            let date = NSDate()
             let now = date.hour()
             if now >= 21 || now <= 6 {
                 setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
@@ -155,27 +156,31 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             return cell
         } else {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
-        let weather = weatherByDay[indexPath.row - 1]
-        if indexPath.row % 2 != 0 {
-            cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
-        } else {
-            cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
-        }
-            cell.dateLabel.attributedText = NSAttributedString(string: weather.day, attributes:
-                [.underlineStyle: NSUnderlineStyle.single.rawValue])
-        cell.humidityLabel.text = "\(weather.humidity) %"
-        let pressure = Int(weather.pressure / 1.333)
-        cell.pressureLabel.text = "\(pressure) mm"
-        let temp = NSString(format:"%.1f", weather.temp)
-        cell.tempLabel.text = "\(temp) °С"
-        let windSpeed = Int(weather.windSpeed)
-        cell.windSpeedLabel.text = "\(windSpeed) m/s"
-        setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
+            let weather = weatherByDay[indexPath.row - 1]
+            if indexPath.row % 2 != 0 {
+                cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
+            } else {
+                cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
+            }
+            if weather.weekDay != "" {
+                let weekDay = NSLocalizedString(weather.weekDay, comment: "")
+                cell.dateLabel.attributedText = NSAttributedString(string: weekDay + ",  " + weather.day, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+            } else {
+                cell.dateLabel.text = ""
+            }
+            cell.humidityLabel.text = "\(weather.humidity) %"
+            let pressure = Int(weather.pressure / 1.333)
+            cell.pressureLabel.text = "\(pressure) mm"
+            let temp = NSString(format:"%.1f", weather.temp)
+            cell.tempLabel.text = "\(temp) °С"
+            let windSpeed = Int(weather.windSpeed)
+            cell.windSpeedLabel.text = "\(windSpeed) m/s"
+            setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
             cell.skyDescriptionLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
-        return cell
+            return cell
         }
     }
 

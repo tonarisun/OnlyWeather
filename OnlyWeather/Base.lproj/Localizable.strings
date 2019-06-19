@@ -66,3 +66,10 @@
 "Hello!" = "Hello!";
 "alert message" = "Tap 'search' and find your city. You can add several cities or choose one of them";
 "added to 'my cities'" = "added to 'my cities'";
+"sunday" = "sunday";
+"monday" = "monday";
+"tuesday" = "tuesday";
+"wednesday" = "wednesday";
+"thursday" = "thursday";
+"friday" = "friday";
+"saturday" = "saturday";

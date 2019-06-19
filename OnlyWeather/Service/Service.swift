@@ -70,6 +70,43 @@ class Service {
         return weatherByHour
     }
     
+    func getDaysOfWeek(weatherArr: [Weather]) {
+        let date = Date()
+        var day = date.dayNumberOfWeek()
+        var i = 1
+        while i < weatherArr.count {
+            if day == 7 {
+                day = 0
+            }
+            day += 1
+            weatherArr[i].weekDay = getDayString(number: day)
+            i += 2
+        }
+    }
+    
+    func getDayString(number: Int) -> String {
+        let dayOfWeek: String
+        switch number {
+        case 1:
+            dayOfWeek = "sunday"
+        case 2:
+            dayOfWeek = "monday"
+        case 3:
+            dayOfWeek = "tuesday"
+        case 4:
+            dayOfWeek = "wednesday"
+        case 5:
+            dayOfWeek = "thursday"
+        case 6:
+            dayOfWeek = "friday"
+        case 7:
+            dayOfWeek = "saturday"
+        default:
+            dayOfWeek = ""
+        }
+        return dayOfWeek
+    }
+    
     public func getTimeFromUNIXTime(date: Double) -> String {
         let date = Date(timeIntervalSince1970: date)
         let dateFormatter = DateFormatter()
@@ -88,5 +125,12 @@ extension NSDate {
         let hour = components.hour
         //Return Hour
         return hour!
+    }
+}
+
+extension Date {
+    func dayNumberOfWeek() -> Int {
+        let day = Calendar.current.dateComponents([.weekday], from: self).weekday
+        return day!
     }
 }

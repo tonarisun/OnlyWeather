@@ -66,3 +66,10 @@
 "Hello!" = "Hallo!";
 "alert message" = "Klicken Sie auf 'suchen' und wählen Sie die gewünschte Stadt aus. Sie können mehrere Städte hinzufügen oder eine auswählen";
 "added to 'my cities'" = "zur 'meine Städte' hinzugefügt";
+"sunday" = "Sonntag";
+"monday" = "Montag";
+"tuesday" = "Dienstag";
+"wednesday" = "Mittwoch";
+"thursday" = "Donnerstag";
+"friday" = "Freitag";
+"saturday" = "Samstag";
