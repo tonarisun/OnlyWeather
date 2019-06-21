@@ -11,6 +11,8 @@ import RealmSwift
 
 class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var myCitiesButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var hourWeatherCollectionView: UICollectionView!
     @IBOutlet weak var dayWeatherTableView: UITableView!
@@ -27,14 +29,23 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+        let chooseCity = NSLocalizedString("choose a city", comment: "")
+        
         guard currentCity != nil else {
             helloAlert()
+            cityNameLabel.text = chooseCity
             return
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let search = NSLocalizedString("<< search", comment: "")
+        let myCities = NSLocalizedString("my cities >>", comment: "")
+        searchButton.setTitle(search, for: .normal)
+        myCitiesButton.setTitle(myCities, for: .normal)
+        
         
         dayWeatherTableView.isHidden = true
         

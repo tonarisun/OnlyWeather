@@ -12,6 +12,7 @@ import RealmSwift
 
 class SearchCityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    @IBOutlet weak var myCitiesButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var allCitiesTableView: UITableView!
     var cities = [City]()
@@ -22,6 +23,9 @@ class SearchCityViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let myCities = NSLocalizedString("<< my cities", comment: "")
+        myCitiesButton.setTitle(myCities, for: .normal)
         
         setUpSearchBar()
         

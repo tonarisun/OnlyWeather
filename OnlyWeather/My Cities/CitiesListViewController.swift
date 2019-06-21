@@ -13,6 +13,7 @@ import RealmSwift
 
 class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var citiesListTableView: UITableView!
     var cities : Results<City>?
     let showWeatherSegueID = "showWeatherSegue"
@@ -21,7 +22,10 @@ class CitiesListViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let search = NSLocalizedString("search >>", comment: "")
+        searchButton.setTitle(search, for: .normal)
+        
         loadCitiesFromRLM()
         addRealmObserve()
     }

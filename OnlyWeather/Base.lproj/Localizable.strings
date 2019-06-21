@@ -61,8 +61,12 @@
 "scattered clouds" = "scattered clouds";
 "broken clouds" = "broken clouds";
 "overcast clouds" = "overcast clouds";
-"my cities" = "my cities";
-"search" = "search";
+"my cities >>" = "my cities >>";
+"<< search" = "<< search";
+"<< my cities" = "<< my cities";
+"search >>" = "search >>";
+"choose a city" = "choose a city";
+"Now" = "Now";
 "Hello!" = "Hello!";
 "alert message" = "Tap 'search' and find your city. You can add several cities or choose one of them";
 "added to 'my cities'" = "added to 'my cities'";

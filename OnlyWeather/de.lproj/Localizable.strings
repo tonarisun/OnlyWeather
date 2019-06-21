@@ -61,8 +61,12 @@
 "scattered clouds" = "verstreute Wolken";
 "broken clouds" = "durchbrochene Wolken";
 "overcast clouds" = "bedeckte Wolken";
-"my cities" = "meine Städte";
-"search" = "suchen";
+"my cities >>" = "meine Städte >>";
+"<< search" = "<< suchen";
+"<< my cities" = "<< meine Städte";
+"search >>" = "suchen >>";
+"choose a city" = "wählen Sie die Stadt";
+"Now" = "Jetzt";
 "Hello!" = "Hallo!";
 "alert message" = "Klicken Sie auf 'suchen' und wählen Sie die gewünschte Stadt aus. Sie können mehrere Städte hinzufügen oder eine auswählen";
 "added to 'my cities'" = "zur 'meine Städte' hinzugefügt";
