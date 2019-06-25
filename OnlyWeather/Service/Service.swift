@@ -26,61 +26,66 @@ class Service {
         }
     }
     
-    func getShortDateDayAndTime(weatherItem: Weather, stringDate: String) {
-        var charArray = Array(stringDate)
-        let shortDateArr = [charArray[8], charArray[9], ".", charArray[5], charArray[6], " ", charArray[11], charArray[12], charArray[13], charArray[14], charArray[15]]
-        let dayArr = [charArray[8], charArray[9], ".", charArray[5], charArray[6]]
-        let timeArr = [charArray[11], charArray[12]]
-        weatherItem.shortDate = String(shortDateArr)
-        weatherItem.day = String(dayArr)
-        weatherItem.time = String(timeArr)
-    }
-   
-    func sortWeatherByDay(weatherList: [Weather]) -> [Weather] {
-        var weatherList = weatherList
-        var today = [Weather]()
-        var weatherByDay = [Weather]()
-        var i = 1
-        for weather in weatherList {
-            getShortDateDayAndTime(weatherItem: weather, stringDate: weather.date)
-            if weather.day == weatherList[0].day {
-                today.append(weather)
+    func getDayAndTime(weatherList: [Weather], timezone: Int) {
+        for weatherItem in weatherList {
+            var charArray = Array(weatherItem.date)
+            let dayArr = [charArray[8], charArray[9]]
+            let monthArr = [charArray[5], charArray[6]]
+            let timeArr = [charArray[11], charArray[12]]
+            let tempDayArray = [charArray[8], charArray[9]]
+            let timeInCurrentCityString = String(timeArr)
+            let timeInCurrentCityInt = Int(timeInCurrentCityString)! + timezone
+            let tempDayInt = Int(String(tempDayArray))
+            if timeInCurrentCityInt >= 24 {
+                weatherItem.time = timeInCurrentCityInt - 24
+                weatherItem.tempDay = tempDayInt! + 1
+            } else {
+                if timeInCurrentCityInt < 0 {
+                    weatherItem.time = timeInCurrentCityInt + 24
+                    weatherItem.tempDay = tempDayInt! - 1
+                } else {
+                    weatherItem.time = timeInCurrentCityInt
+                    weatherItem.tempDay = tempDayInt!
+                }
             }
+            weatherItem.day = Int(String(dayArr))!
+            weatherItem.month = String(monthArr)
         }
-        for _ in 1...today.count {
-            weatherList.removeFirst()
+    }
+    
+    func sortWeatherByDay(weatherList: [Weather]) -> [Weather] {
+        var weatherByDay = [Weather]()
+        guard let time = weatherList.first?.time else {
+            return weatherByDay
         }
-        while i < weatherList.count {
-            weatherByDay.append(weatherList[i])
-            i += 4
+        if time > 6 && time < 21 {
+            for weather in weatherList {
+                if (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3) {
+                    weatherByDay.append(weather)
+                }
+            }
+            if weatherByDay.first!.time >= 13 && weatherByDay.first!.time <= 15 {
+                weatherByDay.removeFirst()
+            }
+        } else {
+            for weather in weatherList {
+                if (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3) {
+                    weatherByDay.append(weather)
+                }
+            }
+            if weatherByDay.first!.time >= 1 && weatherByDay.first!.time <= 3 {
+                weatherByDay.removeFirst()
+            }
         }
         return weatherByDay
     }
     
-    func ifTimeLater(weatherList: [Weather]) -> [Weather] {
-        var weatherByHour = weatherList
-        let now = NSDate()
-        let currentHour = now.hour()
-        for weather in weatherList {
-            let weatherTime = Int(weather.time)
-            guard currentHour > weatherTime!,
-            weatherTime != 0 else { return weatherByHour }
-            weatherByHour.removeFirst()
-        }
-        return weatherByHour
-    }
-    
     func getDaysOfWeek(weatherArr: [Weather]) {
-        let date = Date()
-        var day = date.dayNumberOfWeek()
-        var i = 1
-        while i < weatherArr.count {
-            if day == 7 {
-                day = 0
-            }
-            day += 1
-            weatherArr[i].weekDay = getDayString(number: day)
-            i += 2
+        for weather in weatherArr {
+            let stringDate = weather.date
+            let weatherDate = stringToDate(dateString: stringDate)
+            let dayNumber = weatherDate.numberOfWeekDay()
+            weather.weekDay = getDayString(number: dayNumber)
         }
     }
     
@@ -110,27 +115,39 @@ class Service {
     public func getTimeFromUNIXTime(date: Double) -> String {
         let date = Date(timeIntervalSince1970: date)
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "HH:mm:ss"
         return dateFormatter.string(from: date)
     }
-}
-
-extension NSDate {
-    public func hour() -> Int {
-        //Get Hour
-        let calendar = NSCalendar.current
-        let components = calendar.dateComponents(in: .current, from: self as Date)
-        let hour = components.hour
-        //Return Hour
-        return hour!
+    
+    func stringToDate(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: dateString)
+        return date!
     }
 }
 
 extension Date {
-    func dayNumberOfWeek() -> Int {
-        let day = Calendar.current.dateComponents([.weekday], from: self).weekday
+    
+    public func hour() -> Int {
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents(in: .current, from: self)
+        let hour = components.hour
+        return hour!
+    }
+    
+    public func date() -> Int {
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents(in: .current, from: self)
+        let date = components.day
+        return date!
+    }
+    
+    func numberOfWeekDay() -> Int {
+        let day = Calendar.current.dateComponents([.weekday], from: self as Date).weekday
         return day!
     }
 }
+

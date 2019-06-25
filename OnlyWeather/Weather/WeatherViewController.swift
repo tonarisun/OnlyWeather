@@ -19,12 +19,13 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     var currentCity : CurrentCity?
     let service = Service()
     var todayWeather : TodayWeather?
-    var weatherList = [Weather]()
     var weatherByHour = [Weather]()
     var weatherByDay = [Weather]()
+    var firstWeatherTime = 0
     var refreshControl = UIRefreshControl()
     let userLanguage = NSLocale.preferredLanguages.first!
     let date = NSDate()
+    var currentTimezone = 0
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -46,14 +47,11 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         searchButton.setTitle(search, for: .normal)
         myCitiesButton.setTitle(myCities, for: .normal)
         
-        
         dayWeatherTableView.isHidden = true
         
         loadCityFromRLM()
         
-        guard currentCity != nil else {
-            return
-        }
+        guard currentCity != nil else { return }
         
         addRefreshControl()
         
@@ -63,15 +61,20 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             cityNameLabel.text = currentCity!.cityName
         }
         
+        loadWeather()
+    }
+    
+    func loadWeather(){
         service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
             self?.todayWeather = todayWeather
+            self?.currentTimezone = todayWeather.timezone / 3600
             self?.dayWeatherTableView.reloadData()
         }
         
         service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
-            self?.weatherList = weathers
-            self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
-            self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
+            self?.weatherByHour = weathers
+            self?.service.getDayAndTime(weatherList: self!.weatherByHour, timezone: self!.currentTimezone)
+            self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: weathers)
             self?.service.getDaysOfWeek(weatherArr: self!.weatherByDay)
             self?.dayWeatherTableView.isHidden = false
             self?.dayWeatherTableView.reloadData()
@@ -106,18 +109,10 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    REFRESH WEATHER DATA
     @objc func refreshWeatherData() {
         guard currentCity != nil else { return }
-        service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
-            self?.todayWeather = todayWeather
-        }
-        service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
-            self?.weatherList = weathers
-            self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: self!.weatherList)
-            self?.weatherByHour = self!.service.ifTimeLater(weatherList: self!.weatherList)
-            self?.service.getDaysOfWeek(weatherArr: self!.weatherByDay)
-        }
-        refreshControl.endRefreshing()
+        loadWeather()
         hourWeatherCollectionView.reloadData()
         dayWeatherTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     //     WEATHER BY THE HOUR COLLECTIOM VIEW
@@ -128,7 +123,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourWeatherCell", for: indexPath) as! HourWeatherCell
         let weather = weatherByHour[indexPath.row]
-        cell.dateLabel.text = weather.shortDate
+        cell.dateLabel.text = "\(weather.time):00"
         let temp = Int(weather.temp)
         cell.tempLabel.text = "\(temp) °C"
         cell.skyLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
@@ -145,7 +140,15 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodayWeatherCell", for: indexPath) as! TodayWeatherCell
-            guard let weather = todayWeather else { return cell }
+            guard let weather = todayWeather,
+                let now = weatherByHour.first?.time else { return cell }
+            if now >= 21 || now < 6 {
+                setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
+                cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            } else {
+                setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
+                cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            }
             let temp = NSString(format:"%.1f", weather.temp)
             cell.tempLabel.text = "\(temp) °"
             let pressure = Int(weather.pressure / 1.333)
@@ -157,30 +160,21 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.skyDescriptionLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
             let sunrise = weather.sunrise + weather.timezone
             let sunset = weather.sunset + weather.timezone
-            cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (sunrise))
-            cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (sunset))
-            let now = date.hour()
-            if now >= 21 || now <= 6 {
-                setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
-            } else {
-                setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
-            }
+            cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (Double(sunrise)))
+            cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (Double(sunset)))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
             let weather = weatherByDay[indexPath.row - 1]
-            if indexPath.row % 2 != 0 {
+            if weather.time > 21 || weather.time < 6 {
                 cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
+                cell.dateLabel.text = ""
             } else {
                 cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
-            }
-            if weather.weekDay != "" {
                 let weekDay = NSLocalizedString(weather.weekDay, comment: "")
-                cell.dateLabel.attributedText = NSAttributedString(string: weekDay + ",  " + weather.day, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
-            } else {
-                cell.dateLabel.text = ""
+                cell.dateLabel.attributedText = NSAttributedString(string: weekDay + ", \(weather.day).\(weather.month)", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
             }
             cell.humidityLabel.text = "\(weather.humidity) %"
             let pressure = Int(weather.pressure / 1.333)
@@ -297,7 +291,7 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func setSkyImage(weather: Weather, cell: HourWeatherCell){
-        if weather.time == "00" || weather.time == "03" || weather.time == "21" {
+        if weather.time >= 21 || weather.time < 6 {
             cell.dateLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
             cell.tempLabel.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
             cell.skyLabel.textColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)

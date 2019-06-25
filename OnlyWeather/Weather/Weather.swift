@@ -21,10 +21,11 @@ class Weather: Mappable {
     var sky = ""
     var skyDescription = ""
     var date = ""
-    var shortDate = ""
-    var day = ""
-    var time = ""
+    var day = 0
+    var month = ""
+    var time = 0
     var weekDay = ""
+    var tempDay = 0
     
     required init?(map: Map) {}
     
@@ -51,6 +52,17 @@ class WeatherResponse: Mappable {
     }
 }
 
+class CurrentTimezone: Mappable {
+    
+    var timezone = 0
+
+    required init?(map: Map) {}
+    
+    func mapping(map: Map) {
+        timezone <- map["timezone"]
+    }
+}
+
 class TodayWeather: Mappable {
     
     var temp = 0.0
@@ -62,9 +74,9 @@ class TodayWeather: Mappable {
     var windDeg = 0.0
     var sky = ""
     var skyDescription = ""
-    var sunrise = 0.0
-    var sunset = 0.0
-    var timezone = 0.0
+    var sunrise = 0
+    var sunset = 0
+    var timezone = 0
     
     required init?(map: Map) {}
     
