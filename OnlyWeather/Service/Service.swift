@@ -58,7 +58,7 @@ class Service {
         guard let time = weatherList.first?.time else {
             return weatherByDay
         }
-        if time > 6 && time < 21 {
+        if time > 7 && time < 23 {
             for weather in weatherList {
                 if (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3) {
                     weatherByDay.append(weather)

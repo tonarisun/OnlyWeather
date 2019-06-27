@@ -142,12 +142,12 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodayWeatherCell", for: indexPath) as! TodayWeatherCell
             guard let weather = todayWeather,
                 let now = weatherByHour.first?.time else { return cell }
-            if now >= 21 || now < 6 {
-                setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
-                cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            } else {
+            if now > 7 && now < 23 {
                 setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
                 cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            } else {
+                setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
+                cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             }
             let temp = NSString(format:"%.1f", weather.temp)
             cell.tempLabel.text = "\(temp) °"
