@@ -144,10 +144,10 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let now = weatherByHour.first?.time else { return cell }
             if now > 7 && now < 23 {
                 setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
-                cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                cell.subView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
             } else {
                 setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
-                cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.subView.backgroundColor = #colorLiteral(red: 0.264832288, green: 0.4864405394, blue: 0.582516849, alpha: 1)
             }
             let temp = NSString(format:"%.1f", weather.temp)
             cell.tempLabel.text = "\(temp) °"
@@ -167,11 +167,11 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
             let weather = weatherByDay[indexPath.row - 1]
             if weather.time > 21 || weather.time < 6 {
-                cell.subView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.subView.backgroundColor = #colorLiteral(red: 0.264832288, green: 0.4864405394, blue: 0.582516849, alpha: 1)
                 setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
                 cell.dateLabel.text = ""
             } else {
-                cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                cell.subView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
                 setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
                 let weekDay = NSLocalizedString(weather.weekDay, comment: "")
                 cell.dateLabel.attributedText = NSAttributedString(string: weekDay + ", \(weather.day).\(weather.month)", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])

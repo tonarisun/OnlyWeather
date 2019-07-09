@@ -27,9 +27,9 @@ class DayWeatherCell: UITableViewCell {
         super.awakeFromNib()
         
         subView.layer.cornerRadius = 20
-        subView.layer.shadowOpacity = 1
+        subView.layer.shadowOpacity = 0.3
         subView.layer.shadowOffset = .zero
-        subView.layer.shadowColor = #colorLiteral(red: 0.03500115871, green: 0.06159752607, blue: 0.07407174259, alpha: 1)
+        subView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 
     }
 }

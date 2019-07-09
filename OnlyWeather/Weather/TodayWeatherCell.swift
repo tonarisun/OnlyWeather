@@ -30,9 +30,9 @@ class TodayWeatherCell: UITableViewCell {
         nowLabel.attributedText = NSAttributedString(string: now, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         
         subView.layer.cornerRadius = 20
-        subView.layer.shadowOpacity = 1
+        subView.layer.shadowOpacity = 0.5
         subView.layer.shadowOffset = .zero
-        subView.layer.shadowColor = #colorLiteral(red: 0.03500115871, green: 0.06159752607, blue: 0.07407174259, alpha: 1)
+        subView.layer.shadowColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         
     }
 }
