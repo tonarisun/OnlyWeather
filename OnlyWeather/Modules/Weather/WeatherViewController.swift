@@ -9,113 +9,160 @@
 import UIKit
 import RealmSwift
 
-class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+protocol WeatherView: class {
     
+    var configurator:  WeatherConfigurator? { get set }
+    var currentCity:   CurrentCity? { get set }
+    var todayWeather:  TodayWeather? { get set }
+    var weatherByHour: [Weather] { get set }
+    var weatherByDay:  [Weather] { get set }
+    var currentTimezone: Int { get set }
+    var day: Int? { get set }
+    var night: Int? { get set }
+    func refreshWeatherData()
+}
+
+class WeatherViewController: UIViewController, WeatherView {
+    
+    //MARK: - Outlets
     @IBOutlet weak var myCitiesButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var hourWeatherCollectionView: UICollectionView!
     @IBOutlet weak var dayWeatherTableView: UITableView!
-    var currentCity : CurrentCity?
-    let service = Service()
-    var todayWeather : TodayWeather?
+    @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
+    //MARK: - VUPER
+    @objc var configurator: WeatherConfigurator?
+    var presenter: WeatherPresenter?
+    
+    //MARK: - Data
+    var currentCity: CurrentCity?
+    var todayWeather: TodayWeather?
     var weatherByHour = [Weather]()
     var weatherByDay = [Weather]()
-    var firstWeatherTime = 0
+    var currentTimezone = 0
+    var day: Int?
+    var night: Int?
     var refreshControl = UIRefreshControl()
     let userLanguage = NSLocale.preferredLanguages.first!
-    let date = NSDate()
-    var currentTimezone = 0
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        let chooseCity = NSLocalizedString("choose a city", comment: "")
-        
-        guard currentCity != nil else {
-            helloAlert()
-            cityNameLabel.text = chooseCity
-            return
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .lightContent
+        } else {
+            return .default
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let search = NSLocalizedString("<< search", comment: "")
-        let myCities = NSLocalizedString("my cities >>", comment: "")
-        searchButton.setTitle(search, for: .normal)
-        myCitiesButton.setTitle(myCities, for: .normal)
-        
+        configurator = WeatherConfiguratorImpl()
+        configurator?.configure(self)
+        presenter?.viewDidLoad()
+        configureLoadIndicator()
+        loadIndicator.startAnimating()
+        configureCollectionView()
+        configureTableView()
+        configureTopButtons()
+        configureRefreshControl()
         dayWeatherTableView.isHidden = true
-        
-        loadCityFromRLM()
-        
-        guard currentCity != nil else { return }
-        
-        addRefreshControl()
-        
-        if userLanguage.hasPrefix("ru") {
-            cityNameLabel.text = currentCity!.cityNameRUS
-        } else {
-            cityNameLabel.text = currentCity!.cityName
+        currentCity = presenter?.loadCityFromRLM()
+        guard currentCity?.cityID != "" else { return }
+        configureCityNameLabel()
+        presenter?.loadWeather { _ in
+            self.dayWeatherTableView.isHidden = false
+            self.dayWeatherTableView.reloadData()
+            self.hourWeatherCollectionView.reloadData()
+            self.loadIndicator.stopAnimating()
+            self.loadIndicator.isHidden = true
         }
-        
-        loadWeather()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refreshWeatherData()
     }
     
-    func loadWeather(){
-        service.getTodayWeather(cityID: currentCity!.cityID) { [weak self] todayWeather in
-            self?.todayWeather = todayWeather
-            self?.currentTimezone = todayWeather.timezone / 3600
-            self?.dayWeatherTableView.reloadData()
-        }
-        
-        service.getWeather(cityID: currentCity!.cityID) { [weak self] weathers in
-            self?.weatherByHour = weathers
-            self?.service.getDayAndTime(weatherList: self!.weatherByHour, timezone: self!.currentTimezone)
-            self?.weatherByDay = self!.service.sortWeatherByDay(weatherList: weathers)
-            self?.service.getDaysOfWeek(weatherArr: self!.weatherByDay)
-            self?.dayWeatherTableView.isHidden = false
-            self?.dayWeatherTableView.reloadData()
-            self?.hourWeatherCollectionView.reloadData()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if currentCity?.cityID == "" {
+            helloAlert()
+            cityNameLabel.text = "choose a city".localized()
         }
     }
     
-    func loadCityFromRLM() {
-        do {
-            let realm = try Realm()
-            self.currentCity = realm.objects(CurrentCity.self).first
-        } catch {
-            print(error)
-        }
-    }
-    
-    func helloAlert() {
-        let hello = NSLocalizedString("Hello!", comment: "")
-        let message = NSLocalizedString("alert message", comment: "")
+    private func helloAlert() {
+        let hello = "Hello!".localized()
+        let message = "alert message".localized()
         let alert = UIAlertController(title: hello, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .cancel) { _ in
+            self.presenter?.alertBtnTapped()
+            self.loadIndicator.stopAnimating()
+            self.loadIndicator.isHidden = true
+        }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
     
-    func addRefreshControl() {
+    //MARK: - Configure
+    
+    private func configureCollectionView() {
+        hourWeatherCollectionView.delegate = self
+        hourWeatherCollectionView.dataSource = self
+    }
+    
+    private func configureTableView() {
+        dayWeatherTableView.delegate = self
+        dayWeatherTableView.dataSource = self
+    }
+    
+    private func configureRefreshControl() {
         refreshControl.tintColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         refreshControl.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
         dayWeatherTableView.addSubview(refreshControl)
     }
     
-    //    REFRESH WEATHER DATA
-    @objc func refreshWeatherData() {
-        guard currentCity != nil else { return }
-        loadWeather()
-        hourWeatherCollectionView.reloadData()
-        dayWeatherTableView.reloadData()
-        refreshControl.endRefreshing()
+    private func configureTopButtons() {
+        let search = "search".localized()
+        let myCities = "my cities".localized()
+        searchButton.setTitle(search, for: .normal)
+        myCitiesButton.setTitle(myCities, for: .normal)
     }
     
-    //     WEATHER BY THE HOUR COLLECTIOM VIEW
+    private func configureCityNameLabel() {
+        guard let city = currentCity else { return }
+        if userLanguage.hasPrefix("ru") {
+            cityNameLabel.text = city.cityNameRUS
+        } else {
+            cityNameLabel.text = city.cityName
+        }
+    }
+    
+    private func configureLoadIndicator() {
+        loadIndicator.color = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+    }
+    
+    //MARK: - Actions & Selectors
+    @objc func refreshWeatherData() {
+        loadIndicator.isHidden = false
+        loadIndicator.startAnimating()
+        currentCity = presenter?.loadCityFromRLM()
+        guard currentCity?.cityID != "" else { return }
+        configureCityNameLabel()
+        presenter?.loadWeather(completion: { _ in
+            self.dayWeatherTableView.isHidden = false
+            self.hourWeatherCollectionView.reloadData()
+            self.dayWeatherTableView.reloadData()
+            self.refreshControl.endRefreshing()
+            self.loadIndicator.stopAnimating()
+            self.loadIndicator.isHidden = true
+        })
+    }
+    
+}
+
+    //MARK: - Weather collection view
+extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weatherByHour.count
     }
@@ -126,23 +173,24 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.dateLabel.text = "\(weather.time):00"
         let temp = Int(weather.temp)
         cell.tempLabel.text = "\(temp) °C"
-        cell.skyLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
+        cell.skyLabel.text = weather.skyDescription.localized()
         setSkyImage(weather: weather, cell: cell)
         return cell
     }
+}
+
+    //MARK: - Weather Table View
+extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
-    //    WEATHER BY THE DAY TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let number = weatherByDay.count + 1
-        return number
+        return weatherByDay.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodayWeatherCell", for: indexPath) as! TodayWeatherCell
-            guard let weather = todayWeather,
-                let now = weatherByHour.first?.time else { return cell }
-            if now > 7 && now < 23 {
+            guard let weather = todayWeather else { return cell }
+            if weather.time > weather.sunrise && weather.time < weather.sunset {
                 setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
                 cell.subView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
             } else {
@@ -157,23 +205,28 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let windSpeed = Int(weather.windSpeed)
             cell.windSpeedLabel.text = "\(windSpeed) m/s"
             setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
-            cell.skyDescriptionLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
+            cell.skyDescriptionLabel.text = weather.skyDescription.localized()
             let sunrise = weather.sunrise + weather.timezone
             let sunset = weather.sunset + weather.timezone
-            cell.sunriseLabel.text = service.getTimeFromUNIXTime(date: (Double(sunrise)))
-            cell.sunsetLabel.text = service.getTimeFromUNIXTime(date: (Double(sunset)))
+            cell.sunriseLabel.text = Service.getTimeFromUNIXTime(date: (Double(sunrise)))
+            cell.sunsetLabel.text = Service.getTimeFromUNIXTime(date: (Double(sunset)))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
             let weather = weatherByDay[indexPath.row - 1]
+            let weekDay = weather.weekDay.localized()
             if weather.time > 21 || weather.time < 6 {
                 cell.subView.backgroundColor = #colorLiteral(red: 0.264832288, green: 0.4864405394, blue: 0.582516849, alpha: 1)
                 setSkyImageNight(skyDescription: weather.sky, imageView: cell.skyImageView)
-                cell.dateLabel.text = ""
+                if indexPath.row - 1 == 0 {
+                    let text = "today_night".localized()
+                    cell.dateLabel.attributedText = NSAttributedString(string: text, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+                } else {
+                    cell.dateLabel.attributedText = nil
+                }
             } else {
                 cell.subView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
                 setSkyImageDay(skyDescription: weather.sky, imageView: cell.skyImageView)
-                let weekDay = NSLocalizedString(weather.weekDay, comment: "")
                 cell.dateLabel.attributedText = NSAttributedString(string: weekDay + ", \(weather.day).\(weather.month)", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
             }
             cell.humidityLabel.text = "\(weather.humidity) %"
@@ -184,12 +237,14 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
             let windSpeed = Int(weather.windSpeed)
             cell.windSpeedLabel.text = "\(windSpeed) m/s"
             setWindDirectionImage(degree: weather.windDeg, imageView: cell.windDirectionImageView)
-            cell.skyDescriptionLabel.text = NSLocalizedString(weather.skyDescription, comment: "")
+            cell.skyDescriptionLabel.text = weather.skyDescription.localized()
             return cell
         }
     }
+}
 
-    
+    // MARK: - Set images
+extension WeatherViewController {
     func setWindDirectionImage(degree: Double, imageView: UIImageView) {
         switch degree {
         case 0...15:
@@ -290,8 +345,8 @@ class WeatherViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func setSkyImage(weather: Weather, cell: HourWeatherCell){
-        if weather.time >= 21 || weather.time < 6 {
+    func setSkyImage(weather: Weather, cell: HourWeatherCell) {
+        if weather.time > night ?? 21 || weather.time <= day ?? 6 {
             cell.dateLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
             cell.tempLabel.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
             cell.skyLabel.textColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)

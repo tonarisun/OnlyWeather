@@ -26,7 +26,7 @@ class TodayWeatherCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let now = NSLocalizedString("Now", comment: "")
+        let now = "Now".localized()
         nowLabel.attributedText = NSAttributedString(string: now, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         
         subView.layer.cornerRadius = 20

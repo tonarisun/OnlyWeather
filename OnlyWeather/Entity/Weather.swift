@@ -77,6 +77,7 @@ class TodayWeather: Mappable {
     var sunrise = 0
     var sunset = 0
     var timezone = 0
+    var time = 0
     
     required init?(map: Map) {}
     

@@ -11,24 +11,10 @@ import Alamofire
 
 class Service {
     
-    func getWeather(cityID: String, completion: @escaping ([Weather]) -> Void) {
-        Alamofire.request("https://api.openweathermap.org/data/2.5/forecast?id=\(cityID)&mode=json&units=metric&appid=4142e9613cb27a38a3607937f747095c").responseObject { (response: DataResponse<WeatherResponse>) in
-            guard let weatherResponse = response.result.value else { return }
-            let weathers = weatherResponse.response
-            completion(weathers)
-        }
-    }
-    
-    func getTodayWeather(cityID: String, completion: @escaping (TodayWeather) -> Void) {
-        Alamofire.request("https://api.openweathermap.org/data/2.5/weather?id=\(cityID)&mode=json&units=metric&appid=4142e9613cb27a38a3607937f747095c").responseObject { (response: DataResponse<TodayWeather>) in
-            guard let todayWeather = response.result.value else { return }
-            completion(todayWeather)
-        }
-    }
-    
-    func getDayAndTime(weatherList: [Weather], timezone: Int) {
-        for weatherItem in weatherList {
-            var charArray = Array(weatherItem.date)
+    func getDayAndTime(weatherList: [Weather], timezone: Int) -> [Weather] {
+        let weather = weatherList
+        for weatherItem in weather {
+            let charArray = Array(weatherItem.date)
             let dayArr = [charArray[8], charArray[9]]
             let monthArr = [charArray[5], charArray[6]]
             let timeArr = [charArray[11], charArray[12]]
@@ -51,41 +37,30 @@ class Service {
             weatherItem.day = Int(String(dayArr))!
             weatherItem.month = String(monthArr)
         }
+        return weather
     }
     
     func sortWeatherByDay(weatherList: [Weather]) -> [Weather] {
         var weatherByDay = [Weather]()
-        guard let time = weatherList.first?.time else {
-            return weatherByDay
-        }
-        if time > 7 && time < 23 {
-            for weather in weatherList {
-                if (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3) {
-                    weatherByDay.append(weather)
-                }
-            }
-            if weatherByDay.first!.time >= 13 && weatherByDay.first!.time <= 15 {
-                weatherByDay.removeFirst()
-            }
-        } else {
-            for weather in weatherList {
-                if (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3) {
-                    weatherByDay.append(weather)
-                }
-            }
-            if weatherByDay.first!.time >= 1 && weatherByDay.first!.time <= 3 {
-                weatherByDay.removeFirst()
+        for weather in weatherList {
+            if (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3) {
+                weatherByDay.append(weather)
             }
         }
         return weatherByDay
     }
     
+    func checkTime(now: Int, nextTime: Int) -> Bool {
+        return ((now >= 12 && now <= 16) && (nextTime >= 12 && nextTime <= 16)) || ((now >= 0 && now <= 4) && (nextTime >= 0 && nextTime <= 4))
+    }
+    
     func getDaysOfWeek(weatherArr: [Weather]) {
+        
         for weather in weatherArr {
             let stringDate = weather.date
             let weatherDate = stringToDate(dateString: stringDate)
             let dayNumber = weatherDate.numberOfWeekDay()
-            weather.weekDay = getDayString(number: dayNumber)
+            weather.weekDay = getDayString(number: dayNumber ?? 0)
         }
     }
     
@@ -112,13 +87,33 @@ class Service {
         return dayOfWeek
     }
     
-    public func getTimeFromUNIXTime(date: Double) -> String {
+    static func getTimeFromUNIXTime(date: Double) -> String {
         let date = Date(timeIntervalSince1970: date)
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "HH:mm:ss"
         return dateFormatter.string(from: date)
+    }
+    
+    func getTimeFromUNIXInt(date: Int) -> Int? {
+        let date = Date(timeIntervalSince1970: TimeInterval(date))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "HH"
+        let intTime = Int(dateFormatter.string(from: date))
+        return intTime
+    }
+    
+    func correctTime(time: Int) -> Int {
+        var tempTime = time
+        if time < 0 {
+             tempTime += 24
+         } else if time > 24 {
+             tempTime -= 24
+         }
+        return tempTime
     }
     
     func stringToDate(dateString: String) -> Date {
@@ -145,9 +140,14 @@ extension Date {
         return date!
     }
     
-    func numberOfWeekDay() -> Int {
-        let day = Calendar.current.dateComponents([.weekday], from: self as Date).weekday
-        return day!
+    func numberOfWeekDay() -> Int? {
+        return Calendar.current.dateComponents([.weekday], from: self as Date).weekday
     }
 }
 
+extension String {
+    
+    func localized() -> String {
+        return NSLocalizedString(self, comment: "")
+    }
+}
