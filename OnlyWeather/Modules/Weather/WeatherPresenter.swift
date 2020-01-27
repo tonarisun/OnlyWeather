@@ -15,7 +15,6 @@ protocol WeatherPresenter: class {
          router: WeatherRouter,
          getWeatherUseCase: GetWeatherUseCase,
          getTodayWeatherUseCase: GetTodayWeatherUseCase)
-    func viewDidLoad()
     func loadCityFromRLM() -> CurrentCity
     func loadWeather(completion: @escaping (Bool) -> ())
     func alertBtnTapped()
@@ -41,6 +40,7 @@ class WeatherPresenterImpl: WeatherPresenter {
     var now = 0
     var token: NotificationToken!
     
+    //MARK: - Init
     required init(view: WeatherView,
                   router: WeatherRouter,
                   getWeatherUseCase: GetWeatherUseCase,
@@ -51,9 +51,7 @@ class WeatherPresenterImpl: WeatherPresenter {
         self.getTodayWeatherUseCase = getTodayWeatherUseCase
     }
     
-    func viewDidLoad() {
-    }
-    
+    //MARK: - Presenter protocol
     func loadCityFromRLM() -> CurrentCity {
         let currentCity = rlmHelper.loadCurrentCity()
         self.currentCity = currentCity

@@ -58,6 +58,18 @@ class RealmHelper {
         }
     }
     
+    func deleteCity(_ city: City) {
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.delete(city)
+            try realm.commitWrite()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
     private func createEmptyCurrentCity() {
         let city = CurrentCity()
         do {

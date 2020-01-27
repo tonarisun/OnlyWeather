@@ -36,7 +36,7 @@ class SearchCityPresenterImpl: SearchCityPresenter {
     var filteredCities = [City]()
     let rlmHelper = RealmHelper()
     
-    
+    //MARK: - Init
     required init(view: SearchCityView,
                   router: SearchCityRouter,
                   getCitiesUseCase: GetCitiesUseCase) {
@@ -45,6 +45,7 @@ class SearchCityPresenterImpl: SearchCityPresenter {
         self.getCitiesUseCase = getCitiesUseCase
     }
     
+    //MARK: - Presenter protocol
     func getCities(completion: @escaping ([City]) -> ()) {
         getCitiesUseCase?.execute(completion: { (cities) in
             guard let cityList = cities else { return }

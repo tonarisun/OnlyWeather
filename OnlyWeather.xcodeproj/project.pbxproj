@@ -32,6 +32,8 @@
 		D647D8BA23D4245D00FAE072 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647D8B823D4245D00FAE072 /* City.swift */; };
 		D647D8BD23D4248700FAE072 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647D8BB23D4248600FAE072 /* RealmHelper.swift */; };
 		D647D8BE23D4248700FAE072 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647D8BC23D4248700FAE072 /* Service.swift */; };
+		D670E72123DEB205006535A5 /* SkyImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670E72023DEB205006535A5 /* SkyImageHelper.swift */; };
+		D670E72323DEC495006535A5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670E72223DEC495006535A5 /* Extensions.swift */; };
 		D6C2C2DF22B7CA6A00169DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C2C2DD22B7CA6A00169DC9 /* Localizable.strings */; };
 		D6EE10D322A4C14600E0B1A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EE10D222A4C14600E0B1A8 /* AppDelegate.swift */; };
 		D6EE10D822A4C14600E0B1A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10D622A4C14600E0B1A8 /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		D647D8B823D4245D00FAE072 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		D647D8BB23D4248600FAE072 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		D647D8BC23D4248700FAE072 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		D670E72023DEB205006535A5 /* SkyImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyImageHelper.swift; sourceTree = "<group>"; };
+		D670E72223DEC495006535A5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D6C2C2DE22B7CA6A00169DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6EE10CF22A4C14600E0B1A8 /* OnlyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EE10D222A4C14600E0B1A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 			children = (
 				D647D8BB23D4248600FAE072 /* RealmHelper.swift */,
 				D647D8BC23D4248700FAE072 /* Service.swift */,
+				D670E72223DEC495006535A5 /* Extensions.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -180,8 +185,8 @@
 		D647D89423D4238F00FAE072 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D647D89723D423A700FAE072 /* DayWeatherCell.swift */,
 				D647D89523D423A600FAE072 /* HourWeatherCell.swift */,
+				D647D89723D423A700FAE072 /* DayWeatherCell.swift */,
 				D647D89623D423A600FAE072 /* TodayWeatherCell.swift */,
 			);
 			path = Cells;
@@ -201,6 +206,14 @@
 				D647D8AF23D4240B00FAE072 /* CityCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		D670E71F23DEB1EA006535A5 /* SkyImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D670E72023DEB205006535A5 /* SkyImageHelper.swift */,
+			);
+			path = SkyImageHelper;
 			sourceTree = "<group>";
 		};
 		D6EE10C622A4C14600E0B1A8 = {
@@ -231,6 +244,7 @@
 				D647D88823D4233A00FAE072 /* UseCases */,
 				D647D88723D4232B00FAE072 /* Entity */,
 				D604CDFF22AE16530092B0A1 /* Service */,
+				D670E71F23DEB1EA006535A5 /* SkyImageHelper */,
 				D6EE10D922A4C14900E0B1A8 /* Assets.xcassets */,
 				D6EE10DE22A4C14900E0B1A8 /* Info.plist */,
 				D6EE10EE22A4FC5800E0B1A8 /* GoogleService-Info.plist */,
@@ -394,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D647D8A223D423BE00FAE072 /* SearchCityPresenter.swift in Sources */,
+				D670E72323DEC495006535A5 /* Extensions.swift in Sources */,
 				D647D8B023D4240B00FAE072 /* CityCell.swift in Sources */,
 				D647D89923D423A700FAE072 /* TodayWeatherCell.swift in Sources */,
 				D647D8A123D423BE00FAE072 /* SearchCityRouter.swift in Sources */,
@@ -410,6 +425,7 @@
 				D647D8BE23D4248700FAE072 /* Service.swift in Sources */,
 				D647D89123D4238800FAE072 /* WeatherRouter.swift in Sources */,
 				D647D8B923D4245D00FAE072 /* Weather.swift in Sources */,
+				D670E72123DEB205006535A5 /* SkyImageHelper.swift in Sources */,
 				D647D8BA23D4245D00FAE072 /* City.swift in Sources */,
 				D647D8AA23D423F400FAE072 /* CitiesListConfigurator.swift in Sources */,
 				D647D89A23D423A700FAE072 /* DayWeatherCell.swift in Sources */,

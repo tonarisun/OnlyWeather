@@ -122,32 +122,12 @@ class Service {
         let date = dateFormatter.date(from: dateString)
         return date!
     }
-}
-
-extension Date {
     
-    public func hour() -> Int {
-        let calendar = NSCalendar.current
-        let components = calendar.dateComponents(in: .current, from: self)
-        let hour = components.hour
-        return hour!
-    }
-    
-    public func date() -> Int {
-        let calendar = NSCalendar.current
-        let components = calendar.dateComponents(in: .current, from: self)
-        let date = components.day
-        return date!
-    }
-    
-    func numberOfWeekDay() -> Int? {
-        return Calendar.current.dateComponents([.weekday], from: self as Date).weekday
-    }
-}
-
-extension String {
-    
-    func localized() -> String {
-        return NSLocalizedString(self, comment: "")
+    func configureTableCell(_ view: UIView) {
+        view.layer.cornerRadius = 20
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowRadius = 3.0
+        view.layer.shadowOffset = .zero
+        view.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)//#colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
     }
 }

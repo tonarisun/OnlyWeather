@@ -16,6 +16,7 @@ protocol CitiesListPresenter: class {
     func loadCitiesFromRLM() -> Results<City>?
     func updateCurrentCity(city: City, currentCity: CurrentCity)
     func cityTapped()
+    func deleteCityFromRealm(_ city: City)
 }
 
 class CitiesListPresenterImpl: CitiesListPresenter {
@@ -28,12 +29,14 @@ class CitiesListPresenterImpl: CitiesListPresenter {
     var cities : Results<City>?
     let rlmHelper = RealmHelper()
     
+    //MARK: - Init
     required init(view: CitiesListView,
                   router: CitiesListRouter) {
         self.view = view
         self.router = router
     }
     
+    //MARK: - Presenter protocol
     func updateCurrentCity(city: City, currentCity: CurrentCity) {
         rlmHelper.updateCurrentCity(city: city, currentCity: currentCity)
     }
@@ -50,5 +53,9 @@ class CitiesListPresenterImpl: CitiesListPresenter {
     
     func cityTapped() {
         router?.hideViewController()
+    }
+    
+    func deleteCityFromRealm(_ city: City) {
+        rlmHelper.deleteCity(city)
     }
 }

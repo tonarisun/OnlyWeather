@@ -10,11 +10,13 @@ import UIKit
 
 class SearchCityCell: UITableViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var addCityButton: UIButton!
     var city: City?
     let locale = NSLocale.preferredLanguages.first!
     
+    //MARK: - Configure
     func configure(city: City) {
         self.city = city
         if locale.hasPrefix("ru") {
@@ -24,6 +26,7 @@ class SearchCityCell: UITableViewCell {
         }
     }
     
+    //MARK: - Add button 
     var addCityTapped : ((City) -> Void)?
     
     @IBAction func addCity(_ sender: Any) {

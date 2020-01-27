@@ -31,6 +31,7 @@ class SearchCityViewController: UIViewController, SearchCityView {
     var filteredCities = [City]()
     let userLanguage = NSLocale.preferredLanguages.first!
     
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator = SearchCityConfiguratorImpl()
@@ -76,6 +77,7 @@ class SearchCityViewController: UIViewController, SearchCityView {
 }
     //MARK: - Table View
 extension SearchCityViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredCities.count
     }

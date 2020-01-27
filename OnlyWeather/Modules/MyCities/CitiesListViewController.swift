@@ -28,9 +28,9 @@ class CitiesListViewController: UIViewController, CitiesListView {
     //MARK: - Data
     var cities : Results<City>?
     var token: NotificationToken?
-    
     let userLanguage = NSLocale.preferredLanguages.first!
 
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator = CitiesListConfiguratorImpl()
@@ -39,6 +39,7 @@ class CitiesListViewController: UIViewController, CitiesListView {
         addRealmObserve()
     }
    
+    //MARK: - Observe
     func addRealmObserve() {
         self.token = cities?.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.citiesListTableView else { return }
@@ -86,15 +87,7 @@ extension CitiesListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            do {
-                let realm = try Realm()
-                realm.beginWrite()
-                realm.delete(cities![indexPath.row])
-                try realm.commitWrite()
-            }
-            catch {
-                print(error)
-            }
+            presenter?.deleteCityFromRealm(cities![indexPath.row])
         }
     }
     

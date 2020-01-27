@@ -64,7 +64,7 @@
 "search" = "search";
 "my cities" = "my cities";
 "choose a city" = "choose a city";
-"Now" = "Now";
+"Now" = "now";
 "Hello!" = "Hello!";
 "alert message" = "Find your city. You can add several cities or choose one of them";
 "added to 'my cities'" = "added to 'my cities'";
@@ -76,3 +76,6 @@
 "friday" = "friday";
 "saturday" = "saturday";
 "today_night" = "tonight";
+"today" = "today";
+"mm" = "mm";
+"m/s" = "m/s";
