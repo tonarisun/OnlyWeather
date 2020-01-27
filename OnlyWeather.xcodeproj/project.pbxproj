@@ -113,6 +113,7 @@
 				D647D8BB23D4248600FAE072 /* RealmHelper.swift */,
 				D647D8BC23D4248700FAE072 /* Service.swift */,
 				D670E72223DEC495006535A5 /* Extensions.swift */,
+				D670E72023DEB205006535A5 /* SkyImageHelper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -208,14 +209,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		D670E71F23DEB1EA006535A5 /* SkyImageHelper */ = {
-			isa = PBXGroup;
-			children = (
-				D670E72023DEB205006535A5 /* SkyImageHelper.swift */,
-			);
-			path = SkyImageHelper;
-			sourceTree = "<group>";
-		};
 		D6EE10C622A4C14600E0B1A8 = {
 			isa = PBXGroup;
 			children = (
@@ -244,7 +237,6 @@
 				D647D88823D4233A00FAE072 /* UseCases */,
 				D647D88723D4232B00FAE072 /* Entity */,
 				D604CDFF22AE16530092B0A1 /* Service */,
-				D670E71F23DEB1EA006535A5 /* SkyImageHelper */,
 				D6EE10D922A4C14900E0B1A8 /* Assets.xcassets */,
 				D6EE10DE22A4C14900E0B1A8 /* Info.plist */,
 				D6EE10EE22A4FC5800E0B1A8 /* GoogleService-Info.plist */,

@@ -93,17 +93,24 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJg-Yi-CkC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
-                                <state key="normal" image="chevron.compact.down" catalog="system"/>
                                 <connections>
                                     <action selector="hideButtonTapped:" destination="OqB-8n-mlh" eventType="touchUpInside" id="yge-wf-JUl"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-down" translatesAutoresizingMaskIntoConstraints="NO" id="mAa-ud-8P0">
+                                <rect key="frame" x="172.5" y="12" width="30" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ERV-hj-aHn"/>
+                                    <constraint firstAttribute="height" constant="10" id="VMZ-Ts-FYC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lm1-qa-kOk" firstAttribute="top" secondItem="Jhn-DC-5fr" secondAttribute="top" constant="35" id="0km-I7-m4p"/>
+                            <constraint firstItem="mAa-ud-8P0" firstAttribute="centerX" secondItem="dKz-3d-p2g" secondAttribute="centerX" id="4iH-jJ-I2r"/>
                             <constraint firstItem="Jhn-DC-5fr" firstAttribute="trailing" secondItem="fJg-Yi-CkC" secondAttribute="trailing" id="FTn-Of-wVS"/>
                             <constraint firstItem="lm1-qa-kOk" firstAttribute="leading" secondItem="Jhn-DC-5fr" secondAttribute="leading" id="J5e-Ub-Skj"/>
                             <constraint firstItem="Jhn-DC-5fr" firstAttribute="bottom" secondItem="lm1-qa-kOk" secondAttribute="bottom" id="Kxc-4I-ER3"/>
@@ -111,6 +118,7 @@
                             <constraint firstItem="fJg-Yi-CkC" firstAttribute="top" secondItem="Jhn-DC-5fr" secondAttribute="top" id="hbb-5V-c32"/>
                             <constraint firstItem="lm1-qa-kOk" firstAttribute="top" secondItem="fJg-Yi-CkC" secondAttribute="bottom" id="kCd-54-1YK"/>
                             <constraint firstItem="Jhn-DC-5fr" firstAttribute="trailing" secondItem="lm1-qa-kOk" secondAttribute="trailing" id="lON-Yc-uRD"/>
+                            <constraint firstItem="mAa-ud-8P0" firstAttribute="top" secondItem="Jhn-DC-5fr" secondAttribute="top" constant="12" id="zPU-gu-T61"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jhn-DC-5fr"/>
                     </view>
@@ -174,10 +182,6 @@
                                     <outlet property="delegate" destination="XW1-aC-i1u" id="ero-zf-z8s"/>
                                 </connections>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop down" translatesAutoresizingMaskIntoConstraints="NO" id="vmy-h7-iis">
-                                <rect key="frame" x="156" y="11" width="31" height="10"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="rBx-ly-7F3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,6 +193,10 @@
                                     <action selector="hideButtonTapped:" destination="XW1-aC-i1u" eventType="touchUpInside" id="yky-XQ-Vo2"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop-down" translatesAutoresizingMaskIntoConstraints="NO" id="vmy-h7-iis">
+                                <rect key="frame" x="156" y="11" width="31" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
@@ -967,7 +975,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IMI-eq-8YM">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IMI-eq-8YM">
                                 <rect key="frame" x="170" y="316" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="3aF-ng-fem"/>
@@ -1024,7 +1032,6 @@
         <image name="027-humidity" width="256" height="256"/>
         <image name="049-thermometer" width="256" height="256"/>
         <image name="050-barometer" width="256" height="256"/>
-        <image name="chevron.compact.down" catalog="system" width="64" height="20"/>
-        <image name="drop down" width="256" height="151.5"/>
+        <image name="drop-down" width="256" height="151.5"/>
     </resources>
 </document>

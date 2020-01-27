@@ -14,23 +14,23 @@ class SkyImageHelper: NSObject {
     func setWindDirectionImage(degree: Double, imageView: UIImageView) {
         switch degree {
         case 0...15:
-            imageView.image = #imageLiteral(resourceName: "north")
+            imageView.image = #imageLiteral(resourceName: "wind-north")
         case 15.1...75:
-            imageView.image = #imageLiteral(resourceName: "north-east")
+            imageView.image = #imageLiteral(resourceName: "wind-north-east")
         case 75.1...105:
-            imageView.image = #imageLiteral(resourceName: "east")
+            imageView.image = #imageLiteral(resourceName: "wind-east")
         case 105.1...165:
-            imageView.image = #imageLiteral(resourceName: "south-east")
+            imageView.image = #imageLiteral(resourceName: "wind-south-east")
         case 165.1...195:
-            imageView.image = #imageLiteral(resourceName: "south")
+            imageView.image = #imageLiteral(resourceName: "wind-south")
         case 195.1...255:
-            imageView.image = #imageLiteral(resourceName: "south-west")
+            imageView.image = #imageLiteral(resourceName: "wind-south-west")
         case 255.1...285:
-            imageView.image = #imageLiteral(resourceName: "west")
+            imageView.image = #imageLiteral(resourceName: "wind-west")
         case 285.1...345:
-            imageView.image = #imageLiteral(resourceName: "north-west")
+            imageView.image = #imageLiteral(resourceName: "wind-north-west")
         case 345.1...361:
-            imageView.image = #imageLiteral(resourceName: "north")
+            imageView.image = #imageLiteral(resourceName: "wind-north")
         default:
             break
         }
@@ -118,15 +118,15 @@ class SkyImageHelper: NSObject {
             cell.skyLabel.textColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
             switch weather.sky {
             case "Clouds":
-                cell.skyImageView.image = #imageLiteral(resourceName: "clouds-night")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-clouds-night")
             case "Clear":
-                cell.skyImageView.image = #imageLiteral(resourceName: "clear sky night")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-clear-night")
             case "Rain":
-                cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops-night")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-rain-night")
             case "Snow":
-                cell.skyImageView.image = #imageLiteral(resourceName: "snowing night")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-snow-night")
             default:
-                cell.skyImageView.image = #imageLiteral(resourceName: "clouds-night")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-clouds-night")
             }
         } else {
             cell.dateLabel.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
@@ -134,15 +134,15 @@ class SkyImageHelper: NSObject {
             cell.skyLabel.textColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
             switch weather.sky {
             case "Clouds":
-                cell.skyImageView.image = #imageLiteral(resourceName: "clouds day")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-clouds-day")
             case "Clear":
-                cell.skyImageView.image = #imageLiteral(resourceName: "clear sky day")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-clear-day")
             case "Rain":
-                cell.skyImageView.image = #imageLiteral(resourceName: "rain-drops-day")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-rain-day")
             case "Snow":
-                cell.skyImageView.image = #imageLiteral(resourceName: "snowing day")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-snow-day")
             default:
-                cell.skyImageView.image = #imageLiteral(resourceName: "clouds")
+                cell.skyImageView.image = #imageLiteral(resourceName: "sky-clouds-day")
             }
         }
     }

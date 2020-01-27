@@ -75,7 +75,6 @@ class WeatherViewController: UIViewController, WeatherView {
             self.dayWeatherTableView.reloadData()
             self.hourWeatherCollectionView.reloadData()
             self.loadIndicator.stopAnimating()
-            self.loadIndicator.isHidden = true
         }
     }
 
@@ -99,7 +98,6 @@ class WeatherViewController: UIViewController, WeatherView {
         let action = UIAlertAction(title: "OK", style: .cancel) { _ in
             self.presenter?.alertBtnTapped()
             self.loadIndicator.stopAnimating()
-            self.loadIndicator.isHidden = true
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
@@ -144,18 +142,16 @@ class WeatherViewController: UIViewController, WeatherView {
     
     //MARK: - Actions & Selectors
     @objc func refreshWeatherData() {
-        loadIndicator.isHidden = false
         loadIndicator.startAnimating()
         currentCity = presenter?.loadCityFromRLM()
         guard currentCity?.cityID != "" else { return }
         configureCityNameLabel()
         presenter?.loadWeather(completion: { _ in
-            self.dayWeatherTableView.isHidden = false
             self.hourWeatherCollectionView.reloadData()
             self.dayWeatherTableView.reloadData()
+//            self.dayW
             self.refreshControl.endRefreshing()
             self.loadIndicator.stopAnimating()
-            self.loadIndicator.isHidden = true
         })
     }
 }
