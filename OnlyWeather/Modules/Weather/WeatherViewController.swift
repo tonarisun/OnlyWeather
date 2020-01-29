@@ -146,13 +146,14 @@ class WeatherViewController: UIViewController, WeatherView {
         currentCity = presenter?.loadCityFromRLM()
         guard currentCity?.cityID != "" else { return }
         configureCityNameLabel()
-        presenter?.loadWeather(completion: { _ in
+        presenter?.loadWeather { _ in
+            self.dayWeatherTableView.isHidden = false
             self.hourWeatherCollectionView.reloadData()
             self.dayWeatherTableView.reloadData()
-//            self.dayW
+            self.hourWeatherCollectionView.setContentOffset(.zero, animated: true)
             self.refreshControl.endRefreshing()
             self.loadIndicator.stopAnimating()
-        })
+        }
     }
 }
 
