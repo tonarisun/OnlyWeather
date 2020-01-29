@@ -111,7 +111,7 @@ DEPENDENCIES:
   - RealmSwift
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireObjectMapper
     - BoringSSL-GRPC
@@ -155,4 +155,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0c062b4d0ff2b502d1214e6bd21b9657e988e218
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4
