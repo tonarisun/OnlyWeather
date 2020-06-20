@@ -59,7 +59,7 @@ class Service {
         for weather in weatherArr {
             let stringDate = weather.date
             let weatherDate = stringToDate(dateString: stringDate)
-            let dayNumber = weatherDate.numberOfWeekDay()
+            let dayNumber = weatherDate.ow_numberOfWeekDay()
             weather.weekDay = getDayString(number: dayNumber ?? 0)
         }
     }

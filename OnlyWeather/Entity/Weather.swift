@@ -79,6 +79,8 @@ class TodayWeather: Mappable {
     var timezone = 0
     var time = 0
     
+    init() {}
+    
     required init?(map: Map) {}
     
     func mapping(map: Map) {

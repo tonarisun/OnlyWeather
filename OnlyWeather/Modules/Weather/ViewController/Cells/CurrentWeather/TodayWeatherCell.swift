@@ -22,11 +22,7 @@ class TodayWeatherCell: UITableViewCell {
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var skyDescriptionLabel: UILabel!
     @IBOutlet weak var windDirectionImageView: UIImageView!
-    
-    //MARK: - Data
-    let helper = SkyImageHelper()
-
-    
+        
     //MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,27 +33,23 @@ class TodayWeatherCell: UITableViewCell {
     }
     
     //MARK: - Construct
-    func construct(with weather: TodayWeather) -> TodayWeatherCell {
-        if weather.time > weather.sunrise && weather.time < weather.sunset {
-            helper.setSkyImageDay(skyDescription: weather.sky, imageView: self.skyImageView)
+    func construct(with model: TodayWeatherRowModel) -> TodayWeatherCell {
+        if model.timeInt > model.sunriseInt, model.timeInt < model.sunsetInt {
+            self.skyImageView.image = SkyImageHelper.setSkyImageDay(skyDescription: model.description)
             self.subView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
         } else {
-            helper.setSkyImageNight(skyDescription: weather.sky, imageView: self.skyImageView)
+            self.skyImageView.image = SkyImageHelper.setSkyImageNight(skyDescription: model.description)
             self.subView.backgroundColor = #colorLiteral(red: 0.264832288, green: 0.4864405394, blue: 0.582516849, alpha: 1)
         }
-        let temp = NSString(format:"%.1f", weather.temp)
-        self.tempLabel.text = "\(temp) °"
-        let pressure = Int(weather.pressure / 1.333)
-        self.pressureLabel.text = "\(pressure) " + "mm".localized()
-        self.humidityLabel.text = "\(weather.humidity) %"
-        let windSpeed = Int(weather.windSpeed)
-        self.windSpeedLabel.text = "\(windSpeed) " + "m/s".localized()
-        helper.setWindDirectionImage(degree: weather.windDeg, imageView: self.windDirectionImageView)
-        self.skyDescriptionLabel.text = weather.skyDescription.localized()
-        let sunrise = weather.sunrise + weather.timezone
-        let sunset = weather.sunset + weather.timezone
-        self.sunriseLabel.text = Service.getTimeFromUNIXTime(date: (Double(sunrise)))
-        self.sunsetLabel.text = Service.getTimeFromUNIXTime(date: (Double(sunset)))
+
+        self.tempLabel.text = "\(model.temp) °"
+        self.pressureLabel.text = "\(model.pressure) " + "mm".localized()
+        self.humidityLabel.text = "\(model.humidity) %"
+        self.windSpeedLabel.text = "\(model.windSpeed) " + "m/s".localized()
+        self.windDirectionImageView.image = SkyImageHelper.setWindDirectionImage(degree: model.windDirection)
+        self.skyDescriptionLabel.text = model.description.localized()
+        self.sunriseLabel.text = model.sunrise
+        self.sunsetLabel.text = model.sunset
         return self
     }
 }

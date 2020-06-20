@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HourWeatherCollectionCell" id="k83-FJ-0XN" userLabel="HourWeatherCollectionCell" customClass="HourWeatherCollectionCell" customModule="OnlyWeather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RFa-75-oXZ">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMJ-zZ-4DY">
+                        <rect key="frame" x="4" y="5" width="102" height="20.5"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="15" name="AvenirNext-MediumItalic"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfk-bm-5ig">
+                        <rect key="frame" x="30" y="41.5" width="50.5" height="27.5"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.088188341193625536" green="0.087762310559839907" blue="0.088614371827411165" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <font key="NSFont" size="20" name="Avenir-HeavyOblique"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLX-eZ-UuZ">
+                        <rect key="frame" x="4" y="85.5" width="102" height="19.5"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <font key="NSFont" size="14" name="AvenirNext-Medium"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="RFa-75-oXZ" secondAttribute="bottom" id="Kxc-b3-qFk"/>
+                <constraint firstItem="RFa-75-oXZ" firstAttribute="leading" secondItem="k83-FJ-0XN" secondAttribute="leading" id="MGT-fU-k2F"/>
+                <constraint firstItem="RFa-75-oXZ" firstAttribute="top" secondItem="k83-FJ-0XN" secondAttribute="top" id="Z0r-pz-XTr"/>
+                <constraint firstItem="VLX-eZ-UuZ" firstAttribute="leading" secondItem="k83-FJ-0XN" secondAttribute="leading" constant="4" id="e4n-UY-b10"/>
+                <constraint firstItem="tfk-bm-5ig" firstAttribute="centerX" secondItem="k83-FJ-0XN" secondAttribute="centerX" id="gta-Q6-LBX"/>
+                <constraint firstAttribute="trailing" secondItem="VLX-eZ-UuZ" secondAttribute="trailing" constant="4" id="hPa-uT-uyc"/>
+                <constraint firstAttribute="trailing" secondItem="qMJ-zZ-4DY" secondAttribute="trailing" constant="4" id="huC-KK-8Tm"/>
+                <constraint firstAttribute="bottom" secondItem="VLX-eZ-UuZ" secondAttribute="bottom" constant="5" id="iMv-hD-CxK"/>
+                <constraint firstItem="qMJ-zZ-4DY" firstAttribute="top" secondItem="k83-FJ-0XN" secondAttribute="top" constant="5" id="lvT-LU-WHa"/>
+                <constraint firstItem="qMJ-zZ-4DY" firstAttribute="leading" secondItem="k83-FJ-0XN" secondAttribute="leading" constant="4" id="p2U-gr-MCq"/>
+                <constraint firstItem="tfk-bm-5ig" firstAttribute="centerY" secondItem="k83-FJ-0XN" secondAttribute="centerY" id="t5Z-JS-XBV"/>
+                <constraint firstAttribute="trailing" secondItem="RFa-75-oXZ" secondAttribute="trailing" id="uoE-Ym-jpM"/>
+            </constraints>
+            <size key="customSize" width="110" height="110"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="VLX-eZ-UuZ" id="eUD-G6-Yic"/>
+                <outlet property="skyImageView" destination="RFa-75-oXZ" id="umz-mo-dzw"/>
+                <outlet property="tempLabel" destination="tfk-bm-5ig" id="yqv-1f-MfH"/>
+                <outlet property="timeLabel" destination="qMJ-zZ-4DY" id="xyI-c0-T8o"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="48"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -16,9 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.setInitialViewController()
+        self.configureFirebase()
+        self.configureRealm()
+        return true
+    }
+    
+    private func setInitialViewController() {
+        let viewController = UIStoryboard(name: "WeatherViewController", bundle: nil).instantiateInitialViewController()
+        self.window?.rootViewController = viewController
+    }
+    
+    private func configureFirebase() {
         FirebaseApp.configure()
         let db = Firestore.firestore()
         print(db)
+    }
+    
+    private func configureRealm() {
         do {
             let realm = try Realm()
             realm.beginWrite()
@@ -28,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch {
             print(error)
         }
-        return true
     }
-
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
     }
 
