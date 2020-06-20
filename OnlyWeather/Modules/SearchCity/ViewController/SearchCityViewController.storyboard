@@ -39,6 +39,11 @@
                                     <action selector="hideButtonTapped:" destination="6Xc-Sx-YuF" eventType="touchUpInside" id="UYn-MN-fVj"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ygi-YZ-QOL">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-down" translatesAutoresizingMaskIntoConstraints="NO" id="Y93-p7-8Fm">
                                 <rect key="frame" x="192" y="56" width="30" height="10"/>
                                 <constraints>
@@ -53,6 +58,8 @@
                         <constraints>
                             <constraint firstItem="Y93-p7-8Fm" firstAttribute="top" secondItem="abo-qh-rgd" secondAttribute="top" constant="12" id="8YF-3d-yB6"/>
                             <constraint firstItem="Mfu-5D-N9d" firstAttribute="top" secondItem="oLh-Fb-k81" secondAttribute="top" constant="35" id="98p-QF-yUm"/>
+                            <constraint firstItem="ygi-YZ-QOL" firstAttribute="centerX" secondItem="oLh-Fb-k81" secondAttribute="centerX" id="9Yd-LW-E6r"/>
+                            <constraint firstItem="ygi-YZ-QOL" firstAttribute="centerY" secondItem="oLh-Fb-k81" secondAttribute="centerY" id="AZS-UW-tIH"/>
                             <constraint firstAttribute="trailing" secondItem="YSN-Cj-bYq" secondAttribute="trailing" id="IFX-DA-Nvk"/>
                             <constraint firstItem="Mfu-5D-N9d" firstAttribute="leading" secondItem="oLh-Fb-k81" secondAttribute="leading" id="IhA-bF-kt0"/>
                             <constraint firstItem="YSN-Cj-bYq" firstAttribute="leading" secondItem="oLh-Fb-k81" secondAttribute="leading" id="NdD-6N-xtv"/>
@@ -67,6 +74,7 @@
                     <navigationItem key="navigationItem" id="NY7-sD-pwN"/>
                     <connections>
                         <outlet property="allCitiesTableView" destination="Mfu-5D-N9d" id="Whj-fu-Oj8"/>
+                        <outlet property="loadingIndicator" destination="ygi-YZ-QOL" id="GGY-HM-Iui"/>
                         <outlet property="searchBar" destination="2qK-5Y-BXY" id="f7O-Ww-Ax8"/>
                     </connections>
                 </viewController>

@@ -48,6 +48,7 @@ class SearchCityPresenterImpl: SearchCityPresenter {
     
     //MARK: - Life Cycle
     func viewDidLoad() {
+        self.view.loadingIndicator(load: true)
         self.getCities()
     }
     
@@ -57,6 +58,7 @@ class SearchCityPresenterImpl: SearchCityPresenter {
             self.data.cities = cities ?? [City]()
             self.data.filteredCities = self.data.cities
             self.view.show(cities: self.data.cities)
+            self.view.loadingIndicator(load: false)
         })
     }
     

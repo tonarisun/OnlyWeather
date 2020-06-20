@@ -70,7 +70,6 @@
 		D6A6B217249C98E30078B029 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A6B216249C98E30078B029 /* SectionModel.swift */; };
 		D6C2C2DF22B7CA6A00169DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C2C2DD22B7CA6A00169DC9 /* Localizable.strings */; };
 		D6EE10D322A4C14600E0B1A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EE10D222A4C14600E0B1A8 /* AppDelegate.swift */; };
-		D6EE10D822A4C14600E0B1A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10D622A4C14600E0B1A8 /* Main.storyboard */; };
 		D6EE10DA22A4C14900E0B1A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10D922A4C14900E0B1A8 /* Assets.xcassets */; };
 		D6EE10DD22A4C14900E0B1A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10DB22A4C14900E0B1A8 /* LaunchScreen.storyboard */; };
 		D6EE10EF22A4FC5800E0B1A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10EE22A4FC5800E0B1A8 /* GoogleService-Info.plist */; };
@@ -80,9 +79,7 @@
 		6F4ECC8F26894024A6F7032B /* Pods-OnlyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlyWeather.debug.xcconfig"; path = "Target Support Files/Pods-OnlyWeather/Pods-OnlyWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		87AD26AA22CD3408B8F07E57 /* Pods_OnlyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnlyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80AF6FA3B9E3970A29C6F90 /* Pods-OnlyWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlyWeather.release.xcconfig"; path = "Target Support Files/Pods-OnlyWeather/Pods-OnlyWeather.release.xcconfig"; sourceTree = "<group>"; };
-		D603D71A22BB7A0B000AB4D6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D603D71B22BB7A13000AB4D6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D603D71C22BB7A26000AB4D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		D603D71D22BB7A2C000AB4D6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D609EF65249CD8330051FC09 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D609EF67249CDA460051FC09 /* BaseFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFabric.swift; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 		D6C2C2DE22B7CA6A00169DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6EE10CF22A4C14600E0B1A8 /* OnlyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EE10D222A4C14600E0B1A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D6EE10D722A4C14600E0B1A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6EE10D922A4C14900E0B1A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6EE10DC22A4C14900E0B1A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6EE10DE22A4C14900E0B1A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -501,7 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				D6EE10DB22A4C14900E0B1A8 /* LaunchScreen.storyboard */,
-				D6EE10D622A4C14600E0B1A8 /* Main.storyboard */,
 				D6EE10D222A4C14600E0B1A8 /* AppDelegate.swift */,
 				D647D88623D422C200FAE072 /* Modules */,
 				D647D88823D4233A00FAE072 /* UseCases */,
@@ -594,7 +589,6 @@
 				D6958111249DF7BF009A07E7 /* SearchCityViewController.storyboard in Resources */,
 				D6EE10DA22A4C14900E0B1A8 /* Assets.xcassets in Resources */,
 				D60A72A9249E2C1B00497C6F /* CityCell.xib in Resources */,
-				D6EE10D822A4C14600E0B1A8 /* Main.storyboard in Resources */,
 				D6A6B209249C96F40078B029 /* WeatherViewController.storyboard in Resources */,
 				D6EE10EF22A4FC5800E0B1A8 /* GoogleService-Info.plist in Resources */,
 				D6712178249CA439005FCDEF /* TodayWeatherCell.xib in Resources */,
@@ -744,16 +738,6 @@
 				D603D71D22BB7A2C000AB4D6 /* ru */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D6EE10D622A4C14600E0B1A8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D6EE10D722A4C14600E0B1A8 /* Base */,
-				D603D71A22BB7A0B000AB4D6 /* de */,
-				D603D71C22BB7A26000AB4D6 /* ru */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D6EE10DB22A4C14900E0B1A8 /* LaunchScreen.storyboard */ = {
