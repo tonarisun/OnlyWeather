@@ -17,10 +17,6 @@ class SearchCityRouterImpl: SearchCityRouter {
     
     weak var view: SearchCityViewController!
     
-    init(view: SearchCityViewController) {
-        self.view = view
-    }
-    
     func hideViewController() {
         view.dismiss(animated: true)
     }

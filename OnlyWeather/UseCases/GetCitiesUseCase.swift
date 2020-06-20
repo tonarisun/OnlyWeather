@@ -33,6 +33,12 @@ class GetCitiesUseCaseImpl: GetCitiesUseCase {
                   city.cityNameRUS = document.data()["cityNameRUS"] as! String
                   cities.append(city)
             }
+            
+            if UserDefaults.standard.bool(forKey: Constants.isRussianLanguage) {
+                cities.sort { $0.cityNameRUS < $1.cityNameRUS }
+            } else {
+                cities.sort { $0.cityName < $1.cityName }
+            }
             completion(cities)
         }
     }

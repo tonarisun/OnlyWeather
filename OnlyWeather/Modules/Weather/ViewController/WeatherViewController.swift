@@ -102,7 +102,7 @@ class WeatherViewController: BaseViewController, WeatherView {
     }
     
     @IBAction func myCitiesButtonTapped(_ sender: Any) {
-        
+        self.presenter?.myCitiesBtnTapped()
     }
     
     //MARK: - Show

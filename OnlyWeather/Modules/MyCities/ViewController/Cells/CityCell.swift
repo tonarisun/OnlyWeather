@@ -11,8 +11,9 @@ import UIKit
 class CityCell: UITableViewCell {
 
     @IBOutlet weak var cityNameLabel: UILabel!
-        
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    
+    func construct(with model: CityRowModel) -> CityCell {
+        self.cityNameLabel.text = model.name
+        return self
     }
 }

@@ -31,7 +31,13 @@ class RealmHelper {
         return crnCity!
     }
     
-    func updateCurrentCity(city: City, currentCity: CurrentCity) {
+    func updateCurrentCity(city: City) {
+        let currentCity = CurrentCity()
+        currentCity.cityID = city.cityID
+        currentCity.cityNameRUS = city.cityNameRUS
+        currentCity.cityName = city.cityName
+        currentCity.country = city.country
+        currentCity.isAdded = city.isAdded
         do {
             let realm = try Realm()
             let oldCity = realm.objects(CurrentCity.self)
@@ -58,12 +64,29 @@ class RealmHelper {
         }
     }
     
-    func deleteCity(_ city: City) {
+    func updateUserCities(_ cities: [City]) {
         do {
             let realm = try Realm()
             realm.beginWrite()
-            realm.delete(city)
+            realm.add(cities, update: .all)
             try realm.commitWrite()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func deleteCity(with id: String) {
+        do {
+            let realm = try Realm()
+            let cities = realm.objects(City.self)
+            if let city = cities.first(where: { (city) in
+                city.cityID == id
+            }) {
+                realm.beginWrite()
+                realm.delete(city)
+                try realm.commitWrite()
+            }
         }
         catch {
             print(error)

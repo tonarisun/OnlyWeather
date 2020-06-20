@@ -1,5 +1,5 @@
 //
-//  SearchCityRowModel.swift
+//  CityRowModel.swift
 //  OnlyWeather
 //
 //  Created by Olga Lidman on 20.06.2020.
@@ -8,13 +8,12 @@
 
 import Foundation
 
-class SearchCityRowModel: RowModel {
+class CityRowModel: RowModel {
     
-    var cityName: String = ""
-    var inMyCities: Bool = false
+    var name = ""
     
     init(with city: City) {
-        self.cityName = UserDefaults.standard.bool(forKey: Constants.isRussianLanguage) ? city.cityNameRUS : city.cityName
+        self.name = UserDefaults.standard.bool(forKey: Constants.isRussianLanguage) ? city.cityNameRUS : city.cityName
         super.init(id: city.cityID)
     }
     

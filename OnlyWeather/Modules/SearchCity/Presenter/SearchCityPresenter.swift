@@ -65,13 +65,7 @@ class SearchCityPresenterImpl: SearchCityPresenter {
         if let selectedCity = self.data.cities.first(where: { (city) in
             city.cityID == id
         }) {
-            let curCity = CurrentCity()
-            curCity.cityID = selectedCity.cityID
-            curCity.cityName = selectedCity.cityName
-            curCity.cityNameRUS = selectedCity.cityNameRUS
-            curCity.country = selectedCity.country
-            curCity.isAdded = selectedCity.isAdded
-            self.updateCurrentCity(city: selectedCity, currentCity: curCity)
+            self.updateCurrentCity(city: selectedCity)
             self.router.hideViewController()
         }
     }
@@ -97,20 +91,14 @@ class SearchCityPresenterImpl: SearchCityPresenter {
     }
     
     //MARK: - Private
-    private func updateCurrentCity(city: City, currentCity: CurrentCity) {
-        rlmHelper.updateCurrentCity(city: city, currentCity: currentCity)
+    private func updateCurrentCity(city: City) {
+        rlmHelper.updateCurrentCity(city: city)
     }
     
     private func updateMyCities(city: City) {
         let curCity = rlmHelper.loadCurrentCity()
         if curCity.cityID == "" {
-            let cCity = CurrentCity()
-            cCity.cityID = city.cityID
-            cCity.cityName = city.cityName
-            cCity.cityNameRUS = city.cityNameRUS
-            cCity.country = city.country
-            cCity.isAdded = true
-            rlmHelper.updateCurrentCity(city: city, currentCity: cCity)
+            rlmHelper.updateCurrentCity(city: city)
             return
         }
         rlmHelper.addItemToMyCities(city: city)

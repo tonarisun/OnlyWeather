@@ -16,11 +16,7 @@ protocol CitiesListRouter: class {
 class CitiesListRouterImpl: CitiesListRouter {
     
     weak var view: CitiesListViewController!
-    
-    init(view: CitiesListViewController) {
-        self.view = view
-    }
-    
+
     func hideViewController() {
         view.dismiss(animated: true)
     }

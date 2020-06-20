@@ -17,14 +17,16 @@ class SearchCityConfiguratorImpl: NSObject, SearchCityConfigurator {
     weak var presenter: SearchCityPresenterImpl?
     
     override func awakeFromNib() {
-        self.configure(viewController)
+        super.awakeFromNib()
+        self.configure(self.viewController)
     }
     
     private func configure(_ controller: SearchCityViewController) {
-        let router = SearchCityRouterImpl(view: controller)
+        let router = SearchCityRouterImpl()
         let presenter = SearchCityPresenterImpl(view: controller,
                                                 router: router,
                                                 getCitiesUseCase: GetCitiesUseCaseImpl())
+        router.view = controller
         self.presenter = presenter
         controller.presenter = presenter
         controller.configurator = self

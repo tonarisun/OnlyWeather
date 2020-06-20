@@ -12,6 +12,7 @@ import UIKit
 protocol WeatherRouter: class {
     
     func openSearchCityVC()
+    func openMyCitiesVC()
 }
 
 class WeatherRouterImpl: WeatherRouter {
@@ -28,7 +29,15 @@ class WeatherRouterImpl: WeatherRouter {
             let controller = storyBoard.instantiateViewController(identifier: "SearchVC")
             self.view.present(controller, animated: true, completion: nil)
         } else {
-            // Fallback on earlier versions
+        }
+    }
+    
+    func openMyCitiesVC() {
+        let storyBoard = UIStoryboard(name: "CitiesListViewController", bundle: nil)
+        if #available(iOS 13.0, *) {
+            let controller = storyBoard.instantiateViewController(identifier: "MyCitiesVC")
+            self.view.present(controller, animated: true, completion: nil)
+        } else {
         }
     }
 }

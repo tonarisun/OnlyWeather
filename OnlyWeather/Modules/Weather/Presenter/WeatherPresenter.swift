@@ -19,9 +19,8 @@ protocol WeatherPresenter: class {
     func viewWillAppear()
     func viewDidAppear()
     
-    func loadCityFromRLM()
-    func loadWeather()
     func searchCityBtnTapped()
+    func myCitiesBtnTapped()
     func refreshData()
 }
 
@@ -67,8 +66,8 @@ class WeatherPresenterImpl: WeatherPresenter {
         }
     }
     
-    //MARK: - Presenter protocol
-    func loadCityFromRLM() {
+    //MARK: - Load Data
+    private func loadCityFromRLM() {
         self.view?.loadingIndicator(load: true)
         let currentCity = rlmHelper.loadCurrentCity()
         self.view?.configureCityNameLabel(currentCity)
@@ -80,7 +79,7 @@ class WeatherPresenterImpl: WeatherPresenter {
         self.loadWeather()
     }
     
-    func loadWeather() {
+    private func loadWeather() {
         getTodayWeatherUseCase?.execute(cityID: self.data.userCity.cityID, completion: { (success, todayWeather) in
             if success {
                 todayWeather!.time = Int(Date().timeIntervalSince1970)
@@ -119,12 +118,16 @@ class WeatherPresenterImpl: WeatherPresenter {
         }
     }
 
-    
+    //MARK: - Presenter protocol
     func refreshData() {
         self.loadCityFromRLM()
     }
     
     func searchCityBtnTapped() {
-        router?.openSearchCityVC()
+        self.router?.openSearchCityVC()
+    }
+    
+    func myCitiesBtnTapped() {
+        self.router?.openMyCitiesVC()
     }
 }
