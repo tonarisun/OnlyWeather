@@ -12,6 +12,7 @@ import RealmSwift
 protocol WeatherView: BaseView {
     
     func showHelloAlert()
+    func configureCityNameLabel(_ city: CurrentCity)
     func show(with forecast: ForecastData)
 }
 
@@ -42,7 +43,6 @@ class WeatherViewController: BaseViewController, WeatherView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
-        self.configureTopButtons()
         self.configureRefreshControl()
     }
 
@@ -81,17 +81,8 @@ class WeatherViewController: BaseViewController, WeatherView {
         tableView.addSubview(refreshControl)
     }
     
-    private func configureTopButtons() {
-//        searchButton.setTitle("search".localized(), for: .normal)
-//        myCitiesButton.setTitle("my cities".localized(), for: .normal)
-    }
-    
-    private func configureCityNameLabel(_ city: CurrentCity) {
-        if userLanguage.hasPrefix("ru") {
-            cityNameLabel.text = city.cityNameRUS
-        } else {
-            cityNameLabel.text = city.cityName
-        }
+    func configureCityNameLabel(_ city: CurrentCity) {
+        cityNameLabel.text = UserDefaults.standard.bool(forKey: Constants.isRussianLanguage) ? city.cityNameRUS : city.cityName
     }
     
     //MARK: - Init

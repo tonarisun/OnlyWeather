@@ -23,7 +23,7 @@ class WeatherRouterImpl: WeatherRouter {
     }
 
     func openSearchCityVC() {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let storyBoard = UIStoryboard(name: "SearchCityViewController", bundle: nil)
         if #available(iOS 13.0, *) {
             let controller = storyBoard.instantiateViewController(identifier: "SearchVC")
             self.view.present(controller, animated: true, completion: nil)

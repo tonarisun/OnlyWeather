@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="CHf-pB-ASF">
+            <objects>
+                <viewController storyboardIdentifier="SearchVC" modalPresentationStyle="pageSheet" id="6Xc-Sx-YuF" customClass="SearchCityViewController" customModule="OnlyWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oLh-Fb-k81">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfu-5D-N9d">
+                                <rect key="frame" x="0.0" y="35" width="414" height="827"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.2230388224" green="0.33619263770000002" blue="0.40785443780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <searchBar key="tableHeaderView" opaque="NO" contentMode="redraw" translucent="NO" id="2qK-5Y-BXY">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Xc-Sx-YuF" id="4jw-lu-u26"/>
+                                    <outlet property="delegate" destination="6Xc-Sx-YuF" id="ipx-A2-H8l"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSN-Cj-bYq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
+                                <connections>
+                                    <action selector="hideButtonTapped:" destination="6Xc-Sx-YuF" eventType="touchUpInside" id="UYn-MN-fVj"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-down" translatesAutoresizingMaskIntoConstraints="NO" id="Y93-p7-8Fm">
+                                <rect key="frame" x="192" y="56" width="30" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="6CC-B0-GJx"/>
+                                    <constraint firstAttribute="height" constant="10" id="rBl-Gf-1p6"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37580043340000002" green="0.56584862540000003" blue="0.67616287369999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Y93-p7-8Fm" firstAttribute="top" secondItem="abo-qh-rgd" secondAttribute="top" constant="12" id="8YF-3d-yB6"/>
+                            <constraint firstItem="Mfu-5D-N9d" firstAttribute="top" secondItem="oLh-Fb-k81" secondAttribute="top" constant="35" id="98p-QF-yUm"/>
+                            <constraint firstAttribute="trailing" secondItem="YSN-Cj-bYq" secondAttribute="trailing" id="IFX-DA-Nvk"/>
+                            <constraint firstItem="Mfu-5D-N9d" firstAttribute="leading" secondItem="oLh-Fb-k81" secondAttribute="leading" id="IhA-bF-kt0"/>
+                            <constraint firstItem="YSN-Cj-bYq" firstAttribute="leading" secondItem="oLh-Fb-k81" secondAttribute="leading" id="NdD-6N-xtv"/>
+                            <constraint firstItem="Y93-p7-8Fm" firstAttribute="centerX" secondItem="oLh-Fb-k81" secondAttribute="centerX" id="ayy-fn-9c1"/>
+                            <constraint firstItem="YSN-Cj-bYq" firstAttribute="top" secondItem="oLh-Fb-k81" secondAttribute="top" id="ci4-7k-5o8"/>
+                            <constraint firstAttribute="trailing" secondItem="Mfu-5D-N9d" secondAttribute="trailing" id="hYU-nk-nOQ"/>
+                            <constraint firstItem="abo-qh-rgd" firstAttribute="bottom" secondItem="Mfu-5D-N9d" secondAttribute="bottom" id="m1I-tY-eiu"/>
+                            <constraint firstItem="Mfu-5D-N9d" firstAttribute="top" secondItem="YSN-Cj-bYq" secondAttribute="bottom" id="mtm-6U-CdS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="abo-qh-rgd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NY7-sD-pwN"/>
+                    <connections>
+                        <outlet property="allCitiesTableView" destination="Mfu-5D-N9d" id="Whj-fu-Oj8"/>
+                        <outlet property="searchBar" destination="2qK-5Y-BXY" id="f7O-Ww-Ax8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u7g-W6-ncm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="4dw-ed-1Jq" customClass="SearchCityConfiguratorImpl" customModule="OnlyWeather" customModuleProvider="target">
+                    <connections>
+                        <outlet property="viewController" destination="6Xc-Sx-YuF" id="C9s-uS-aLL"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="128.80000000000001" y="-395.35232383808096"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="drop-down" width="256" height="151.5"/>
+    </resources>
+</document>

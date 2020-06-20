@@ -69,7 +69,9 @@ class WeatherPresenterImpl: WeatherPresenter {
     
     //MARK: - Presenter protocol
     func loadCityFromRLM() {
+        self.view?.loadingIndicator(load: true)
         let currentCity = rlmHelper.loadCurrentCity()
+        self.view?.configureCityNameLabel(currentCity)
         self.data.userCity = currentCity
         if currentCity.cityID == "" {
             return
@@ -119,7 +121,6 @@ class WeatherPresenterImpl: WeatherPresenter {
 
     
     func refreshData() {
-        self.view?.loadingIndicator(load: true)
         self.loadCityFromRLM()
     }
     

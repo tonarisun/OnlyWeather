@@ -20,7 +20,7 @@ class HourWeatherRowModel: RowModel {
         self.time    = "\(weather.time):00"
         self.timeInt = weather.time
         self.temp    = Int(weather.temp)
-        self.sky     = weather.skyDescription
+        self.sky     = weather.sky
         self.description = weather.skyDescription
         super.init()
     }

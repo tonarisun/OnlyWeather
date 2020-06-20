@@ -12,6 +12,7 @@ struct Constants {
     static let defaultNight = 22
     static let defaultDay   = 7
     static let collectionCellSide = 110
+    static let isRussianLanguage = "is_russian"
 }
 
 protocol BaseView: class {
