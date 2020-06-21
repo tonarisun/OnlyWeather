@@ -14,7 +14,6 @@ import RealmSwift
 protocol SearchCityView: BaseView {
     
     func show(cities: [City])
-    func addCityAlert(city: City)
 }
 
 class SearchCityViewController: BaseViewController, SearchCityView {
@@ -35,7 +34,7 @@ class SearchCityViewController: BaseViewController, SearchCityView {
         self.configureKeyboardHideGesture()
     }
     
-    //MARK: - Configure
+    //MARK: - Init & Configure
     override func initFabric() {
         self.fabric = SearcCityFabric(tableView: self.allCitiesTableView, delegate: self)
     }
@@ -50,16 +49,6 @@ class SearchCityViewController: BaseViewController, SearchCityView {
         self.allCitiesTableView.addGestureRecognizer(hideKeyboardGesture)
     }
     
-    //MARK: - Alert
-    func addCityAlert(city: City) {
-        let message = "added to 'my cities'".localized()
-        let name = UserDefaults.standard.bool(forKey: Constants.isRussianLanguage) ? city.cityNameRUS : city.cityName
-        let alert = UIAlertController(title: nil, message: "\(name) \(message)", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     //MARK: - Actions & Selectors
     @IBAction func hideButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -72,9 +61,7 @@ class SearchCityViewController: BaseViewController, SearchCityView {
     //MARK: - Show
     func show(cities: [City]) {
         self.sections.removeAll()
-        
         self.sections.append(self.createCitiesSection(with: cities))
-        
         self.allCitiesTableView.reloadData()
     }
     
@@ -88,8 +75,8 @@ class SearchCityViewController: BaseViewController, SearchCityView {
         
         return section
     }
-    
 }
+
     //MARK: - Table View
 extension SearchCityViewController {
     

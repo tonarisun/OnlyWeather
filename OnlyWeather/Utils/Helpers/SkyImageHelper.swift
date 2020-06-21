@@ -11,6 +11,7 @@ import UIKit
 
 class SkyImageHelper: NSObject {
     
+    //MARK: - setWindDirectionImage
     static func setWindDirectionImage(degree: Double) -> UIImage {
         switch degree {
         case 0...15, 345.1...361:
@@ -34,6 +35,7 @@ class SkyImageHelper: NSObject {
         }
     }
     
+    //MARK: - setSkyImageDay
     static func setSkyImageDay(skyDescription: String) -> UIImage {
         switch skyDescription {
         case "Clouds":
@@ -57,6 +59,7 @@ class SkyImageHelper: NSObject {
         }
     }
     
+    //MARK: - setSkyImageNight
     static func setSkyImageNight(skyDescription: String) -> UIImage {
         switch skyDescription {
         case "Clouds":
@@ -80,6 +83,7 @@ class SkyImageHelper: NSObject {
         }
     }
     
+    //MARK: - setSkyImage
     static func setSkyImage(model: HourWeatherRowModel, cell: HourWeatherCollectionCell, day: Int?, night: Int?) {
         if model.timeInt > night ?? 21 || model.timeInt <= day ?? 6 {
             cell.timeLabel.textColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)

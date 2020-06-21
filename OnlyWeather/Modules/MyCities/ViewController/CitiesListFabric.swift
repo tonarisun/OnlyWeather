@@ -10,10 +10,12 @@ import UIKit
 
 class CitiesListFabric: BaseFabric {
     
+    //MARK: - Register Cells
     override func registerCells() {
         self.tableView?.ow_register(CityCell.self)
     }
     
+    //MARK: - Cells
     override func cell(for rowModel: RowModel, at indexPath: IndexPath) -> UITableViewCell {
         
         if let cityModel = rowModel as? CityRowModel,

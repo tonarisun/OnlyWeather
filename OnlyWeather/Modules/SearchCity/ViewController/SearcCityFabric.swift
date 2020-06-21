@@ -10,6 +10,7 @@ import UIKit
 
 class SearcCityFabric: BaseFabric {
     
+    
     weak var delegate: CitySearchDelegate?
     
     init(tableView: UITableView, delegate: CitySearchDelegate) {

@@ -10,12 +10,14 @@ import UIKit
 
 class WeatherFabric: BaseFabric {
     
+    //MARK: - Register Cells
     override func registerCells() {
         self.tableView?.ow_register(TodayWeatherCell.self)
         self.tableView?.ow_register(DayWeatherCell.self)
         self.tableView?.ow_register(HoursWeatherTableCell.self)
     }
     
+    //MARK: - Cells
     override func cell(for rowModel: RowModel, at indexPath: IndexPath) -> UITableViewCell {
         
         guard let tableView = self.tableView else { return UITableViewCell() }

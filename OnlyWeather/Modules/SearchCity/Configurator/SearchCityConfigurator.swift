@@ -13,19 +13,24 @@ import Foundation
 
 class SearchCityConfiguratorImpl: NSObject, SearchCityConfigurator {
     
+    //MARK: - Outlets & Data
     @IBOutlet weak var viewController: SearchCityViewController!
     weak var presenter: SearchCityPresenterImpl?
     
+    //MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.configure(self.viewController)
     }
     
+    //MARK: - Configure
     private func configure(_ controller: SearchCityViewController) {
         let router = SearchCityRouterImpl()
         let presenter = SearchCityPresenterImpl(view: controller,
                                                 router: router,
-                                                getCitiesUseCase: GetCitiesUseCaseImpl())
+                                                getCitiesUseCase: GetCitiesUseCaseImpl(),
+                                                updateCurrentCityUseCase: UpdateCurrentCityUseCaseImpl(),
+                                                updateUserCitiesUseCase: UpdateUserCitiesUseCaseImpl())
         router.view = controller
         self.presenter = presenter
         controller.presenter = presenter

@@ -11,8 +11,7 @@ import RealmSwift
 
 protocol WeatherView: BaseView {
     
-    func showHelloAlert()
-    func configureCityNameLabel(_ city: CurrentCity)
+    func configureCityNameLabel(_ city: String)
     func show(with forecast: ForecastData)
 }
 
@@ -30,7 +29,6 @@ class WeatherViewController: BaseViewController, WeatherView {
     
     //MARK: - Data
     let refreshControl = UIRefreshControl()
-    let userLanguage = NSLocale.preferredLanguages.first!
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
             return .lightContent
@@ -56,19 +54,6 @@ class WeatherViewController: BaseViewController, WeatherView {
         self.presenter?.viewDidAppear()
     }
     
-    //MARK: - Hello Alert
-    func showHelloAlert() {
-        self.cityNameLabel.text = "choose a city".localized()
-        let hello = "Hello!".localized()
-        let message = "alert message".localized()
-        let alert = UIAlertController(title: hello, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel) { _ in
-            self.presenter?.searchCityBtnTapped()
-        }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     //MARK: - Configure
     private func configureTableView() {
         tableView.delegate = self
@@ -81,8 +66,8 @@ class WeatherViewController: BaseViewController, WeatherView {
         tableView.addSubview(refreshControl)
     }
     
-    func configureCityNameLabel(_ city: CurrentCity) {
-        cityNameLabel.text = UserDefaults.standard.bool(forKey: Constants.isRussianLanguage) ? city.cityNameRUS : city.cityName
+    func configureCityNameLabel(_ city: String) {
+        cityNameLabel.text = city
     }
     
     //MARK: - Init
@@ -107,7 +92,6 @@ class WeatherViewController: BaseViewController, WeatherView {
     
     //MARK: - Show
     func show(with forecast: ForecastData) {
-        configureCityNameLabel(forecast.userCity)
         self.sections.removeAll()
         self.sections.append(self.createHoursForecastSection(with: forecast.hoursForecast, day: forecast.day, night: forecast.night))
         self.sections.append(self.createTodayWeatherSection(with: forecast.todayWeather))

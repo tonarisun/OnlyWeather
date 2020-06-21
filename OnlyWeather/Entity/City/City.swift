@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+//MARK: - City
 class City: Object {
     
     @objc dynamic var cityID = ""
@@ -23,18 +24,5 @@ class City: Object {
     
     override static func primaryKey() -> String? {
         return "cityID"
-    }
-}
-
-class CurrentCity: Object {
-    
-    @objc dynamic var cityID = ""
-    @objc dynamic var cityName = ""
-    @objc dynamic var cityNameRUS = ""
-    @objc dynamic var country = ""
-    @objc dynamic var isAdded = false
-    
-    static func == (lhs: CurrentCity, rhs: City) -> Bool {
-        return lhs.cityID == rhs.cityID
     }
 }

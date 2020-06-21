@@ -14,7 +14,9 @@ protocol SearchCityPresenter: class {
     
     init(view: SearchCityView,
          router: SearchCityRouter,
-         getCitiesUseCase: GetCitiesUseCase)
+         getCitiesUseCase: GetCitiesUseCase,
+         updateCurrentCityUseCase: UpdateCurrentCityUseCase,
+         updateUserCitiesUseCase: UpdateUserCitiesUseCase)
     
     func viewDidLoad()
     
@@ -31,19 +33,24 @@ class SearchCityPresenterImpl: SearchCityPresenter {
     
     //MARK: - UseCases
     var getCitiesUseCase: GetCitiesUseCase?
+    var updateCurrentCityUseCase: UpdateCurrentCityUseCase?
+    var updateUserCitiesUseCase: UpdateUserCitiesUseCase?
     
     //MARK: - Data
     let db = Firestore.firestore()
-    let rlmHelper = RealmHelper()
     var data = SearchData()
 
     //MARK: - Init
     required init(view: SearchCityView,
                   router: SearchCityRouter,
-                  getCitiesUseCase: GetCitiesUseCase) {
+                  getCitiesUseCase: GetCitiesUseCase,
+                  updateCurrentCityUseCase: UpdateCurrentCityUseCase,
+                  updateUserCitiesUseCase: UpdateUserCitiesUseCase) {
         self.view = view
         self.router = router
         self.getCitiesUseCase = getCitiesUseCase
+        self.updateCurrentCityUseCase = updateCurrentCityUseCase
+        self.updateUserCitiesUseCase = updateUserCitiesUseCase
     }
     
     //MARK: - Life Cycle
@@ -62,13 +69,14 @@ class SearchCityPresenterImpl: SearchCityPresenter {
         })
     }
     
-    //MARK: - Presenter protocol
+    //MARK: - Actions
     func onSelectCity(id: String?) {
         if let selectedCity = self.data.cities.first(where: { (city) in
             city.cityID == id
         }) {
-            self.updateCurrentCity(city: selectedCity)
-            self.router.hideViewController()
+            self.updateCurrentCityUseCase?.execute(city: selectedCity, completion: { (success) in
+                self.router.hideViewController()
+            })
         }
     }
     
@@ -76,8 +84,9 @@ class SearchCityPresenterImpl: SearchCityPresenter {
         if let addedCity = self.data.cities.first(where: { (city) in
             city.cityID == cityID
         }) {
-             self.updateMyCities(city: addedCity)
-            self.view.addCityAlert(city: addedCity)
+            self.updateUserCitiesUseCase?.execute(city: addedCity, completion: { (success) in
+                self.view.showAlert(title: nil, message: "added to 'my cities'", action: nil)
+            })
         }
     }
     
@@ -90,19 +99,5 @@ class SearchCityPresenterImpl: SearchCityPresenter {
             city.cityNameRUS.lowercased().contains(range) || city.cityName.lowercased().contains(range)
         })
         self.view.show(cities: self.data.filteredCities)
-    }
-    
-    //MARK: - Private
-    private func updateCurrentCity(city: City) {
-        rlmHelper.updateCurrentCity(city: city)
-    }
-    
-    private func updateMyCities(city: City) {
-        let curCity = rlmHelper.loadCurrentCity()
-        if curCity.cityID == "" {
-            rlmHelper.updateCurrentCity(city: city)
-            return
-        }
-        rlmHelper.addItemToMyCities(city: city)
     }
 }

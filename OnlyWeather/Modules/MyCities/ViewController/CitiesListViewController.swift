@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import Firebase
-import RealmSwift
 
 protocol CitiesListView: BaseView {
     
@@ -66,7 +63,7 @@ extension CitiesListViewController {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let id = self.sections[indexPath.section].rows[indexPath.row].id
-            self.presenter?.deleteCityFromRealm(with: id)
+            self.presenter?.deleteCityFromUserCities(with: id)
         }
     }
     

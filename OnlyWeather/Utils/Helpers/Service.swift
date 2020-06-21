@@ -11,9 +11,10 @@ import Alamofire
 
 class Service {
     
-    func getDayAndTime(weatherList: [Weather], timezone: Int) -> [Weather] {
+    //MARK: - getDayAndTime
+    static func getDayAndTime(weatherList: [Weather]?, timezone: Int) -> [Weather] {
         let weather = weatherList
-        for weatherItem in weather {
+        for weatherItem in weather ?? [] {
             let charArray = Array(weatherItem.date)
             let dayArr = [charArray[8], charArray[9]]
             let monthArr = [charArray[5], charArray[6]]
@@ -37,24 +38,23 @@ class Service {
             weatherItem.day = Int(String(dayArr))!
             weatherItem.month = String(monthArr)
         }
-        return weather
+        return weather ?? []
     }
     
-    func sortWeatherByDay(weatherList: [Weather]) -> [Weather] {
-        var weatherByDay = [Weather]()
-        for weather in weatherList {
-            if (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3) {
-                weatherByDay.append(weather)
-            }
-        }
-        return weatherByDay
+    //MARK: - sortWeatherByDay
+    static func sortWeatherByDay(weatherList: [Weather]?) -> [Weather] {
+        return weatherList?.filter({ (weather) in
+            (weather.time >= 13 && weather.time <= 15) || (weather.time >= 1 && weather.time <= 3)
+        }) ?? []
     }
     
-    func checkTime(now: Int, nextTime: Int) -> Bool {
+    //MARK: - checkTime
+    static func checkTime(now: Int, nextTime: Int) -> Bool {
         return ((now >= 12 && now <= 16) && (nextTime >= 12 && nextTime <= 16)) || ((now >= 0 && now <= 4) && (nextTime >= 0 && nextTime <= 4))
     }
     
-    func getDaysOfWeek(weatherArr: [Weather]) {
+    //MARK: - getDaysOfWeek
+    static func getDaysOfWeek(weatherArr: [Weather]) {
         
         for weather in weatherArr {
             let stringDate = weather.date
@@ -64,29 +64,29 @@ class Service {
         }
     }
     
-    func getDayString(number: Int) -> String {
-        let dayOfWeek: String
+    //MARK: - getDayString
+    static func getDayString(number: Int) -> String {
         switch number {
         case 1:
-            dayOfWeek = "sunday"
+            return "sunday"
         case 2:
-            dayOfWeek = "monday"
+            return "monday"
         case 3:
-            dayOfWeek = "tuesday"
+            return "tuesday"
         case 4:
-            dayOfWeek = "wednesday"
+            return "wednesday"
         case 5:
-            dayOfWeek = "thursday"
+            return "thursday"
         case 6:
-            dayOfWeek = "friday"
+            return "friday"
         case 7:
-            dayOfWeek = "saturday"
+            return "saturday"
         default:
-            dayOfWeek = ""
+            return ""
         }
-        return dayOfWeek
     }
     
+    //MARK: - getTimeFromUNIXTime
     static func getTimeFromUNIXTime(date: Double) -> String {
         let date = Date(timeIntervalSince1970: date)
         let dateFormatter = DateFormatter()
@@ -96,7 +96,8 @@ class Service {
         return dateFormatter.string(from: date)
     }
     
-    func getTimeFromUNIXInt(date: Int) -> Int? {
+    //MARK: - getTimeFromUNIXInt
+    static func getTimeFromUNIXInt(date: Int) -> Int? {
         let date = Date(timeIntervalSince1970: TimeInterval(date))
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -106,7 +107,8 @@ class Service {
         return intTime
     }
     
-    func correctTime(time: Int) -> Int {
+    //MARK: - correctTime
+    static func correctTime(time: Int) -> Int {
         var tempTime = time
         if time < 0 {
              tempTime += 24
@@ -116,18 +118,11 @@ class Service {
         return tempTime
     }
     
-    func stringToDate(dateString: String) -> Date {
+    //MARK: - stringToDate
+    static func stringToDate(dateString: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let date = dateFormatter.date(from: dateString)
         return date!
-    }
-    
-    func configureTableCell(_ view: UIView) {
-        view.layer.cornerRadius = 20
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 3.0
-        view.layer.shadowOffset = .zero
-        view.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)//#colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
     }
 }

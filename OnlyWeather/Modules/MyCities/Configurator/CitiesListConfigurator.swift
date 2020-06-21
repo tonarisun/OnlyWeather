@@ -13,19 +13,24 @@ import Foundation
 
 class CitiesListConfiguratorImpl: NSObject, CitiesListConfigurator {
     
+    //MARK: - Outlets & Data
     @IBOutlet weak var viewController: CitiesListViewController!
     weak var presenter: CitiesListPresenterImpl?
     
+    //MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.configure(self.viewController)
     }
     
+    //MARK: - Configure
     private func configure(_ controller: CitiesListViewController) {
         let router = CitiesListRouterImpl()
         let presenter = CitiesListPresenterImpl(view: controller,
                                                 router: router,
-                                                getCitiesUseCase: GetUserCitiesUseCaseImpl())
+                                                getCitiesUseCase: GetUserCitiesUseCaseImpl(),
+                                                updateCurrentCityUseCase: UpdateCurrentCityUseCaseImpl(),
+                                                deleteUserCityUseCase: DeleteUserCityUseCaseImpl())
         
         router.view = controller
         self.presenter = presenter

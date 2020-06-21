@@ -11,6 +11,7 @@ import RealmSwift
 
 class RealmHelper {
     
+    //MARK: - loadCurrentCity
     func loadCurrentCity() -> CurrentCity {
         var crnCity: CurrentCity?
         do {
@@ -31,20 +32,14 @@ class RealmHelper {
         return crnCity!
     }
     
-    func updateCurrentCity(city: City) {
-        let currentCity = CurrentCity()
-        currentCity.cityID = city.cityID
-        currentCity.cityNameRUS = city.cityNameRUS
-        currentCity.cityName = city.cityName
-        currentCity.country = city.country
-        currentCity.isAdded = city.isAdded
+    //MARK: - updateCurrentCity
+    func updateCurrentCity(city: CurrentCity) {
         do {
             let realm = try Realm()
             let oldCity = realm.objects(CurrentCity.self)
             realm.beginWrite()
-            realm.add(city, update: .all)
             realm.delete(oldCity)
-            realm.add(currentCity)
+            realm.add(city)
             try realm.commitWrite()
         }
         catch {
@@ -52,6 +47,7 @@ class RealmHelper {
         }
     }
     
+    //MARK: - addItemToMyCities
     func addItemToMyCities(city: City) {
         do {
             let realm = try Realm()
@@ -64,18 +60,7 @@ class RealmHelper {
         }
     }
     
-    func updateUserCities(_ cities: [City]) {
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            realm.add(cities, update: .all)
-            try realm.commitWrite()
-        }
-        catch {
-            print(error)
-        }
-    }
-    
+    //MARK: - deleteCity
     func deleteCity(with id: String) {
         do {
             let realm = try Realm()
@@ -93,6 +78,7 @@ class RealmHelper {
         }
     }
     
+    //MARK: - createEmptyCurrentCity
     private func createEmptyCurrentCity() {
         let city = CurrentCity()
         do {

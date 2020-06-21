@@ -7,18 +7,19 @@
 //
 
 import Foundation
-import RealmSwift
 
 protocol CitiesListPresenter: class {
 
     init(view: CitiesListView,
          router: CitiesListRouter,
-         getCitiesUseCase: GetUserCitiesUseCase)
+         getCitiesUseCase: GetUserCitiesUseCase,
+         updateCurrentCityUseCase: UpdateCurrentCityUseCase,
+         deleteUserCityUseCase: DeleteUserCityUseCase)
     
     func viewDidLoad()
     
     func cityTapped(with id: String)
-    func deleteCityFromRealm(with id: String)
+    func deleteCityFromUserCities(with id: String)
 }
 
 class CitiesListPresenterImpl: CitiesListPresenter {
@@ -27,58 +28,52 @@ class CitiesListPresenterImpl: CitiesListPresenter {
     var view: CitiesListView?
     var router: CitiesListRouter?
     var getCitiesUseCase: GetUserCitiesUseCase?
+    var updateCurrentCityUseCase: UpdateCurrentCityUseCase?
+    var deleteUserCityUseCase: DeleteUserCityUseCase?
     
     //MARK: - Data
     var cities = [City]()
-    let rlmHelper = RealmHelper()
     
     //MARK: - Init
     required init(view: CitiesListView,
                   router: CitiesListRouter,
-                  getCitiesUseCase: GetUserCitiesUseCase) {
+                  getCitiesUseCase: GetUserCitiesUseCase,
+                  updateCurrentCityUseCase: UpdateCurrentCityUseCase,
+                  deleteUserCityUseCase: DeleteUserCityUseCase) {
         self.view = view
         self.router = router
         self.getCitiesUseCase = getCitiesUseCase
+        self.updateCurrentCityUseCase = updateCurrentCityUseCase
+        self.deleteUserCityUseCase = deleteUserCityUseCase
     }
     
     //MARK: - Life Cycle
     func viewDidLoad() {
-        self.loadCitiesFromRLM()
+        self.loadUserCities()
     }
     
     //MARK: - Load Data
-    func loadCitiesFromRLM() {
+    func loadUserCities() {
         self.getCitiesUseCase?.execute(completion: { (cities) in
             self.cities = cities
             self.view?.show(cities: self.cities)
         })
     }
     
-    //MARK: - Actons
+    //MARK: - Actions
     func cityTapped(with id: String) {
-        self.updateCurrentCity(with: id)
-        router?.hideViewController()
-    }
-    
-    func deleteCityFromRealm(with id: String) {
-        var cities = [City]()
-        self.cities.enumerated().forEach { (index, item) in
-            if item.cityID == id {
-                self.rlmHelper.deleteCity(with: id)
-            } else {
-                cities.append(item)
-            }
-        }
-        self.cities = cities
-        self.view?.show(cities: self.cities)
-    }
-    
-    //MARK: - Private methods
-    private func updateCurrentCity(with id: String) {
         if let city = self.cities.first(where: { (city) in
             city.cityID == id
             }) {
-            rlmHelper.updateCurrentCity(city: city)
+            self.updateCurrentCityUseCase?.execute(city: city, completion: { (success) in
+                router?.hideViewController()
+            })
         }
+    }
+    
+    func deleteCityFromUserCities(with id: String) {
+        self.deleteUserCityUseCase?.execute(cityID: id, completion: { (success) in
+            self.loadUserCities()
+        })
     }
 }

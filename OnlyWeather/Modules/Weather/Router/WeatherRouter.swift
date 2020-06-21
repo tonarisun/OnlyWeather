@@ -17,12 +17,15 @@ protocol WeatherRouter: class {
 
 class WeatherRouterImpl: WeatherRouter {
     
+    //MARK: - Data
     weak var view: WeatherViewController!
     
+    //MARK: - Init
     init(view: WeatherViewController) {
         self.view = view
     }
 
+    //MARK: - Open Controllers
     func openSearchCityVC() {
         let storyBoard = UIStoryboard(name: "SearchCityViewController", bundle: nil)
         if #available(iOS 13.0, *) {

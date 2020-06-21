@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setInitialViewController()
         self.configureFirebase()
         self.configureRealm()
-        self.setUserLanguage()
+        self.saveUserLanguage()
         return true
     }
     
@@ -46,24 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func setUserLanguage() {
+    func saveUserLanguage() {
         let userLanguage = NSLocale.preferredLanguages.first!
         UserDefaults.standard.set(userLanguage.hasPrefix("ru"), forKey: Constants.isRussianLanguage)
-    }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
     }
 }
 
