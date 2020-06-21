@@ -26,16 +26,18 @@ class GetCitiesUseCaseImpl: GetCitiesUseCase {
             }
             var cities = [City]()
             for document in querySnpsht.documents {
-                  let cityName = document.data()["cityName"] as! String
-                  let cityNameRUS = document.data()["cityNameRUS"] as! String
-                  let cityID = document.data()["cityID"] as! String
-                  let country = document.data()["country"] as! String
                   let city = City()
-                  city.cityID = cityID
-                  city.cityName = cityName
-                  city.country = country
-                  city.cityNameRUS = cityNameRUS
+                  city.cityID = document.data()["cityID"] as! String
+                  city.cityName = document.data()["cityName"] as! String
+                  city.country = document.data()["country"] as! String
+                  city.cityNameRUS = document.data()["cityNameRUS"] as! String
                   cities.append(city)
+            }
+            
+            if UserDefaults.standard.bool(forKey: Constants.isRussianLanguage) {
+                cities.sort { $0.cityNameRUS < $1.cityNameRUS }
+            } else {
+                cities.sort { $0.cityName < $1.cityName }
             }
             completion(cities)
         }
