@@ -79,3 +79,5 @@
 "today" = "Heute";
 "mm" = "mm";
 "m/s" = "m/s";
+"oops" = "Hoppla!";
+"something_wrong" = "Etwas ist schief gelaufen. Wahrscheinlich ist Ihre Netzwerkverbindung unterbrochen. Drücken Sie OK, um es erneut zu versuchen";

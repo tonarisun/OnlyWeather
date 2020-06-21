@@ -61,7 +61,13 @@ class SearchCityPresenterImpl: SearchCityPresenter {
     
     //MARK: - Load Data
     private func getCities() {
-        getCitiesUseCase?.execute(completion: { (cities) in
+        getCitiesUseCase?.execute(completion: { (success, cities) in
+            guard success else {
+                self.view.showAlert(title: "oops", message: "something_wrong", action: {
+                    self.getCities()
+                })
+                return
+            }
             self.data.cities = cities ?? [City]()
             self.data.filteredCities = self.data.cities
             self.view.show(cities: self.data.cities)

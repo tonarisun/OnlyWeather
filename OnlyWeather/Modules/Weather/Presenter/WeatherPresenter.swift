@@ -83,29 +83,33 @@ class WeatherPresenterImpl: WeatherPresenter {
     
     private func loadWeather() {
         getTodayWeatherUseCase?.execute(cityID: self.data.userCity.cityID, completion: { (success, todayWeather) in
-            if success {
-                todayWeather!.time = Int(Date().timeIntervalSince1970)
-                self.data.now = (Service.getTimeFromUNIXInt(date: todayWeather!.time) ?? Constants.defaultDay) + (todayWeather?.timezone ?? 0) / 3600
-                self.data.todayWeather = todayWeather ?? TodayWeather()
-                self.data.currentTimezone = (todayWeather?.timezone ?? 0) / 3600
-                let day = (Service.getTimeFromUNIXInt(date: todayWeather!.sunrise) ?? Constants.defaultDay) + (todayWeather?.timezone ?? 0) / 3600
-                let night = (Service.getTimeFromUNIXInt(date: todayWeather!.sunset) ?? Constants.defaultNight) + (todayWeather?.timezone ?? 0) / 3600
-                self.data.day = Service.correctTime(time: day)
-                self.data.night = Service.correctTime(time: night)
-                self.getWeatherUseCase?.execute(cityID: self.data.userCity.cityID, completion: { (success, weather) in
-                    if success {
-                        self.data.hoursForecast = Service.getDayAndTime(weatherList: weather, timezone: self.data.currentTimezone)
-                        var weatherByDay = Service.sortWeatherByDay(weatherList: weather)
-                        if Service.checkTime(now: self.data.now, nextTime: weatherByDay.first?.time ?? 0) {
-                            weatherByDay.removeFirst()
-                        }
-                        Service.getDaysOfWeek(weatherArr: weatherByDay)
-                        self.data.daysForecast = weatherByDay
-                        self.view?.show(with: self.data)
-                        self.view?.loadingIndicator(load: false)
-                    }
+            guard success else {
+                self.view?.showAlert(title: "oops", message: "something_wrong", action: {
+                    self.loadWeather()
                 })
+                return
             }
+            todayWeather!.time = Int(Date().timeIntervalSince1970)
+            self.data.now = (Service.getTimeFromUNIXInt(date: todayWeather!.time) ?? Constants.defaultDay) + (todayWeather?.timezone ?? 0) / 3600
+            self.data.todayWeather = todayWeather ?? TodayWeather()
+            self.data.currentTimezone = (todayWeather?.timezone ?? 0) / 3600
+            let day = (Service.getTimeFromUNIXInt(date: todayWeather!.sunrise) ?? Constants.defaultDay) + (todayWeather?.timezone ?? 0) / 3600
+            let night = (Service.getTimeFromUNIXInt(date: todayWeather!.sunset) ?? Constants.defaultNight) + (todayWeather?.timezone ?? 0) / 3600
+            self.data.day = Service.correctTime(time: day)
+            self.data.night = Service.correctTime(time: night)
+            self.getWeatherUseCase?.execute(cityID: self.data.userCity.cityID, completion: { (success, weather) in
+                if success {
+                    self.data.hoursForecast = Service.getDayAndTime(weatherList: weather, timezone: self.data.currentTimezone)
+                    var weatherByDay = Service.sortWeatherByDay(weatherList: weather)
+                    if Service.checkTime(now: self.data.now, nextTime: weatherByDay.first?.time ?? 0) {
+                        weatherByDay.removeFirst()
+                    }
+                    Service.getDaysOfWeek(weatherArr: weatherByDay)
+                    self.data.daysForecast = weatherByDay
+                    self.view?.show(with: self.data)
+                    self.view?.loadingIndicator(load: false)
+                }
+            })
         })
     }
     

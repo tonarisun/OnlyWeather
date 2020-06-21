@@ -11,17 +11,17 @@ import Firebase
 
 protocol GetCitiesUseCase: class {
 
-    func execute(completion: @escaping ([City]?) -> ())
+    func execute(completion: @escaping (Bool, [City]?) -> ())
 }
 
 class GetCitiesUseCaseImpl: GetCitiesUseCase {
     
-    func execute(completion: @escaping ([City]?) -> ()) {
+    func execute(completion: @escaping (Bool, [City]?) -> ()) {
         Firestore.firestore().collection("cityList").getDocuments() { (querySnapshot, err) in
             
             guard let querySnpsht = querySnapshot else {
                 print("Error getting documents: \(String(describing: err))")
-                completion(nil)
+                completion(false, nil)
                 return
             }
             var cities = [City]()
@@ -39,7 +39,7 @@ class GetCitiesUseCaseImpl: GetCitiesUseCase {
             } else {
                 cities.sort { $0.cityName < $1.cityName }
             }
-            completion(cities)
+            completion(true, cities)
         }
     }
 }
