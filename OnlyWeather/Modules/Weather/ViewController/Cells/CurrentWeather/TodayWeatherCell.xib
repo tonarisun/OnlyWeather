@@ -99,7 +99,7 @@
                                             <constraint firstAttribute="height" constant="15" id="HYQ-d6-HWC"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="004-wind" translatesAutoresizingMaskIntoConstraints="NO" id="Hru-t6-u0I">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="005-wind-sign" translatesAutoresizingMaskIntoConstraints="NO" id="Hru-t6-u0I">
                                         <rect key="frame" x="0.0" y="12.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="SVn-hV-60e"/>
@@ -354,7 +354,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="004-wind" width="256" height="256"/>
+        <image name="005-wind-sign" width="256" height="256"/>
         <image name="007-sunset" width="256" height="256"/>
         <image name="008-sunrise" width="256" height="256"/>
         <image name="027-humidity" width="256" height="256"/>

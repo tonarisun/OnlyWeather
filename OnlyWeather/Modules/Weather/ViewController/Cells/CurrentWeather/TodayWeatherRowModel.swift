@@ -20,6 +20,7 @@ class TodayWeatherRowModel: RowModel {
     var timeInt: Int
     var humidity: Int
     var pressure: Int
+    var sky: String
     var description: String
     
     init(with weather: TodayWeather) {
@@ -34,6 +35,7 @@ class TodayWeatherRowModel: RowModel {
         self.humidity = weather.humidity
         self.pressure = Int(weather.pressure / 1.333)
         self.description = weather.skyDescription
+        self.sky = weather.sky
         super.init()
     }
     

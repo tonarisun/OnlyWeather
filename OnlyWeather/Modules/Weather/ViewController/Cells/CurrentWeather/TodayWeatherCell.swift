@@ -35,10 +35,10 @@ class TodayWeatherCell: UITableViewCell {
     //MARK: - Construct
     func construct(with model: TodayWeatherRowModel) -> TodayWeatherCell {
         if model.timeInt > model.sunriseInt, model.timeInt < model.sunsetInt {
-            self.skyImageView.image = SkyImageHelper.setSkyImageDay(skyDescription: model.description)
+            self.skyImageView.image = SkyImageHelper.setSkyImageDay(skyDescription: model.sky)
             self.subView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
         } else {
-            self.skyImageView.image = SkyImageHelper.setSkyImageNight(skyDescription: model.description)
+            self.skyImageView.image = SkyImageHelper.setSkyImageNight(skyDescription: model.sky)
             self.subView.backgroundColor = #colorLiteral(red: 0.264832288, green: 0.4864405394, blue: 0.582516849, alpha: 1)
         }
 

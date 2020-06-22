@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "026-hurricane.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "026-hurricane.png",
       "scale" : "2x"
     },
     {

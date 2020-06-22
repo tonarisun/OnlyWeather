@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "036-full-moon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "036-full-moon.png",
       "scale" : "2x"
     },
     {
