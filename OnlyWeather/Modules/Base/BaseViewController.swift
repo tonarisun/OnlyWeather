@@ -69,17 +69,21 @@ class BaseViewController: UIViewController {
 
 //MARK: - Table View Delegate / Data Source
 extension BaseViewController: UITableViewDelegate, UITableViewDataSource {
-
-func numberOfSections(in tableView: UITableView) -> Int {
-    return self.sections.count
-}
-
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sections[section].rows.count
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    return self.fabric?.cell(for: self.sections[indexPath.section].rows[indexPath.row], at: indexPath) ?? UITableViewCell()
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sections[section].rows.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        return self.fabric?.cell(for: self.sections[indexPath.section].rows[indexPath.row], at: indexPath) ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

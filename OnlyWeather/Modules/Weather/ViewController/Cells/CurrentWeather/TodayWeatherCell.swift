@@ -11,7 +11,9 @@ import UIKit
 class TodayWeatherCell: UITableViewCell {
     
     //MARK: - Outlets
+    @IBOutlet weak var nowView: UIView!
     @IBOutlet weak var nowLabel: UILabel!
+    
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var skyImageView: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
@@ -27,9 +29,10 @@ class TodayWeatherCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let now = "Now".localized()
-        nowLabel.attributedText = NSAttributedString(string: now, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
-        self.subView.configureShadow()
+//        let now = "Now".localized()
+        nowLabel.text = "Now".localized()//attributedText = NSAttributedString(string: now, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        self.subView.configureShadow(radius: 25.0)
+        self.nowView.configureShadow(radius: 15)
     }
     
     //MARK: - Construct
@@ -37,9 +40,11 @@ class TodayWeatherCell: UITableViewCell {
         if model.timeInt > model.sunriseInt, model.timeInt < model.sunsetInt {
             self.skyImageView.image = SkyImageHelper.setSkyImageDay(skyDescription: model.sky)
             self.subView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
+            self.nowView.backgroundColor = #colorLiteral(red: 0.4134832621, green: 0.6359115243, blue: 0.7319585085, alpha: 1)
         } else {
             self.skyImageView.image = SkyImageHelper.setSkyImageNight(skyDescription: model.sky)
             self.subView.backgroundColor = #colorLiteral(red: 0.264832288, green: 0.4864405394, blue: 0.582516849, alpha: 1)
+            self.nowView.backgroundColor = #colorLiteral(red: 0.264832288, green: 0.4864405394, blue: 0.582516849, alpha: 1)
         }
 
         self.tempLabel.text = "\(model.temp) °"

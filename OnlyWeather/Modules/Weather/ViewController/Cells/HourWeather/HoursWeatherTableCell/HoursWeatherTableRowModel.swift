@@ -10,6 +10,6 @@ import Foundation
 
 class HoursWeatherTableRowModel: TableCellWithCollectionRowModel {
     
-    var day = 0
-    var night = 0
+    var day: Int?
+    var night: Int?
 }

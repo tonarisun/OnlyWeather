@@ -29,12 +29,11 @@ class HourWeatherCollectionCell: UICollectionViewCell {
 
     func construct(with model: HourWeatherRowModel, day: Int, night: Int) -> HourWeatherCollectionCell {
         self.timeLabel.text = model.time
-        self.tempLabel.text = "\(model.temp) °C"
-        self.descriptionLabel.text = model.description.localized()
+        self.tempLabel.text = "\(model.temp)°"
+        self.descriptionLabel.text = nil//model.description.localized()
         
         SkyImageHelper.setSkyImage(model: model, cell: self, day: day, night: night)
         
         return self
     }
-    
 }

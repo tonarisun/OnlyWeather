@@ -20,41 +20,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMJ-zZ-4DY">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMJ-zZ-4DY">
                         <rect key="frame" x="4" y="5" width="102" height="20.5"/>
-                        <attributedString key="attributedText">
-                            <fragment content="Label">
-                                <attributes>
-                                    <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="15" name="AvenirNext-MediumItalic"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="15"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfk-bm-5ig">
-                        <rect key="frame" x="30" y="41.5" width="50.5" height="27.5"/>
-                        <attributedString key="attributedText">
-                            <fragment content="Label">
-                                <attributes>
-                                    <color key="NSColor" red="0.088188341193625536" green="0.087762310559839907" blue="0.088614371827411165" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <font key="NSFont" size="20" name="Avenir-HeavyOblique"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfk-bm-5ig">
+                        <rect key="frame" x="23" y="44" width="64" height="36"/>
+                        <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="26"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLX-eZ-UuZ">
-                        <rect key="frame" x="4" y="85.5" width="102" height="19.5"/>
-                        <attributedString key="attributedText">
-                            <fragment content="Label">
-                                <attributes>
-                                    <font key="NSFont" size="14" name="AvenirNext-Medium"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLX-eZ-UuZ">
+                        <rect key="frame" x="4" y="105" width="102" height="0.0"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -71,7 +52,7 @@
                 <constraint firstAttribute="bottom" secondItem="VLX-eZ-UuZ" secondAttribute="bottom" constant="5" id="iMv-hD-CxK"/>
                 <constraint firstItem="qMJ-zZ-4DY" firstAttribute="top" secondItem="k83-FJ-0XN" secondAttribute="top" constant="5" id="lvT-LU-WHa"/>
                 <constraint firstItem="qMJ-zZ-4DY" firstAttribute="leading" secondItem="k83-FJ-0XN" secondAttribute="leading" constant="4" id="p2U-gr-MCq"/>
-                <constraint firstItem="tfk-bm-5ig" firstAttribute="centerY" secondItem="k83-FJ-0XN" secondAttribute="centerY" id="t5Z-JS-XBV"/>
+                <constraint firstItem="tfk-bm-5ig" firstAttribute="centerY" secondItem="k83-FJ-0XN" secondAttribute="centerY" constant="7" id="t5Z-JS-XBV"/>
                 <constraint firstAttribute="trailing" secondItem="RFa-75-oXZ" secondAttribute="trailing" id="uoE-Ym-jpM"/>
             </constraints>
             <size key="customSize" width="110" height="110"/>

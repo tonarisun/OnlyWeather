@@ -61,10 +61,7 @@
 "scattered clouds" = "verstreute Wolken";
 "broken clouds" = "durchbrochene Wolken";
 "overcast clouds" = "bedeckte Wolken";
-"my cities" = "meine Städte";
-"search" = "suchen";
 "choose a city" = "wählen Sie die Stadt";
-"Now" = "Jetzt";
 "Hello!" = "Hallo!";
 "alert message" = "Wählen Sie die gewünschte Stadt aus. Sie können mehrere Städte hinzufügen oder eine auswählen";
 "added to 'my cities'" = "zur 'meine Städte' hinzugefügt";
@@ -75,6 +72,7 @@
 "thursday" = "Donnerstag";
 "friday" = "Freitag";
 "saturday" = "Samstag";
+"Now" = "Jetzt";
 "today_night" = "Heute Nacht";
 "today" = "Heute";
 "mm" = "mm";

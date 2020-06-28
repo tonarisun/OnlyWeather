@@ -84,9 +84,11 @@ class WeatherPresenterImpl: WeatherPresenter {
     private func loadWeather() {
         getTodayWeatherUseCase?.execute(cityID: self.data.userCity.cityID, completion: { (success, todayWeather) in
             guard success else {
-                self.view?.showAlert(title: "oops", message: "something_wrong", action: {
-                    self.loadWeather()
-                })
+                
+                self.view?.show(with: nil)//Alert(title: "oops", message: "something_wrong", action: {
+//                    self.loadWeather()
+//                })
+                self.view?.loadingIndicator(load: false)
                 return
             }
             todayWeather!.time = Int(Date().timeIntervalSince1970)

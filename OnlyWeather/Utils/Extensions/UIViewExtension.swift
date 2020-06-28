@@ -10,8 +10,8 @@ import UIKit
 
 extension UIView {
     
-    func configureShadow() {
-        self.layer.cornerRadius = 25
+    func configureShadow(radius: CGFloat) {
+        self.layer.cornerRadius = radius
         self.layer.shadowOpacity = 0.4
         self.layer.shadowRadius = 3.5
         self.layer.shadowOffset = .zero

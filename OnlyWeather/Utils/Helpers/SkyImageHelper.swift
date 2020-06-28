@@ -42,18 +42,20 @@ class SkyImageHelper: NSObject {
             return #imageLiteral(resourceName: "046-cloudy")
         case "Clear":
             return #imageLiteral(resourceName: "009-sun-1")
-        case "Rain", "Drizzle":
+        case "Rain":
+            return #imageLiteral(resourceName: "022-rain-1")
+        case "Drizzle":
             return #imageLiteral(resourceName: "029-storm-1")
         case "Snow":
             return #imageLiteral(resourceName: "020-snow")
         case "Thunderstorm":
-            return #imageLiteral(resourceName: "029-storm-1")
+            return #imageLiteral(resourceName: "011-storm-5")
         case "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Ash":
             return #imageLiteral(resourceName: "039-foggy-1")
         case "Tornado":
             return #imageLiteral(resourceName: "026-hurricane")
         case "Squall":
-            return #imageLiteral(resourceName: "005-wind-sign")
+            return #imageLiteral(resourceName: "002-windy-1")
         default:
             return #imageLiteral(resourceName: "046-cloudy")
         }
@@ -66,7 +68,9 @@ class SkyImageHelper: NSObject {
             return #imageLiteral(resourceName: "045-cloudy-1")
         case "Clear":
             return #imageLiteral(resourceName: "048-night")
-        case "Rain", "Drizzle":
+        case "Rain":
+            return #imageLiteral(resourceName: "021-rain-2")
+        case "Drizzle":
             return #imageLiteral(resourceName: "028-storm-2")
         case "Snow":
             return #imageLiteral(resourceName: "018-snowy")
@@ -77,7 +81,7 @@ class SkyImageHelper: NSObject {
         case "Tornado":
             return #imageLiteral(resourceName: "026-hurricane")
         case "Squall":
-            return #imageLiteral(resourceName: "005-wind-sign")
+            return #imageLiteral(resourceName: "001-windy-2")
         default:
             return #imageLiteral(resourceName: "045-cloudy-1")
         }
