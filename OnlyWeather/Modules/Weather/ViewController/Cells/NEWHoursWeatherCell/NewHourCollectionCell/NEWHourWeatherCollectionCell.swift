@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ScrollDelegate: class {
+    
+    func scrollToTop()
+}
+
 class NEWHourWeatherCollectionCell: UICollectionViewCell {
     
     //MARK: - Outlets
@@ -23,6 +28,7 @@ class NEWHourWeatherCollectionCell: UICollectionViewCell {
     
     //MARK: - Data
     var model: NEWHourWeatherRowModel?
+    var scrollDelegate: ScrollDelegate?
     
     //MARK: - Life cycle
     override func awakeFromNib() {
@@ -32,6 +38,10 @@ class NEWHourWeatherCollectionCell: UICollectionViewCell {
     
     //MARK: - Construct
     func construct(with model: NEWHourWeatherRowModel) -> NEWHourWeatherCollectionCell {
+        
+        let taptap = UITapGestureRecognizer(target: self, action: #selector(scrollCollectionToTop))
+        taptap.numberOfTapsRequired = 2
+        self.subView.addGestureRecognizer(taptap)
         
         self.model = model
         
@@ -55,5 +65,9 @@ class NEWHourWeatherCollectionCell: UICollectionViewCell {
         self.windDirectionImageView.image = SkyImageHelper.setWindDirectionImage(degree: model.windDirection)
         self.skyDescriptionLabel.text = model.description.localized()
         return self
+    }
+    
+    @objc func scrollCollectionToTop() {
+        self.scrollDelegate?.scrollToTop()
     }
 }
