@@ -14,8 +14,4 @@ class ForecastData {
     var hoursForecast = [Weather]()
     var daysForecast = [Weather]()
     var userCity = CurrentCity()
-    var currentTimezone: Int = 0
-    var now: Int = 0
-    var day: Int = 0
-    var night: Int = 0
 }

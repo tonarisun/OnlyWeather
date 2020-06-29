@@ -14,18 +14,13 @@ class WeatherFabric: BaseFabric {
     override func registerCells() {
         self.tableView?.ow_register(TodayWeatherCell.self)
         self.tableView?.ow_register(DayWeatherCell.self)
-        self.tableView?.ow_register(HoursWeatherTableCell.self)
+        self.tableView?.ow_register(NEWHoursWeatherTableCell.self)
     }
     
     //MARK: - Cells
     override func cell(for rowModel: RowModel, at indexPath: IndexPath) -> UITableViewCell {
         
         guard let tableView = self.tableView else { return UITableViewCell() }
-        
-        if let hoursModel = rowModel as? HoursWeatherTableRowModel,
-            let cell = tableView.ow_dequeueReusablweCell(HoursWeatherTableCell.self, indexPath: indexPath) {
-            return cell.construct(with: hoursModel)
-        }
         
         if let todayModel = rowModel as? TodayWeatherRowModel,
             let cell = tableView.ow_dequeueReusablweCell(TodayWeatherCell.self, indexPath: indexPath) {
@@ -34,7 +29,12 @@ class WeatherFabric: BaseFabric {
         
         if let dayModel = rowModel as? DayWeatherRowModel,
             let cell = tableView.ow_dequeueReusablweCell(DayWeatherCell.self, indexPath: indexPath) {
-            return cell.construct(with: dayModel, row: indexPath.row)
+            return cell.construct(with: dayModel)
+        }
+        
+        if let newModel = rowModel as? NEWHoursWeatherTableRowModel,
+            let cell = tableView.ow_dequeueReusablweCell(NEWHoursWeatherTableCell.self, indexPath: indexPath) {
+            return cell.construct(with: newModel)
         }
         
         return UITableViewCell()

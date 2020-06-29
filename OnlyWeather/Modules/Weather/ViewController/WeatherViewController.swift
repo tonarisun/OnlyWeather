@@ -13,6 +13,7 @@ protocol WeatherView: BaseView {
     
     func configureCityNameLabel(_ city: String)
     func show(with forecast: ForecastData?)
+    func showTutorial()
 }
 
 class WeatherViewController: BaseViewController, WeatherView {
@@ -62,6 +63,9 @@ class WeatherViewController: BaseViewController, WeatherView {
         
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+        
+        self.tableView.contentInset.top = 10
+        self.tableView.contentInset.bottom = 20
     }
     
     private func configureRefreshControl() {
@@ -95,28 +99,30 @@ class WeatherViewController: BaseViewController, WeatherView {
     }
     
     //MARK: - Show
+    func showTutorial() {
+        
+    }
+    
     func show(with forecast: ForecastData?) {
         self.showEmptyView = forecast == nil
         self.sections.removeAll()
-        self.sections.append(self.createHoursForecastSection(with: forecast?.hoursForecast, day: forecast?.day, night: forecast?.night))
         self.sections.append(self.createTodayWeatherSection(with: forecast?.todayWeather))
+        self.sections.append(self.createNewHoursForecastSection(with: forecast?.hoursForecast))
         self.sections.append(self.createDailyForecastSection(with: forecast?.daysForecast))
         self.tableView.reloadData()
     }
     
     //MARK: - Create Sections
-    private func createHoursForecastSection(with forecast: [Weather]?, day: Int?, night: Int?) -> SectionModel {
+    private func createNewHoursForecastSection(with forecast: [Weather]?) -> SectionModel {
         let section = SectionModel()
         
         guard let hoursForecast = forecast  else { return section }
         
-        let tableRow = HoursWeatherTableRowModel()
-        tableRow.day = day
-        tableRow.night = night
+        let tableRow = NEWHoursWeatherTableRowModel(id: UUID().uuidString)
         
         let collSection = SectionModel()
-        collSection.rows = hoursForecast.map({ (weather) -> HourWeatherRowModel in
-            return HourWeatherRowModel(with: weather)
+        collSection.rows = hoursForecast.map({ (weather) -> NEWHourWeatherRowModel in
+            return NEWHourWeatherRowModel(with: weather)
         })
         
         tableRow.sections.append(collSection)
@@ -149,6 +155,7 @@ class WeatherViewController: BaseViewController, WeatherView {
     }
 }
 
+//MARK: - EmptyDataSet
 extension WeatherViewController: EmptyDataSetDelegate, EmptyDataSetSource {
     
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView) -> Bool {

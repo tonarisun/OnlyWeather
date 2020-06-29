@@ -20,12 +20,10 @@ class Weather: Mappable {
     var windDeg = 0.0
     var sky = ""
     var skyDescription = ""
-    var date = ""
-    var day = 0
-    var month = ""
-    var time = 0
+    var dateInt = 0
+    var datePretty = ""
+    var timeInt = 0
     var weekDay = ""
-    var tempDay = 0
     
     required init?(map: Map) {}
     
@@ -37,6 +35,6 @@ class Weather: Mappable {
         windDeg <- map["wind.deg"]
         sky <- map["weather.0.main"]
         skyDescription <- map["weather.0.description"]
-        date <- map["dt_txt"]
+        dateInt <- map["dt"]
     }
 }
