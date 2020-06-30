@@ -79,3 +79,4 @@
 "m/s" = "m/s";
 "oops" = "Oops...";
 "something_wrong" = "Something went wrong. Probably, your network connection is lost. Press OK to try again";
+"tutorial_message" = "Swipe left to see a detailed forecast by hour. Double tap to go to the beginning";

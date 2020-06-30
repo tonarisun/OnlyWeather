@@ -108,9 +108,6 @@ class WeatherPresenterImpl: WeatherPresenter {
                     self.data.daysForecast = weatherByDay
                     self.view?.show(with: self.data)
                     self.view?.loadingIndicator(load: false)
-                    if !UserDefaults.standard.bool(forKey: "first_open") {
-//                        self.view?.
-                    }
                 }
             })
         })
@@ -130,7 +127,6 @@ class WeatherPresenterImpl: WeatherPresenter {
 
     //MARK: - Actions
     func refreshData() {
-        self.data.scrollNeeded = true
         self.loadCityFromRLM()
     }
     

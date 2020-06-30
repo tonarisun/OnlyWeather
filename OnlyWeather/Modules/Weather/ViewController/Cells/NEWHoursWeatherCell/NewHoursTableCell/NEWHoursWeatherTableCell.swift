@@ -13,6 +13,8 @@ class NEWHoursWeatherTableCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var tutorialView: UIView!
+    @IBOutlet weak var tutorialMessageLabel: UILabel!
     
     var fabric: NEWHoursWeatherCellFabric?
     var model: NEWHoursWeatherTableRowModel?
@@ -23,10 +25,13 @@ class NEWHoursWeatherTableCell: UITableViewCell {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        self.collectionView.contentInset.left = -30
         
         self.dateView.configureShadow(radius: 15)
         self.dateView.backgroundColor = #colorLiteral(red: 0.3142627478, green: 0.5710065961, blue: 0.6863108873, alpha: 1)
+        
+        self.tutorialView.isHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideTutorial))
+        self.tutorialView.addGestureRecognizer(tap)
     }
     
     private func initFabric() {
@@ -34,9 +39,22 @@ class NEWHoursWeatherTableCell: UITableViewCell {
     }
     
     func construct(with model: NEWHoursWeatherTableRowModel) -> NEWHoursWeatherTableCell {
+        self.showTutorial()
         self.model = model
         self.collectionView.reloadData()
         return self
+    }
+    
+    private func showTutorial() {
+        if !UserDefaults.standard.bool(forKey: "first_open") {
+            self.tutorialMessageLabel.text = "tutorial_message".localized()
+            self.tutorialView.isHidden = false
+            UserDefaults.standard.set(true, forKey: "first_open")
+        }
+    }
+    
+    @objc func hideTutorial() {
+        self.tutorialView.isHidden = true
     }
 }
 
@@ -63,9 +81,6 @@ extension NEWHoursWeatherTableCell: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let model = self.model?.sections[indexPath.section].rows[indexPath.row] as? NEWHourWeatherRowModel {
-            if indexPath.row > 0 {
-                collectionView.contentInset.left = .zero
-            }
             self.dateLabel.text = model.weekDay + ", " + model.date
         }
     }

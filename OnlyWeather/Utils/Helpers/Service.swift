@@ -41,9 +41,9 @@ class Service {
         weathersList.forEach { (weatherItem) in
             let dateInt = weatherItem.dateInt + timezone
             weatherItem.datePretty = Date.getDateComponentFromUNIXTime(time: dateInt, type: .shortDate)
-            weatherItem.timeInt = Date.getTimeInt(date: dateInt) ?? 0
-            weatherItem.weekDay = Date.getDateComponentFromUNIXTime(time: dateInt, type: .weekDay)
-            
+            weatherItem.timeInt    = Date.getTimeInt(date: dateInt) ?? 0
+            weatherItem.weekDay    = Date.getDateComponentFromUNIXTime(time: dateInt, type: .weekDay)
+            weatherItem.isDay      = weatherItem.timeInt > CurrentCityTime.instance.day && weatherItem.timeInt <= CurrentCityTime.instance.night
         }
     }
 }

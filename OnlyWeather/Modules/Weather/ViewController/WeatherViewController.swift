@@ -13,7 +13,6 @@ protocol WeatherView: BaseView {
     
     func configureCityNameLabel(_ city: String)
     func show(with forecast: ForecastData?)
-    func showTutorial()
 }
 
 class WeatherViewController: BaseViewController, WeatherView {
@@ -99,10 +98,6 @@ class WeatherViewController: BaseViewController, WeatherView {
     }
     
     //MARK: - Show
-    func showTutorial() {
-        
-    }
-    
     func show(with forecast: ForecastData?) {
         self.showEmptyView = forecast == nil
         self.sections.removeAll()
@@ -146,10 +141,26 @@ class WeatherViewController: BaseViewController, WeatherView {
         let section = SectionModel()
         
         guard let dailyForecast = forecast else { return section }
-        
-        section.rows = dailyForecast.map({ (weather) -> DayWeatherRowModel in
-            return DayWeatherRowModel(with: weather)
-        })
+
+        dailyForecast.enumerated().forEach { (index, weather) in
+            guard index < dailyForecast.count-1 else { return }
+            if weather.weekDay == dailyForecast[index + 1].weekDay {
+                let row = DayWeatherRowModel()
+                row.weekDay = weather.weekDay
+                if weather.isDay {
+                    row.tempDay = NSString(format:"%.1f", weather.temp) as String
+                    row.skyDay = weather.sky
+                    row.tempNight = NSString(format:"%.1f", dailyForecast[index + 1].temp) as String
+                    row.skyNight = dailyForecast[index + 1].sky
+                } else {
+                    row.tempNight = NSString(format:"%.1f", weather.temp) as String
+                    row.skyNight = weather.sky
+                    row.tempDay = NSString(format:"%.1f", dailyForecast[index + 1].temp) as String
+                    row.skyDay = dailyForecast[index + 1].sky
+                }
+                section.rows.append(row)
+            }
+        }
         
         return section
     }

@@ -20,6 +20,7 @@ class NEWHourWeatherRowModel: RowModel {
     var time = 0
     var weekDay = ""
     var date = ""
+    var isDay = false
     
     init(with weather: Weather) {
         self.temp = NSString(format:"%.1f", weather.temp) as String
@@ -32,6 +33,7 @@ class NEWHourWeatherRowModel: RowModel {
         self.weekDay = weather.weekDay
         self.sky = weather.sky
         self.date = weather.datePretty
+        self.isDay = weather.isDay
         super.init()
     }
     

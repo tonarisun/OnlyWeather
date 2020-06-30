@@ -30,8 +30,8 @@
 		D61EDE42249F348100B8B5B2 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61EDE41249F348100B8B5B2 /* WeatherResponse.swift */; };
 		D61EDE44249F348F00B8B5B2 /* TodayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61EDE43249F348F00B8B5B2 /* TodayWeather.swift */; };
 		D61EDE46249F34EA00B8B5B2 /* CurrentTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61EDE45249F34EA00B8B5B2 /* CurrentTimeZone.swift */; };
-		D64328BD24AA36C4009A02C3 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64328BC24AA36C4009A02C3 /* TutorialView.swift */; };
-		D64328C024AA36EA009A02C3 /* TutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D64328BF24AA36EA009A02C3 /* TutorialView.xib */; };
+		D64328C224AAC7F0009A02C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10DB22A4C14900E0B1A8 /* LaunchScreen.storyboard */; };
+		D64328C324AAC896009A02C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C2C2DD22B7CA6A00169DC9 /* Localizable.strings */; };
 		D647D89023D4238800FAE072 /* WeatherConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647D88C23D4238800FAE072 /* WeatherConfigurator.swift */; };
 		D647D89123D4238800FAE072 /* WeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647D88D23D4238800FAE072 /* WeatherRouter.swift */; };
 		D647D89223D4238800FAE072 /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647D88E23D4238800FAE072 /* WeatherPresenter.swift */; };
@@ -71,7 +71,6 @@
 		D6A6B215249C98D70078B029 /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A6B214249C98D70078B029 /* RowModel.swift */; };
 		D6A6B217249C98E30078B029 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A6B216249C98E30078B029 /* SectionModel.swift */; };
 		D6BCE23A24A9FF1000E5ED96 /* CurrentCityTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BCE23924A9FF1000E5ED96 /* CurrentCityTime.swift */; };
-		D6C2C2DF22B7CA6A00169DC9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6C2C2DD22B7CA6A00169DC9 /* Localizable.strings */; };
 		D6E6806624A8E21F00FC1184 /* NEWHoursWeatherTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E6806424A8E21F00FC1184 /* NEWHoursWeatherTableCell.swift */; };
 		D6E6806724A8E21F00FC1184 /* NEWHoursWeatherTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E6806524A8E21F00FC1184 /* NEWHoursWeatherTableCell.xib */; };
 		D6E6806924A8E23D00FC1184 /* NEWHoursWeatherCellFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E6806824A8E23D00FC1184 /* NEWHoursWeatherCellFabric.swift */; };
@@ -81,7 +80,6 @@
 		D6E6807124A8E36400FC1184 /* NEWHourWeatherRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E6807024A8E36400FC1184 /* NEWHourWeatherRowModel.swift */; };
 		D6EE10D322A4C14600E0B1A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EE10D222A4C14600E0B1A8 /* AppDelegate.swift */; };
 		D6EE10DA22A4C14900E0B1A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10D922A4C14900E0B1A8 /* Assets.xcassets */; };
-		D6EE10DD22A4C14900E0B1A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10DB22A4C14900E0B1A8 /* LaunchScreen.storyboard */; };
 		D6EE10EF22A4FC5800E0B1A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6EE10EE22A4FC5800E0B1A8 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -113,8 +111,6 @@
 		D61EDE41249F348100B8B5B2 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		D61EDE43249F348F00B8B5B2 /* TodayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeather.swift; sourceTree = "<group>"; };
 		D61EDE45249F34EA00B8B5B2 /* CurrentTimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeZone.swift; sourceTree = "<group>"; };
-		D64328BC24AA36C4009A02C3 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
-		D64328BF24AA36EA009A02C3 /* TutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
 		D647D88C23D4238800FAE072 /* WeatherConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherConfigurator.swift; sourceTree = "<group>"; };
 		D647D88D23D4238800FAE072 /* WeatherRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherRouter.swift; sourceTree = "<group>"; };
 		D647D88E23D4238800FAE072 /* WeatherPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
@@ -288,14 +284,6 @@
 			path = Weather;
 			sourceTree = "<group>";
 		};
-		D64328BA24AA366B009A02C3 /* CustomUI */ = {
-			isa = PBXGroup;
-			children = (
-				D64328BE24AA36DB009A02C3 /* TutorialView */,
-			);
-			path = CustomUI;
-			sourceTree = "<group>";
-		};
 		D64328BB24AA3688009A02C3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,15 +294,6 @@
 				D6C2C2DD22B7CA6A00169DC9 /* Localizable.strings */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		D64328BE24AA36DB009A02C3 /* TutorialView */ = {
-			isa = PBXGroup;
-			children = (
-				D64328BC24AA36C4009A02C3 /* TutorialView.swift */,
-				D64328BF24AA36EA009A02C3 /* TutorialView.xib */,
-			);
-			path = TutorialView;
 			sourceTree = "<group>";
 		};
 		D647D88623D422C200FAE072 /* Modules */ = {
@@ -578,7 +557,6 @@
 			isa = PBXGroup;
 			children = (
 				D6EE10D222A4C14600E0B1A8 /* AppDelegate.swift */,
-				D64328BA24AA366B009A02C3 /* CustomUI */,
 				D647D88723D4232B00FAE072 /* Entity */,
 				D647D88623D422C200FAE072 /* Modules */,
 				D64328BB24AA3688009A02C3 /* Resources */,
@@ -658,14 +636,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D64328C024AA36EA009A02C3 /* TutorialView.xib in Resources */,
+				D64328C324AAC896009A02C3 /* Localizable.strings in Resources */,
+				D64328C224AAC7F0009A02C3 /* LaunchScreen.storyboard in Resources */,
 				D6E6806724A8E21F00FC1184 /* NEWHoursWeatherTableCell.xib in Resources */,
 				D6712174249CA3FD005FCDEF /* DayWeatherCell.xib in Resources */,
 				D6E6806F24A8E34500FC1184 /* NEWHourWeatherCollectionCell.xib in Resources */,
 				D6958119249DF85F009A07E7 /* SearchCityCell.xib in Resources */,
 				D60A72A1249E2AE700497C6F /* CitiesListViewController.storyboard in Resources */,
-				D6C2C2DF22B7CA6A00169DC9 /* Localizable.strings in Resources */,
-				D6EE10DD22A4C14900E0B1A8 /* LaunchScreen.storyboard in Resources */,
 				D6958111249DF7BF009A07E7 /* SearchCityViewController.storyboard in Resources */,
 				D6EE10DA22A4C14900E0B1A8 /* Assets.xcassets in Resources */,
 				D60A72A9249E2C1B00497C6F /* CityCell.xib in Resources */,
@@ -761,7 +738,6 @@
 				D6A6B217249C98E30078B029 /* SectionModel.swift in Sources */,
 				D647D8BE23D4248700FAE072 /* Service.swift in Sources */,
 				D609EF66249CD8330051FC09 /* BaseViewController.swift in Sources */,
-				D64328BD24AA36C4009A02C3 /* TutorialView.swift in Sources */,
 				D647D89123D4238800FAE072 /* WeatherRouter.swift in Sources */,
 				D647D8B923D4245D00FAE072 /* Weather.swift in Sources */,
 				D61EDE44249F348F00B8B5B2 /* TodayWeather.swift in Sources */,
@@ -938,7 +914,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TF56ZZML3P;
-				INFOPLIST_FILE = OnlyWeather/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OnlyWeather/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -960,7 +936,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TF56ZZML3P;
-				INFOPLIST_FILE = OnlyWeather/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OnlyWeather/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
