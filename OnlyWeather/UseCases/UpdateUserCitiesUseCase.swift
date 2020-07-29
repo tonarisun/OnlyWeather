@@ -15,8 +15,12 @@ protocol UpdateUserCitiesUseCase: class {
 
 class UpdateUserCitiesUseCaseImpl: UpdateUserCitiesUseCase {
     
+    let updateCurrentCityUseCse = UpdateCurrentCityUseCaseImpl()
+    
     func execute(city: City, completion: (Bool) -> ()) {
         RealmHelper().addItemToMyCities(city: city)
-        completion(true)
+        self.updateCurrentCityUseCse.execute(city: city) { (success) in
+            completion(true)
+        }
     }
 }

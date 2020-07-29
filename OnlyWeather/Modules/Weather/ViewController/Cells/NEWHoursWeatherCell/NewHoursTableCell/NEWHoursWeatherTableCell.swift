@@ -31,6 +31,9 @@ class NEWHoursWeatherTableCell: UITableViewCell {
         
         self.tutorialView.isHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideTutorial))
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(hideTutorial))
+        swipe.direction = .left
+        self.tutorialView.addGestureRecognizer(swipe)
         self.tutorialView.addGestureRecognizer(tap)
     }
     
@@ -46,10 +49,10 @@ class NEWHoursWeatherTableCell: UITableViewCell {
     }
     
     private func showTutorial() {
-        if !UserDefaults.standard.bool(forKey: "first_open") {
+        if !UserDefaults.standard.bool(forKey: "tutorial_viewed") {
             self.tutorialMessageLabel.text = "tutorial_message".localized()
             self.tutorialView.isHidden = false
-            UserDefaults.standard.set(true, forKey: "first_open")
+            UserDefaults.standard.set(true, forKey: "tutorial_viewed")
         }
     }
     

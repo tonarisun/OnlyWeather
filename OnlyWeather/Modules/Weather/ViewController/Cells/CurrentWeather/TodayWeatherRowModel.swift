@@ -27,8 +27,8 @@ class TodayWeatherRowModel: RowModel {
         self.temp = Int(weather.temp)
         self.windSpeed = Int(weather.windSpeed)
         self.windDirection = weather.windDeg
-        self.sunrise = Date.getDateComponentFromUNIXTime(time: weather.sunrise + weather.timezone, type: .full)
-        self.sunset = Date.getDateComponentFromUNIXTime(time: weather.sunset + weather.timezone, type: .full)
+        self.sunrise = Date.getDateComponentFromUNIXTime(time: weather.sunrise + weather.timezone, type: .timeFull)
+        self.sunset = Date.getDateComponentFromUNIXTime(time: weather.sunset + weather.timezone, type: .timeFull)
         self.sunriseInt = weather.sunrise
         self.sunsetInt = weather.sunset
         self.timeInt = Int(Date().timeIntervalSince1970)
